@@ -2,6 +2,6 @@
 {
     public interface IDataSeeder
     {
-        void SeedInitialCategories();
+        void SeedData();
     }
 }

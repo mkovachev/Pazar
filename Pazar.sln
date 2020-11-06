@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30626.31
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pazar.Ads", "Pazar.Ads\Pazar.Ads.csproj", "{BACAC78B-A986-4C45-904A-15E9B979DC3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pazar.Ads", "Pazar.Ads\Pazar.Ads.csproj", "{BACAC78B-A986-4C45-904A-15E9B979DC3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pazar.Core", "Pazar.Core\Pazar.Core.csproj", "{6AF6A81C-08DD-479F-B79C-0FA2B6122CF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BACAC78B-A986-4C45-904A-15E9B979DC3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BACAC78B-A986-4C45-904A-15E9B979DC3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BACAC78B-A986-4C45-904A-15E9B979DC3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AF6A81C-08DD-479F-B79C-0FA2B6122CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF6A81C-08DD-479F-B79C-0FA2B6122CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF6A81C-08DD-479F-B79C-0FA2B6122CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF6A81C-08DD-479F-B79C-0FA2B6122CF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

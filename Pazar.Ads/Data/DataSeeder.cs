@@ -13,7 +13,7 @@ namespace Pazar.Ads.Data
             this.categories = categories;
             this.db = db;
         }
-        public void SeedInitialCategories()
+        public void SeedData()
         {
             var initialCategories = this.categories.GetInitialCategories();
 

@@ -19,6 +19,6 @@ namespace Pazar.Ads.Data.Models
 
         public int UserId { get; set; }
 
-        public ICollection<Image> Images = new List<Image>();
+        public ICollection<Image> Images { get; } = new List<Image>();
     }
 }

@@ -2,7 +2,7 @@
 using Pazar.Ads.Data.Models;
 using System.Reflection;
 
-namespace Pazar.Ads
+namespace Pazar.Ads.Data
 {
     public class PazarDbContext : DbContext
     {

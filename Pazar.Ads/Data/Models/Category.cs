@@ -10,8 +10,8 @@ namespace Pazar.Ads.Data.Models
         }
 
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
-        public ICollection<Ad> Ads { get; set; } = new List<Ad>();
+        public ICollection<Ad> Ads { get; } = new List<Ad>();
     }
 }
