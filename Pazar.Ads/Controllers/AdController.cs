@@ -8,13 +8,6 @@ namespace Pazar.Ads.Controllers
 {
     public class AdController : ApiController
     {
-        private readonly IAdService ads;
-
-        public AdController(IAdService ads)
-        {
-            this.ads = ads;
-        }
-
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<int>> Create(CreateAdCommand command)

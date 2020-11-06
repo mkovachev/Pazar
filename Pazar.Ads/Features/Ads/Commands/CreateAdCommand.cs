@@ -10,11 +10,13 @@ namespace Pazar.Ads.Features.Ads.Commands
     {
         public class CreateAdCommandHandler : IRequestHandler<CreateAdCommand, int>
         {
+
             private readonly PazarDbContext db;
             public CreateAdCommandHandler(PazarDbContext db)
             {
                 this.db = db;
             }
+
             public async Task<int> Handle(CreateAdCommand request, CancellationToken cancellationToken)
             {
 
@@ -28,7 +30,7 @@ namespace Pazar.Ads.Features.Ads.Commands
                     UserId = request.UserId
                 };
 
-                await this.db.Ads.AddAsync(ad, cancellationToken);
+                this.db.Ads.Add(ad);
 
                 await this.db.SaveChangesAsync(cancellationToken);
 
