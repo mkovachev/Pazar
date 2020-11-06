@@ -16,7 +16,7 @@ namespace Pazar.Ads.Services.Ads
 
         Task<IEnumerable<AdVm>> GetAll(AdsDto query);
 
-        Task<IEnumerable<MyAdsVm>> GetMyAds(int dealerId, AdsDto query);
+        Task<IEnumerable<MyAdsVm>> GetMyAds(int userId, AdsDto query);
 
     }
 }

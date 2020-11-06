@@ -7,7 +7,7 @@ namespace Pazar.Ads.Features.Ads
     using static Data.DataConstants.Ads;
     using static Pazar.Ads.Data.DataConstants;
 
-    public class AdBase
+    public class AdDto
     {
         [Required]
         [MinLength(TitleMinLength)]
