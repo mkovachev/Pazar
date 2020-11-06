@@ -2,7 +2,7 @@
 
 namespace Pazar.Ads.Data.Models
 {
-    public class Ad
+    public class Ad : AuditableEntity
     {
         public int Id { get; set; }
 

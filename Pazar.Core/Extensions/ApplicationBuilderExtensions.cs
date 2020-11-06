@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Pazar.Ads.Data;
+using Pazar.Core.Services.Data;
 
 namespace Pazar.Core.Extensions
 {

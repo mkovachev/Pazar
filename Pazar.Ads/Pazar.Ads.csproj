@@ -28,4 +28,8 @@
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pazar.Core\Pazar.Core.csproj" />
+  </ItemGroup>
+
 </Project>
