@@ -2,16 +2,6 @@
 {
     public class DataConstants
     {
-        public class Customers
-        {
-            public const int NameMinLength = 2;
-            public const int NameMaxLength = 30;
-
-            public const int PhoneNumberMinLength = 5;
-            public const int PhoneNumberMaxLength = 20;
-            public const string ValidPhoneNumber = @"\+[0-9]*";
-        }
-
         public class Ads
         {
             public const int TitleMinLength = 10;

@@ -42,10 +42,8 @@ namespace Pazar.Ads.Data.Configurations
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
-                .HasOne(ad => ad.Customer)
-                .WithMany(c => c.Ads)
-                .HasForeignKey(ad => ad.CustomerId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .Property(ad => ad.UserId)
+                .IsRequired();
 
             builder
                 .HasMany(ad => ad.Images)

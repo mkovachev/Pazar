@@ -5,17 +5,19 @@ namespace Pazar.Ads.Data.Models
     public class Ad
     {
         public int Id { get; set; }
-        public string Title { get; set; }
+
+        public string Title { get; set; } = null!;
+
         public decimal Price { get; set; }
-        public string Description { get; set; }
-        public bool IsActive { get; set; }
+
+        public string Description { get; set; } = null!;
+
+        public bool IsActive { get; set; } = true;
 
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category Category { get; set; } = null!;
 
-        public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
-
+        public int UserId { get; set; }
 
         public ICollection<Image> Images = new List<Image>();
     }
