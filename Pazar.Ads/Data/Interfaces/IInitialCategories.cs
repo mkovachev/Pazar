@@ -5,6 +5,6 @@ namespace Pazar.Ads.Data.Interfaces
 {
     public interface IInitialCategories
     {
-        IReadOnlyCollection<Category> GetInitialCategories();
+        IEnumerable<Category> GetInitialCategories();
     }
 }

@@ -5,7 +5,7 @@ namespace Pazar.Ads.Data.Models
 {
     internal class CategoryData : IInitialCategories
     {
-        public IReadOnlyCollection<Category> GetInitialCategories()
+        public IEnumerable<Category> GetInitialCategories()
             => new List<Category>
             {
                 new Category("Real Estate"),
