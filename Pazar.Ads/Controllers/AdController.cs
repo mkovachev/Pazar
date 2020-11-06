@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pazar.Ads.Features.Ads.Commands;
-using Pazar.Ads.Services.Ads;
 using System.Threading.Tasks;
 
 namespace Pazar.Ads.Controllers

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Pazar.Ads.Data;
 using Pazar.Ads.Data.Models;
+using Pazar.Ads.Features.Ads.Models;
 using System.Threading;
 using System.Threading.Tasks;
 

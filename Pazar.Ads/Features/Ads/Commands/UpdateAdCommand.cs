@@ -2,13 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Pazar.Ads.Data;
 using Pazar.Ads.Data.Models;
+using Pazar.Ads.Features.Ads.Models;
 using Pazar.Core.Exceptions;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Pazar.Ads.Features.Ads.Commands
 {
-    public class UpdateAdCommand : IRequest
+    public class UpdateAdCommand : AdDto, IRequest
     {
         public int Id { get; set; }
 
