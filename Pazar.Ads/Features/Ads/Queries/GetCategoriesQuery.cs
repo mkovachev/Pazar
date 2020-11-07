@@ -11,25 +11,23 @@ using System.Threading.Tasks;
 
 namespace Pazar.Ads.Features.Ads.Queries
 {
-    public class GetAdsQuery : IRequest<IEnumerable<AdsVm>>
+    public class GetCategoriesQuery : IRequest<IEnumerable<CategoryVm>>
     {
-        public class GetAdsQueryHandler : IRequestHandler<GetAdsQuery, IEnumerable<AdsVm>>
+        public class GetCategoriesQueryHandler : IRequestHandler<GetCategoriesQuery, IEnumerable<CategoryVm>>
         {
             private readonly PazarDbContext db;
             private readonly IMapper mapper;
-
-            public GetAdsQueryHandler(PazarDbContext db, IMapper mapper)
+            public GetCategoriesQueryHandler(PazarDbContext db, IMapper mapper)
             {
                 this.db = db;
                 this.mapper = mapper;
             }
 
-            public async Task<IEnumerable<AdsVm>> Handle(GetAdsQuery request, CancellationToken cancellationToken)
-                  => await this.db.Ads
-                            .OrderBy(ad => ad.Title)
-                            .ProjectTo<AdsVm>(mapper.ConfigurationProvider)
+            public async Task<IEnumerable<CategoryVm>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
+                    => await this.db.Categories
+                            .OrderBy(c => c.Name)
+                            .ProjectTo<CategoryVm>(this.mapper.ConfigurationProvider)
                             .ToListAsync(cancellationToken);
-
         }
     }
 }

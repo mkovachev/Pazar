@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pazar.Ads.Features.Ads.Commands;
+using Pazar.Ads.Features.Ads.Models;
+using Pazar.Ads.Features.Ads.Queries;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Pazar.Ads.Controllers
@@ -33,5 +36,18 @@ namespace Pazar.Ads.Controllers
 
             return NoContent();
         }
+
+
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<CategoryVm>>> Index(
+        //      [FromQuery] GetCategoriesQuery query)
+        //      => await Mediator.Send(query);
+
+
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<IEnumerable<AdVm>>> Category(
+        //   [FromQuery] GetAdsPerCategory query)
+        //   => await Mediator.Send(query);
+
     }
 }

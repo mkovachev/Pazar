@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pazar.Ads.Features.Ads.Commands
 {
-    public class CreateAdCommand : AdDto, IRequest<int>
+    public class CreateAdCommand : AdVm, IRequest<int>
     {
         public class CreateAdCommandHandler : IRequestHandler<CreateAdCommand, int>
         {

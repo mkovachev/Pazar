@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Pazar.Ads.Features.Ads.Commands
 {
-    public class UpdateAdCommand : AdDto, IRequest
+    public class UpdateAdCommand : AdVm, IRequest
     {
         public int Id { get; set; }
 
