@@ -37,7 +37,6 @@ namespace Pazar.Ads.Controllers
             return NoContent();
         }
 
-
         //[HttpGet]
         //public async Task<ActionResult<IEnumerable<CategoryVm>>> Index(
         //      [FromQuery] GetCategoriesQuery query)
