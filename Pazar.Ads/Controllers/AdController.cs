@@ -38,14 +38,19 @@ namespace Pazar.Ads.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<CategoryVm>> Index(
+        public async Task<ActionResult<IEnumerable<CategoryVm>>> Index(
               [FromQuery] GetCategoriesQuery query)
-              => await Mediator.Send(query);
-
+        {
+            var categories = await Mediator.Send(query);
+            return Ok(categories);
+        }
 
         [HttpGet("{id}")]
-        public async Task<IEnumerable<AdVm>> Category(
+        public async Task<ActionResult<IEnumerable<AdVm>>> Category(
            [FromQuery] GetAdsPerCategory query)
-           => await Mediator.Send(query);
+        {
+            var adsGetAdsPerCategory = await Mediator.Send(query);
+            return Ok(adsGetAdsPerCategory);
+        }
     }
 }
