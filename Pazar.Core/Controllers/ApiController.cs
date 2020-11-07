@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Pazar.Ads.Controllers
+namespace Pazar.Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]

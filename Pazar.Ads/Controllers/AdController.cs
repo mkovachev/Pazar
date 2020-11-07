@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Pazar.Ads.Features.Ads.Commands;
 using Pazar.Ads.Features.Ads.Models;
 using Pazar.Ads.Features.Ads.Queries;
+using Pazar.Core.Controllers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
