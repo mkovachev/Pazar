@@ -37,16 +37,15 @@ namespace Pazar.Ads.Controllers
             return NoContent();
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<CategoryVm>>> Index(
-        //      [FromQuery] GetCategoriesQuery query)
-        //      => await Mediator.Send(query);
+        [HttpGet]
+        public async Task<IEnumerable<CategoryVm>> Index(
+              [FromQuery] GetCategoriesQuery query)
+              => await Mediator.Send(query);
 
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<IEnumerable<AdVm>>> Category(
-        //   [FromQuery] GetAdsPerCategory query)
-        //   => await Mediator.Send(query);
-
+        [HttpGet("{id}")]
+        public async Task<IEnumerable<AdVm>> Category(
+           [FromQuery] GetAdsPerCategory query)
+           => await Mediator.Send(query);
     }
 }
