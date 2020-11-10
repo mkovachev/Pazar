@@ -3,7 +3,7 @@ using System.Security.Claims;
 
 namespace Pazar.Core.Services.Identity
 {
-    public interface IUser
+    public interface IUserService
     {
         string Id { get; }
 
