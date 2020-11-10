@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Pazar.Core.Common;
+using Pazar.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Pazar.Core.Services.Identity
 {
+    using static DataConstants.Identity;
+
     internal class UserService : IUserService
     {
         private readonly IHttpContextAccessor accessor;
@@ -29,6 +31,6 @@ namespace Pazar.Core.Services.Identity
 
         public IEnumerable<Claim> GetClaimsIdentity() => this.accessor.HttpContext?.User.Claims;
 
-        public bool IsAdministrator => this.user.IsInRole(Constants.AdminRole);
+        public bool IsAdministrator => this.user.IsInRole(AdminRole);
     }
 }

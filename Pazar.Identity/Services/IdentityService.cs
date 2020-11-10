@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Pazar.Core.Common;
+using Pazar.Identity.Data.Models;
 using Pazar.Identity.Models;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,12 +42,14 @@ namespace Pazar.Identity.Services
         public async Task<Result<UserOutputModel>> Login(UserInputModel userInput)
         {
             var user = await this.userManager.FindByEmailAsync(userInput.Email);
+
             if (user == null)
             {
                 return InvalidErrorMessage;
             }
 
             var passwordValid = await this.userManager.CheckPasswordAsync(user, userInput.Password);
+
             if (!passwordValid)
             {
                 return InvalidErrorMessage;

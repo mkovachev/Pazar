@@ -12,7 +12,7 @@ namespace Pazar.Ads.Features.Ads.Models
 
         public string Description { get; set; }
 
-        public int Category { get; set; }
+        public int CategoryId { get; set; }
 
         public string UserId { get; set; }
 

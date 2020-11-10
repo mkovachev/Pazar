@@ -40,7 +40,7 @@ namespace Pazar.Ads.Controllers
 
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<AdVm>>> Category(
-           [FromQuery] GetAdsPerCategory query, int id)
+           [FromQuery] GetAdsPerCategory query)
         {
             var adsPerCategory = await Mediator.Send(query);
             return Ok(adsPerCategory);

@@ -1,4 +1,4 @@
-﻿namespace Pazar.Core.Services.Data
+﻿namespace Pazar.Core.Data
 {
     public interface IDataSeeder
     {

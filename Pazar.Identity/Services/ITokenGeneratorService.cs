@@ -1,4 +1,4 @@
-﻿using Pazar.Identity.Models;
+﻿using Pazar.Identity.Data.Models;
 using System.Collections.Generic;
 
 namespace Pazar.Identity.Services

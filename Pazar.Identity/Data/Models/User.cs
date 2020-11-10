@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Pazar.Identity.Models
+namespace Pazar.Identity.Data.Models
 {
     public class User : IdentityUser
     {

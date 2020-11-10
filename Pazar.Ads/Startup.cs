@@ -2,7 +2,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Pazar.Ads.Data;
+using Pazar.Ads.Data.Interfaces;
+using Pazar.Ads.Data.Models;
+using Pazar.Ads.Infrastructure;
+using Pazar.Core.Data;
+using Pazar.Core.Extensions;
+using Pazar.Core.Interfaces;
 
 namespace Pazar.Ads
 {
@@ -17,30 +23,17 @@ namespace Pazar.Ads
 
 
         public void ConfigureServices(IServiceCollection services)
-        {
+            => services
+                    .AddWebService<PazarDbContext>(this.Configuration)
+                    .AddTransient<IDataSeeder, DataSeeder>()
+                    .AddTransient<IInitialCategories, CategoryData>()
+                    .AddSingleton<IDateTime, DateTimeProvider>();
 
-            services.AddControllers();
-
-        }
 
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
+                    => app
+                        .UseWebService(env)
+                        .Initialize();
     }
 }

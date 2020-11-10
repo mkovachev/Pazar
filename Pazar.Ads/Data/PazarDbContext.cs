@@ -43,15 +43,15 @@ namespace Pazar.Ads.Data
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedBy = userService.Id;
-                        entry.Entity.CreatedOn = dateTime.Now;
+                        entry.Entity.CreatedOn = dateTime.UtcNow();
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModifiedBy = userService.Id;
-                        entry.Entity.ModifiedOn = dateTime.Now;
+                        entry.Entity.ModifiedOn = dateTime.UtcNow();
                         break;
                     case EntityState.Deleted:
                         entry.Entity.DeleteBy = userService.Id;
-                        entry.Entity.DeletedOn = dateTime.Now;
+                        entry.Entity.DeletedOn = dateTime.UtcNow();
                         entry.Entity.IsDeleted = true;
                         break;
                 }

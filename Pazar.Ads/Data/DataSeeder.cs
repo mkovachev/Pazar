@@ -1,4 +1,5 @@
 ﻿using Pazar.Ads.Data.Interfaces;
+using Pazar.Core.Data;
 using System.Linq;
 
 namespace Pazar.Ads.Data

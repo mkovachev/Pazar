@@ -1,4 +1,5 @@
 ﻿using Pazar.Core.Common;
+using Pazar.Identity.Data.Models;
 using Pazar.Identity.Models;
 using System.Threading.Tasks;
 

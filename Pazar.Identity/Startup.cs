@@ -2,7 +2,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Pazar.Core.Data;
+using Pazar.Core.Extensions;
+using Pazar.Identity.Data;
+using Pazar.Identity.Extensions;
+using Pazar.Identity.Services;
 
 namespace Pazar.Identity
 {
@@ -15,31 +19,22 @@ namespace Pazar.Identity
 
         public IConfiguration Configuration { get; }
 
-
         public void ConfigureServices(IServiceCollection services)
-        {
-
-            services.AddControllers();
-
-        }
+            => services
+                .Configure<IdentitySettings>(
+                    this.Configuration.GetSection(nameof(IdentitySettings)),
+                    config => config.BindNonPublicProperties = true)
+                .AddWebService<IdentityDbContext>(
+                    this.Configuration,
+                    messagingHealthChecks: false)
+                .AddUserStorage()
+                .AddTransient<IDataSeeder, IdentityDataSeeder>()
+                .AddTransient<IIdentityService, IdentityService>()
+                .AddTransient<ITokenGeneratorService, TokenGeneratorService>();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
+                    => app
+                        .UseWebService(env)
+                        .Initialize();
     }
 }
