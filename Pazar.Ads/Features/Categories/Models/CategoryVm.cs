@@ -1,7 +1,7 @@
 ﻿using Pazar.Ads.Data.Models;
 using Pazar.Ads.Mappings;
 
-namespace Pazar.Ads.Features.Ads.Models
+namespace Pazar.Ads.Features.Categories.Models
 {
     public class CategoryVm : IMapFrom<Category>
     {

@@ -3,13 +3,13 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Pazar.Ads.Data;
-using Pazar.Ads.Features.Ads.Models;
+using Pazar.Ads.Features.Categories.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Pazar.Ads.Features.Ads.Queries
+namespace Pazar.Ads.Features.Categories.Queries
 {
     public class GetCategoriesQuery : IRequest<IEnumerable<CategoryVm>>
     {
