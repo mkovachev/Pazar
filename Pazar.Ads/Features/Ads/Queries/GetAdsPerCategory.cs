@@ -27,7 +27,7 @@ namespace Pazar.Ads.Features.Ads.Queries
             public async Task<IEnumerable<AdVm>> Handle(GetAdsPerCategory request, CancellationToken cancellationToken)
                 => await this.db.Categories
                             .Where(c => c.Id == request.Id)
-                            .Include(c => c.Ads
+                            .Select(c => c.Ads
                                             .Where(ad => ad.IsActive)
                                             .OrderBy(ad => ad.Title))
                             .ProjectTo<AdVm>(this.mapper.ConfigurationProvider)
