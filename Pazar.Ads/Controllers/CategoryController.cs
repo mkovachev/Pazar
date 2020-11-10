@@ -10,7 +10,7 @@ namespace Pazar.Ads.Controllers
     public class CategoryController : ApiController
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryVm>>> Categories(
+        public async Task<ActionResult<IEnumerable<CategoryVm>>> Index(
           [FromQuery] GetCategoriesQuery query)
         {
             var categories = await Mediator.Send(query);
