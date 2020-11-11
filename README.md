@@ -3,21 +3,31 @@
 Microservices Architecture with Relational databases (Sql Server) with communicating over RabbitMQ Event Driven Communication and using Ocelot API Gateway.
 
 <br />
-### Ads microservice which includes: <br />
-ASP.NET Core Web API application <br />
-REST API principles, CRUD operations <br />
-Entity Framework Core on SQL Server docker <br />
-Clean Architecture implementation with CQRS Design Pattern <br />
-Swagger Open API implementation <br />
-Dockerfile implementation <br />
+### Ads microservice which includes: 
+<br />
+ASP.NET Core Web API application 
+<br />
+REST API principles, CRUD operations 
+<br />
+Entity Framework Core on SQL Server docker 
+<br />
+Clean Architecture implementation with CQRS Design Pattern 
+<br />
+Swagger Open API implementation 
+<br />
+Dockerfile implementation
 <br />
 ### Identity microservice:
+<br />
 ASP.NET Core Web API application
+<br />
 REST API principles, CRUD operations
+<br />
 Entity Framework Core on SQL Server docker
+<br />
 RabbitMQ trigger event queue
+<br />
 Swagger Open API implementation
-Dockerfile implementation
 <br />
 ### RabbitMQ messaging library:
 ASP.NET Core Web API application
