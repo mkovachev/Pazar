@@ -6,10 +6,10 @@ Microservices Architecture with Relational databases (Sql Server) with communica
 ### Ads microservice which includes: <br />
 ASP.NET Core Web API application <br />
 REST API principles, CRUD operations <br />
-Entity Framework Core on SQL Server docker
-Clean Architecture implementation with CQRS Design Pattern
-Swagger Open API implementation
-Dockerfile implementation
+Entity Framework Core on SQL Server docker <br />
+Clean Architecture implementation with CQRS Design Pattern <br />
+Swagger Open API implementation <br />
+Dockerfile implementation <br />
 <br />
 ### Identity microservice:
 ASP.NET Core Web API application
