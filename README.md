@@ -3,7 +3,7 @@
 Microservices Architecture with Relational databases (Sql Server) with communicating over RabbitMQ Event Driven Communication and using Ocelot API Gateway.
 <br />
 <br />
-### Ads microservice which includes: 
+## Ads microservice which includes: 
 <br />
 ASP.NET Core Web API application 
 <br />
@@ -18,7 +18,7 @@ Swagger Open API implementation
 Dockerfile implementation
 <br />
 <br />
-### Identity microservice:
+## Identity microservice:
 <br />
 ASP.NET Core Web API application
 <br />
@@ -30,7 +30,7 @@ RabbitMQ trigger event queue
 <br />
 Swagger Open API implementation
 <br />
-### RabbitMQ messaging library:
+## RabbitMQ messaging library:
 <br />
 <br />
 ASP.NET Core Web API application
