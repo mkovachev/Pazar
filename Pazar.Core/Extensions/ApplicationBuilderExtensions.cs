@@ -27,8 +27,8 @@ namespace Pazar.Core.Extensions
                 .UseAuthentication()
                 .UseAuthorization()
                 .UseEndpoints(endpoints => endpoints
-                    .MapHealthChecks()
-                    .MapControllers());
+                                             .MapHealthChecks()
+                                             .MapControllers());
 
             return app;
         }
