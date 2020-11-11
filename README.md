@@ -1,7 +1,7 @@
 # Pazar Marketplace
 <br />
 Microservices Architecture with Relational databases (Sql Server) with communicating over RabbitMQ Event Driven Communication and using Ocelot API Gateway.
-
+<br />
 <br />
 ### Ads microservice which includes: 
 <br />
@@ -17,6 +17,7 @@ Swagger Open API implementation
 <br />
 Dockerfile implementation
 <br />
+<br />
 ### Identity microservice:
 <br />
 ASP.NET Core Web API application
@@ -30,6 +31,7 @@ RabbitMQ trigger event queue
 Swagger Open API implementation
 <br />
 ### RabbitMQ messaging library:
+<br />
 <br />
 ASP.NET Core Web API application
 <br />
@@ -49,11 +51,13 @@ Swagger Open API implementation
 <br />
 Dockerfile implementation
 <br />
+<br />
 ### API Gateway Ocelot microservice:
 <br />
 Routing to inside microservices
 <br />
 Dockerization api-gateway
+<br />
 <br />
 ### WebUI ShoppingApp microservice:
 Angular
@@ -65,6 +69,7 @@ You will need the following tools:
 Visual Studio 2019
 .NEt 5
 Docker Desktop
+<br />
 <br />
 ### Installing
 <br />
