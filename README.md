@@ -52,7 +52,6 @@ Swagger Open API implementation
 Dockerfile implementation
 <br />
 <br />
----
 ### API Gateway Ocelot microservice:
 <br />
 Routing to inside microservices
