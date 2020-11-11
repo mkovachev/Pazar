@@ -2,8 +2,7 @@
 <br />
 Microservices Architecture with Relational databases (Sql Server) with communicating over RabbitMQ Event Driven Communication and using Ocelot API Gateway.
 <br />
-<br />
-### Ads microservice which includes: 
+### Ads microservice which includes:
 ASP.NET Core Web API application 
 <br />
 REST API principles, CRUD operations 
