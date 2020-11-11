@@ -58,5 +58,19 @@ namespace Pazar.Identity.Controllers
                 CurrentPassword = input.CurrentPassword,
                 NewPassword = input.NewPassword
             });
+
+        [HttpPost]
+        [Route(nameof(Delete))]
+        public async Task<ActionResult> Delete()
+        {
+            var result = await this.identity.DeleteUserAsync(this.currentUser.Id);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            return Ok();
+        }
     }
 }

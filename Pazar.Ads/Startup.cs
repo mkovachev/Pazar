@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Pazar.Ads.Data;
 using Pazar.Ads.Data.Interfaces;
 using Pazar.Ads.Data.Models;
@@ -27,7 +28,11 @@ namespace Pazar.Ads
                     .AddWebService<PazarDbContext>(this.Configuration)
                     .AddTransient<IDataSeeder, DataSeeder>()
                     .AddTransient<IInitialCategories, CategoryData>()
-                    .AddSingleton<IDateTime, DateTimeProvider>();
+                    .AddSingleton<IDateTime, DateTimeProvider>()
+                    .AddSwaggerGen(c =>
+                    {
+                        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pazar.Ads", Version = "v1" });
+                    });
 
 
 

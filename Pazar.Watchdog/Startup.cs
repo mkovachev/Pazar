@@ -10,6 +10,10 @@ namespace Pazar.Watchdog
             services
                 .AddHealthChecksUI()
                 .AddInMemoryStorage();
+            //.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pazar.Watchdog", Version = "v1" });
+            //});
         }
 
         public void Configure(IApplicationBuilder app)

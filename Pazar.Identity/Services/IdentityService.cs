@@ -88,10 +88,12 @@ namespace Pazar.Identity.Services
         {
             var user = userManager.Users.SingleOrDefault(u => u.Id == userId);
 
-            if (user != null)
+            if (user == null)
             {
-                await this.userManager.DeleteAsync(user);
+                return null;
             }
+
+            await this.userManager.DeleteAsync(user);
 
             return Result.Success;
         }
