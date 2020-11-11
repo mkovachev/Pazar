@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Pazar.Identity.Data.Models;
 using System.Reflection;
 
 namespace Pazar.Identity.Data

@@ -46,7 +46,7 @@ namespace Pazar.Identity.Data
                             SecurityStamp = "SomeSecurityStamp"
                         };
 
-                        await this.userManager.CreateAsync(adminUser, this.identitySettings.AdminPassword);
+                        await this.userManager.CreateAsync(adminUser, DataSeederConstants.DefaultAdminPassword);
 
                         await this.userManager.AddToRoleAsync(adminUser, AdminRole);
                     })
@@ -59,19 +59,19 @@ namespace Pazar.Identity.Data
                 Task
                     .Run(async () =>
                     {
-                        if (await this.userManager.FindByIdAsync(DataSeederConstants.DefaultUserId) != null)
+                        if (await this.userManager.FindByIdAsync(DataSeederConstants.DefaultAdminId) != null)
                         {
                             return;
                         }
 
                         var defaultUser = new User
                         {
-                            Id = DataSeederConstants.DefaultUserId,
+                            Id = DataSeederConstants.DefaultAdminId,
                             UserName = "user@mail.com",
                             Email = "user@mail.com"
                         };
 
-                        await this.userManager.CreateAsync(defaultUser, DataSeederConstants.DefaultUserPassword);
+                        await this.userManager.CreateAsync(defaultUser, DataSeederConstants.DefaultAdminPassword);
                     })
                     .GetAwaiter()
                     .GetResult();

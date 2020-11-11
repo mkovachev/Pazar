@@ -8,7 +8,7 @@ namespace Pazar.Core.Services.Identity
 {
     using static DataConstants.Identity;
 
-    internal class UserService : IUserService
+    public class UserService : IUserService
     {
         private readonly IHttpContextAccessor accessor;
         private readonly ClaimsPrincipal user;

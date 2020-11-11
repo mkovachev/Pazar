@@ -2,6 +2,7 @@
 
 namespace Pazar.Identity.Models
 {
+    using static Pazar.Core.Data.DataConstants.Identity;
     public class UserInputModel
     {
         [EmailAddress]
