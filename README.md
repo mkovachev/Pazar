@@ -3,9 +3,7 @@
 Microservices Architecture with Relational databases (Sql Server) with communicating over RabbitMQ Event Driven Communication and using Ocelot API Gateway.
 <br />
 <br />
----
 ### Ads microservice which includes: 
-<br />
 ASP.NET Core Web API application 
 <br />
 REST API principles, CRUD operations 
@@ -19,7 +17,6 @@ Swagger Open API implementation
 Dockerfile implementation
 <br />
 <br />
----
 ### Identity microservice:
 <br />
 ASP.NET Core Web API application
@@ -33,7 +30,6 @@ RabbitMQ trigger event queue
 Swagger Open API implementation
 <br />
 <br />
----
 ### RabbitMQ messaging library:
 <br />
 ASP.NET Core Web API application
@@ -63,7 +59,6 @@ Routing to inside microservices
 Dockerization api-gateway
 <br />
 <br />
----
 ### WebUI ShoppingApp microservice:
 Angular
 <br />
@@ -76,7 +71,6 @@ Visual Studio 2019
 Docker Desktop
 <br />
 <br />
----
 ### Installing
 <br />
 1. Run Start the Docker Desktop
