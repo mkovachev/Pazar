@@ -7,8 +7,7 @@ namespace Pazar.Identity.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddUserStorage(
-            this IServiceCollection services)
+        public static IServiceCollection AddUserStorage(this IServiceCollection services)
         {
             services
                 .AddIdentity<User, IdentityRole>(options =>

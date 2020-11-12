@@ -68,7 +68,7 @@ namespace Pazar.Core.Extensions
                 .GetSection(nameof(ApplicationSettings))
                 .GetValue<string>(nameof(ApplicationSettings.Secret));
 
-            var key = Encoding.ASCII.GetBytes("some secret"); // TODO
+            var key = Encoding.ASCII.GetBytes(nameof(ApplicationSettings.Secret));
 
             services
                 .AddAuthentication(authentication =>
@@ -102,8 +102,7 @@ namespace Pazar.Core.Extensions
             Assembly assembly)
             => services
                 .AddAutoMapper(
-                    (_, config) => config
-                        .AddProfile(new MappingProfile(assembly)),
+                    (_, config) => config.AddProfile(new MappingProfile(assembly)),
                     Array.Empty<Assembly>());
 
         public static IServiceCollection AddHealth(

@@ -1,6 +1,6 @@
 ﻿namespace Pazar.Identity.Models
 {
-    public class ChangePasswordInputModel
+    public class ChangePasswordIm
     {
         public string CurrentPassword { get; set; }
 

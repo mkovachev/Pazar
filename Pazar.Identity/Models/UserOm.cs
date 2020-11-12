@@ -1,8 +1,8 @@
 ﻿namespace Pazar.Identity.Models
 {
-    public class UserOutputModel
+    public class UserOm
     {
-        public UserOutputModel(string token)
+        public UserOm(string token)
         {
             this.Token = token;
         }

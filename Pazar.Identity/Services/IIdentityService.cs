@@ -7,11 +7,11 @@ namespace Pazar.Identity.Services
 {
     public interface IIdentityService
     {
-        Task<Result<User>> Register(UserInputModel userInput);
+        Task<Result<User>> Register(UserIm userInput);
 
-        Task<Result<UserOutputModel>> Login(UserInputModel userInput);
+        Task<Result<UserOm>> Login(UserIm userInput);
 
-        Task<Result> ChangePassword(string userId, ChangePasswordInputModel changePasswordInput);
+        Task<Result> ChangePassword(string userId, ChangePasswordIm changePasswordInput);
 
         Task<Result> DeleteUserAsync(string userId);
     }

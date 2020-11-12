@@ -9,7 +9,8 @@ namespace Pazar.Identity.Services
 {
     public class IdentityService : IIdentityService
     {
-        private const string InvalidErrorMessage = "Invalid credentials.";
+        private const string InvalidErrorMessage = "Invalid credentials";
+        private const string UserNotFound = "User not found";
 
         private readonly UserManager<User> userManager;
         private readonly ITokenGeneratorService jwtTokenGenerator;
@@ -22,7 +23,7 @@ namespace Pazar.Identity.Services
             this.jwtTokenGenerator = jwtTokenGenerator;
         }
 
-        public async Task<Result<User>> Register(UserInputModel userInput)
+        public async Task<Result<User>> Register(UserIm userInput)
         {
             var user = new User
             {
@@ -39,13 +40,13 @@ namespace Pazar.Identity.Services
                 : Result<User>.Failure(errors);
         }
 
-        public async Task<Result<UserOutputModel>> Login(UserInputModel userInput)
+        public async Task<Result<UserOm>> Login(UserIm userInput)
         {
             var user = await this.userManager.FindByEmailAsync(userInput.Email);
 
             if (user == null)
             {
-                return InvalidErrorMessage;
+                return UserNotFound;
             }
 
             var passwordValid = await this.userManager.CheckPasswordAsync(user, userInput.Password);
@@ -59,17 +60,16 @@ namespace Pazar.Identity.Services
 
             var token = this.jwtTokenGenerator.GenerateToken(user, roles);
 
-            return new UserOutputModel(token);
+            return new UserOm(token);
         }
 
-        public async Task<Result> ChangePassword(
-            string userId,
-            ChangePasswordInputModel changePasswordInput)
+        public async Task<Result> ChangePassword(string userId, ChangePasswordIm changePasswordInput)
         {
             var user = await this.userManager.FindByIdAsync(userId);
+
             if (user == null)
             {
-                return InvalidErrorMessage;
+                return UserNotFound;
             }
 
             var identityResult = await this.userManager.ChangePasswordAsync(
@@ -90,7 +90,7 @@ namespace Pazar.Identity.Services
 
             if (user == null)
             {
-                return null;
+                return UserNotFound;
             }
 
             await this.userManager.DeleteAsync(user);

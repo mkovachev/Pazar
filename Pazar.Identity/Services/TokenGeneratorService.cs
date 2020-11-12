@@ -16,7 +16,9 @@ namespace Pazar.Identity.Services
         private readonly ApplicationSettings applicationSettings;
 
         public TokenGeneratorService(IOptions<ApplicationSettings> applicationSettings)
-            => this.applicationSettings = applicationSettings.Value;
+        {
+            this.applicationSettings = applicationSettings.Value;
+        }
 
         public string GenerateToken(User user, IEnumerable<string> roles = null)
         {

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Pazar.Core.Controllers;
 using Pazar.Core.Services.Identity;
 using Pazar.Identity.Models;
@@ -11,19 +10,19 @@ namespace Pazar.Identity.Controllers
     public class IdentityController : ApiController
     {
         private readonly IIdentityService identity;
-        private readonly IUserService currentUser;
+        private readonly IUserService user;
 
         public IdentityController(
             IIdentityService identity,
-            IUserService currentUser)
+            IUserService user)
         {
             this.identity = identity;
-            this.currentUser = currentUser;
+            this.user = user;
         }
 
         [HttpPost]
         [Route(nameof(Register))]
-        public async Task<ActionResult<UserOutputModel>> Register(UserInputModel input)
+        public async Task<ActionResult<UserOm>> Register(UserIm input)
         {
             var result = await this.identity.Register(input);
 
@@ -37,23 +36,23 @@ namespace Pazar.Identity.Controllers
 
         [HttpPost]
         [Route(nameof(Login))]
-        public async Task<ActionResult<UserOutputModel>> Login(UserInputModel input)
+        public async Task<ActionResult<UserOm>> Login(UserIm input)
         {
             var result = await this.identity.Login(input);
 
             if (!result.Succeeded)
             {
-                return BadRequest(result.Errors);
+                return BadRequest(result.Errors); // return Unauthorized();
             }
 
-            return new UserOutputModel(result.Data.Token);
+            return new UserOm(result.Data.Token);
         }
 
         [HttpPut]
-        [Authorize]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
         [Route(nameof(ChangePassword))]
-        public async Task<ActionResult> ChangePassword(ChangePasswordInputModel input)
-            => await this.identity.ChangePassword(this.currentUser.Id, new ChangePasswordInputModel
+        public async Task<ActionResult> ChangePassword(ChangePasswordIm input)
+            => await this.identity.ChangePassword(this.user.Id, new ChangePasswordIm
             {
                 CurrentPassword = input.CurrentPassword,
                 NewPassword = input.NewPassword
@@ -63,7 +62,7 @@ namespace Pazar.Identity.Controllers
         [Route(nameof(Delete))]
         public async Task<ActionResult> Delete()
         {
-            var result = await this.identity.DeleteUserAsync(this.currentUser.Id);
+            var result = await this.identity.DeleteUserAsync(this.user.Id);
 
             if (!result.Succeeded)
             {
