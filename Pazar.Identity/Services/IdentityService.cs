@@ -10,7 +10,6 @@ namespace Pazar.Identity.Services
     public class IdentityService : IIdentityService
     {
         private const string InvalidErrorMessage = "Invalid credentials";
-        private const string UserNotFound = "User not found";
 
         private readonly UserManager<User> userManager;
         private readonly ITokenGeneratorService jwtTokenGenerator;
@@ -46,7 +45,7 @@ namespace Pazar.Identity.Services
 
             if (user == null)
             {
-                return UserNotFound;
+                return InvalidErrorMessage;
             }
 
             var passwordValid = await this.userManager.CheckPasswordAsync(user, userInput.Password);
@@ -69,7 +68,7 @@ namespace Pazar.Identity.Services
 
             if (user == null)
             {
-                return UserNotFound;
+                return InvalidErrorMessage;
             }
 
             var identityResult = await this.userManager.ChangePasswordAsync(
@@ -90,7 +89,7 @@ namespace Pazar.Identity.Services
 
             if (user == null)
             {
-                return UserNotFound;
+                return InvalidErrorMessage;
             }
 
             await this.userManager.DeleteAsync(user);

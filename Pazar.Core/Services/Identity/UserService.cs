@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Pazar.Core.Data;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,6 @@ namespace Pazar.Core.Services.Identity
     {
         private readonly ClaimsPrincipal user;
         private readonly IHttpContextAccessor accessor;
-        private readonly UserManager<User> userManager;
         public UserService(IHttpContextAccessor accessor)
         {
             this.accessor = accessor;
@@ -21,21 +19,26 @@ namespace Pazar.Core.Services.Identity
 
             if (this.user == null)
             {
-                throw new InvalidOperationException("This request does not have an authenticated user.");
+                throw new InvalidOperationException("No authenticated user found");
             }
 
-            this.Id = this.accessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            this.Id = this.user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            this.Name = this.user.FindFirstValue(ClaimTypes.Name);
+
+            this.IsAdministrator = this.user.IsInRole(AdminRole);
         }
 
-        public string Id { get; }
+        public string Id { get; } // => this.user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        public string Name => this.accessor.HttpContext?.User.Identity.Name;
+        public string Name { get; } // => this.accessor.HttpContext?.User.Identity.Name;
+
+        public bool IsAdministrator { get; } //=> this.user.IsInRole(AdminRole);
 
         public bool IsAuthenticated() => this.accessor.HttpContext.User.Identity.IsAuthenticated;
 
         public IEnumerable<Claim> GetClaimsIdentity() => this.accessor.HttpContext?.User.Claims;
 
-        public bool IsAdministrator => this.user.IsInRole(AdminRole);
 
     }
 }

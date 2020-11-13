@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Pazar.Core.Controllers;
 using Pazar.Core.Services.Identity;
 using Pazar.Identity.Models;
@@ -49,17 +50,20 @@ namespace Pazar.Identity.Controllers
         }
 
         [HttpPut]
-        //[Authorize(AuthenticationSchemes = "Bearer")]
         [Route(nameof(ChangePassword))]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<ActionResult> ChangePassword(ChangePasswordIm input)
-            => await this.identity.ChangePassword(this.user.Id, new ChangePasswordIm
-            {
-                CurrentPassword = input.CurrentPassword,
-                NewPassword = input.NewPassword
-            });
+            => await this.identity.ChangePassword(
+                this.user.Id,
+                new ChangePasswordIm
+                {
+                    CurrentPassword = input.CurrentPassword,
+                    NewPassword = input.NewPassword
+                });
 
         [HttpPost]
         [Route(nameof(Delete))]
+        [Authorize]
         public async Task<ActionResult> Delete()
         {
             var result = await this.identity.DeleteUserAsync(this.user.Id);

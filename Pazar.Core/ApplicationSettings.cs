@@ -2,7 +2,7 @@
 {
     public class ApplicationSettings
     {
-        public string Secret { get; private set; } = "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T";
+        public string Secret = "wake9d8534b48w951b9287d492b256x";
 
         public bool SeedInitialData { get; private set; }
     }

@@ -22,9 +22,9 @@ namespace Pazar.Identity
 
         public void ConfigureServices(IServiceCollection services)
             => services
-                .Configure<IdentitySettings>(
-                    this.Configuration.GetSection(nameof(IdentitySettings)),
-                    config => config.BindNonPublicProperties = true)
+                //.Configure<IdentitySettings>(
+                //    this.Configuration.GetSection(nameof(IdentitySettings)),
+                //    config => config.BindNonPublicProperties = true)
                 .AddWebService<IdentityDbContext>(
                     this.Configuration, messagingHealthChecks: false)
                 .AddUserStorage()
