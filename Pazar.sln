@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pazar.Ads", "Pazar.Ads\Paza
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pazar.Core", "Pazar.Core\Pazar.Core.csproj", "{6AF6A81C-08DD-479F-B79C-0FA2B6122CF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pazar.Watchdog", "Pazar.Watchdog\Pazar.Watchdog.csproj", "{57D3BE25-FE05-4C8A-B1F7-F3687859EC8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pazar.Watchdog", "Pazar.Watchdog\Pazar.Watchdog.csproj", "{57D3BE25-FE05-4C8A-B1F7-F3687859EC8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pazar.Identity", "Pazar.Identity\Pazar.Identity.csproj", "{18D99853-3016-49A6-8F9D-1F22BBEDE72C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pazar.Identity", "Pazar.Identity\Pazar.Identity.csproj", "{18D99853-3016-49A6-8F9D-1F22BBEDE72C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

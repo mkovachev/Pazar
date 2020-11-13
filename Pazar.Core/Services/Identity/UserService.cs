@@ -22,7 +22,7 @@ namespace Pazar.Core.Services.Identity
                 throw new InvalidOperationException("No authenticated user found");
             }
 
-            this.Id = this.user.FindFirstValue(ClaimTypes.NameIdentifier);
+            this.Id = this.user.FindFirstValue(ClaimTypes.NameIdentifier); // Todo
 
             this.Name = this.user.FindFirstValue(ClaimTypes.Name);
 
