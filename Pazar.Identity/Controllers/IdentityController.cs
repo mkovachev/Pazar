@@ -13,9 +13,7 @@ namespace Pazar.Identity.Controllers
         private readonly IIdentityService identity;
         private readonly IUserService user;
 
-        public IdentityController(
-            IIdentityService identity,
-            IUserService user)
+        public IdentityController(IIdentityService identity, IUserService user)
         {
             this.identity = identity;
             this.user = user;
@@ -50,8 +48,8 @@ namespace Pazar.Identity.Controllers
         }
 
         [HttpPut]
-        [Route(nameof(ChangePassword))]
         [Authorize(AuthenticationSchemes = "Bearer")]
+        [Route(nameof(ChangePassword))]
         public async Task<ActionResult> ChangePassword(ChangePasswordIm input)
             => await this.identity.ChangePassword(
                 this.user.Id,
@@ -62,8 +60,8 @@ namespace Pazar.Identity.Controllers
                 });
 
         [HttpPost]
-        [Route(nameof(Delete))]
         [Authorize]
+        [Route(nameof(Delete))]
         public async Task<ActionResult> Delete()
         {
             var result = await this.identity.DeleteUserAsync(this.user.Id);
