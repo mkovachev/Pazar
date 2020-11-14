@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Pazar.Core.Common;
+using Pazar.Core.Services;
 using Pazar.Identity.Data.Models;
 using Pazar.Identity.Models;
 using System.Linq;

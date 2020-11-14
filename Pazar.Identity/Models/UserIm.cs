@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Pazar.Core.Services.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pazar.Identity.Models
 {
-    using static Pazar.Core.Data.DataConstants.Identity;
+    using static DataConstants.Identity;
     public class UserIm
     {
         [EmailAddress]

@@ -1,4 +1,4 @@
-﻿namespace Pazar.Core.Data
+﻿namespace Pazar.Core.Services.Data
 {
     public class DataConstants
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Pazar.Core.Common
+namespace Pazar.Core.Services
 {
     public class Result
     {
@@ -23,12 +23,12 @@ namespace Pazar.Core.Common
                 : this.errors;
 
         public static Result Success
-            => new Result(true, new List<string>());
+            => new(true, new List<string>());
 
         public static Result Failure(string error) => error;
 
         public static Result Failure(IEnumerable<string> errors)
-            => new Result(false, errors.ToList());
+            => new(false, errors.ToList());
 
         public static implicit operator Result(string error)
             => Failure(new List<string> { error });
@@ -68,10 +68,10 @@ namespace Pazar.Core.Common
                     $"{nameof(this.Data)} is not available with a failed result. Use {this.Errors} instead.");
 
         public static Result<TData> SuccessWith(TData data)
-            => new Result<TData>(true, data, new List<string>());
+            => new(true, data, new List<string>());
 
         public new static Result<TData> Failure(IEnumerable<string> errors)
-            => new Result<TData>(false, default!, errors.ToList());
+            => new(false, default!, errors.ToList());
 
         public static implicit operator Result<TData>(string error)
             => Failure(new List<string> { error });

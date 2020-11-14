@@ -1,15 +1,15 @@
 ﻿using Pazar.Ads.Data.Interfaces;
-using Pazar.Core.Data;
+using Pazar.Core.Services.Data;
 using System.Linq;
 
 namespace Pazar.Ads.Data
 {
-    public class DataSeeder : IDataSeeder
+    public class AdsDataSeeder : IDataSeeder
     {
         private readonly IInitialCategories categories;
         private readonly PazarDbContext db;
 
-        public DataSeeder(IInitialCategories categories, PazarDbContext db)
+        public AdsDataSeeder(IInitialCategories categories, PazarDbContext db)
         {
             this.categories = categories;
             this.db = db;

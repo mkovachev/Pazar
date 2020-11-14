@@ -2,7 +2,7 @@
 {
     public class ApplicationSettings
     {
-        public string Secret = "wake9d8534b48w951b9287d492b256x";
+        public string Secret = "wakedalinelikeapro2020";
 
         public bool SeedInitialData { get; private set; }
     }
