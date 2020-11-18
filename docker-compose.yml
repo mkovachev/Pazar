@@ -1,0 +1,119 @@
+version: '3.8'
+
+services:
+    data:
+        container_name: sqlserver
+        image: mcr.microsoft.com/mssql/server:latest
+        ports:
+            - '1433:1433'
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=yourStrongPassword12!@
+        volumes:
+            - sqldata:/var/opt/mssql
+        networks:
+            - pazar-network
+
+    messages:
+        container_name: rabbitmq
+        image: rabbitmq:3-management
+        ports:
+            - '5672:5672'
+        hostname: 'rabbitmq'
+        environment:
+            - RABBITMQ_DEFAULT_USER=rabbitmquser
+            - RABBITMQ_DEFAULT_PASS=rabbitmq1234
+        volumes:
+            - rabbitmq:/var/lib/rabbitmq/mnesia
+        networks:
+            - pazar-network
+
+    identity:
+        container_name: identity
+        image: mkovachev/pazar-identity-service
+        build:
+            context: ./
+            dockerfile: Pazar.Identity/Dockerfile
+        ports:
+            - '5001:80'
+        env_file:
+            - pazar.Core/Common.env
+        environment:
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Identity;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
+            - IdentitySettings__AdminPassword=yourStrongPassword12!@
+        restart: on-failure
+        volumes:
+            - data-protection:/root/.aspnet/DataProtection-Keys
+        networks:
+            - pazar-network
+        depends_on:
+            - data
+
+    ads:
+        container_name: ads
+        image: mkovachev/pazar-ads-service
+        build:
+            context: ./
+            dockerfile: Pazar.Ads/Dockerfile
+        ports:
+            - '5002:80'
+        env_file:
+            - pazar.Core/Common.env
+        environment:
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
+            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=admin123456;MultipleActiveResultSets=true
+            - MessageQueueSettings__Host=rabbitmq
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmq1234
+        restart: on-failure
+        volumes:
+            - data-protection:/root/.aspnet/DataProtection-Keys
+        networks:
+            - pazar-network
+        depends_on:
+            - data
+            - messages
+
+    watchdog:
+        container_name: watchdog
+        image: mkovachev/pazar-watchdog-service
+        build:
+            context: ./
+            dockerfile: Pazar.Watchdog/Dockerfile
+        ports:
+            - '5500:80'
+        environment:
+            - HealthChecks-UI__HealthChecks__0__Name=Identity
+            - HealthChecks-UI__HealthChecks__0__Uri=http://identity/health
+            - HealthChecks-UI__HealthChecks__1__Name=Ads
+            - HealthChecks-UI__HealthChecks__1__Uri=http://ads/health
+        restart: on-failure
+        
+    client:
+        container_name: client
+        image: mkovachev/pazar-angular-client
+        build:
+            context: ./
+            dockerfile: pazar.Client/Dockerfile
+            args:
+                configuration: development
+        ports:
+            - '80:80'
+        restart: on-failure
+        
+        depends_on:
+            - identity
+            - ads
+        networks:
+            - pazar-network
+        depends_on:
+            - identity
+            - ads
+
+networks:
+    pazar-network:
+
+volumes:
+    sqldata:
+    rabbitmq:
+    data-protection:
