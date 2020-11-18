@@ -91,10 +91,10 @@ services:
         
     client:
         container_name: client
-        image: mkovachev/pazar-angular-client
+        image: mkovachev/pazar-client
         build:
             context: ./
-            dockerfile: pazar.Client/Dockerfile
+            dockerfile: Pazar.Client/Dockerfile
             args:
                 configuration: development
         ports:
