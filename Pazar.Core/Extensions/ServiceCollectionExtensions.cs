@@ -1,11 +1,18 @@
 ﻿using AutoMapper;
+using GreenPipes;
+using Hangfire;
+using Hangfire.SqlServer;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Pazar.Core.Mappings;
+using Pazar.Core.Messages;
 using Pazar.Core.Services.Identity;
+using Pazar.Core.Services.Messages;
 using System;
 using System.Reflection;
 using System.Text;
@@ -119,113 +126,113 @@ namespace Pazar.Core.Extensions
                     .AddSqlServer(configuration.GetDefaultConnectionString());
             }
 
-            //if (messagingHealthChecks)
-            //{
-            //    var messageQueueSettings = GetMessageQueueSettings(configuration);
+            if (messagingHealthChecks)
+            {
+                var messageQueueSettings = GetMessageQueueSettings(configuration);
 
-            //    var messageQueueConnectionString =
-            //        $"amqp://{messageQueueSettings.UserName}:{messageQueueSettings.Password}@{messageQueueSettings.Host}/";
+                var messageQueueConnectionString =
+                    $"amqp://{messageQueueSettings.UserName}:{messageQueueSettings.Password}@{messageQueueSettings.Host}/";
 
-            //    healthChecks
-            //        .AddRabbitMQ(rabbitConnectionString: messageQueueConnectionString);
-            //}
+                healthChecks
+                    .AddRabbitMQ(rabbitConnectionString: messageQueueConnectionString);
+            }
 
             return services;
         }
 
-        //public static IServiceCollection AddMessaging(
-        //    this IServiceCollection services,
-        //    IConfiguration configuration,
-        //    bool usePolling = true,
-        //    params Type[] consumers)
-        //{
-        //    services
-        //        .AddTransient<IPublisher, Publisher>()
-        //        .AddTransient<IMessageService, MessageService>();
+        public static IServiceCollection AddMessaging(
+            this IServiceCollection services,
+            IConfiguration configuration,
+            bool usePolling = true,
+            params Type[] consumers)
+        {
+            services
+                .AddTransient<IPublisher, Publisher>()
+                .AddTransient<IMessageService, MessageService>();
 
-        //    var messageQueueSettings = GetMessageQueueSettings(configuration);
+            var messageQueueSettings = GetMessageQueueSettings(configuration);
 
-        //    services
-        //        .AddMassTransit(mt =>
-        //        {
-        //            consumers.ForEach(consumer => mt.AddConsumer(consumer));
+            services
+                .AddMassTransit(mt =>
+                {
+                    consumers.ForEach(consumer => mt.AddConsumer(consumer));
 
-        //            mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
-        //            {
-        //                rmq.Host(messageQueueSettings.Host, host =>
-        //                {
-        //                    host.Username(messageQueueSettings.UserName);
-        //                    host.Password(messageQueueSettings.Password);
-        //                });
+                    mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
+                    {
+                        rmq.Host(messageQueueSettings.Host, host =>
+                        {
+                            host.Username(messageQueueSettings.UserName);
+                            host.Password(messageQueueSettings.Password);
+                        });
 
-        //                rmq.UseHealthCheck(context);
+                        rmq.UseHealthCheck(context);
 
-        //                consumers.ForEach(consumer => rmq.ReceiveEndpoint(consumer.FullName, endpoint =>
-        //                {
-        //                    endpoint.PrefetchCount = 6;
-        //                    endpoint.UseMessageRetry(retry => retry.Interval(5, 200));
+                        consumers.ForEach(consumer => rmq.ReceiveEndpoint(consumer.FullName, endpoint =>
+                        {
+                            endpoint.PrefetchCount = 6;
+                            endpoint.UseMessageRetry(retry => retry.Interval(5, 200));
 
-        //                    endpoint.ConfigureConsumer(context, consumer);
-        //                }));
-        //            }));
-        //        })
-        //        .AddMassTransitHostedService();
+                            endpoint.ConfigureConsumer(context, consumer);
+                        }));
+                    }));
+                })
+                .AddMassTransitHostedService();
 
-        //    if (usePolling)
-        //    {
-        //        CreateHangfireDatabase(configuration);
+            if (usePolling)
+            {
+                CreateHangfireDatabase(configuration);
 
-        //        services
-        //            .AddHangfire(config => config
-        //                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-        //                .UseSimpleAssemblyNameTypeSerializer()
-        //                .UseRecommendedSerializerSettings()
-        //                .UseSqlServerStorage(
-        //                    configuration.GetCronJobsConnectionString(),
-        //                    new SqlServerStorageOptions
-        //                    {
-        //                        CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-        //                        SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-        //                        QueuePollInterval = TimeSpan.Zero,
-        //                        UseRecommendedIsolationLevel = true,
-        //                        DisableGlobalLocks = true
-        //                    }));
+                services
+                    .AddHangfire(config => config
+                        .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                        .UseSimpleAssemblyNameTypeSerializer()
+                        .UseRecommendedSerializerSettings()
+                        .UseSqlServerStorage(
+                            configuration.GetCronJobsConnectionString(),
+                            new SqlServerStorageOptions
+                            {
+                                CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                                QueuePollInterval = TimeSpan.Zero,
+                                UseRecommendedIsolationLevel = true,
+                                DisableGlobalLocks = true
+                            }));
 
-        //        services.AddHangfireServer();
+                services.AddHangfireServer();
 
-        //        services.AddHostedService<MessagesHostedService>();
-        //    }
+                services.AddHostedService<MessagesHostedService>();
+            }
 
-        //    return services;
-        //}
+            return services;
+        }
 
-        //private static MessageQueueSettings GetMessageQueueSettings(IConfiguration configuration)
-        //{
-        //    var settings = configuration.GetSection(nameof(MessageQueueSettings));
+        private static MessageQueueSettings GetMessageQueueSettings(IConfiguration configuration)
+        {
+            var settings = configuration.GetSection(nameof(MessageQueueSettings));
 
-        //    return new MessageQueueSettings(
-        //        settings.GetValue<string>(nameof(MessageQueueSettings.Host)),
-        //        settings.GetValue<string>(nameof(MessageQueueSettings.UserName)),
-        //        settings.GetValue<string>(nameof(MessageQueueSettings.Password)));
-        //}
+            return new MessageQueueSettings(
+                settings.GetValue<string>(nameof(MessageQueueSettings.Host)),
+                settings.GetValue<string>(nameof(MessageQueueSettings.UserName)),
+                settings.GetValue<string>(nameof(MessageQueueSettings.Password)));
+        }
 
-        //private static void CreateHangfireDatabase(IConfiguration configuration)
-        //{
-        //    var connectionString = configuration.GetCronJobsConnectionString();
+        private static void CreateHangfireDatabase(IConfiguration configuration)
+        {
+            var connectionString = configuration.GetCronJobsConnectionString();
 
-        //    var dbName = connectionString
-        //        .Split(";")[1]
-        //        .Split("=")[1];
+            var dbName = connectionString
+                .Split(";")[1]
+                .Split("=")[1];
 
-        //    using var connection = new SqlConnection(connectionString.Replace(dbName, "master"));
+            using var connection = new SqlConnection(connectionString.Replace(dbName, "master"));
 
-        //    connection.Open();
+            connection.Open();
 
-        //    using var command = new SqlCommand(
-        //        $"IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'{dbName}') create database [{dbName}];",
-        //        connection);
+            using var command = new SqlCommand(
+                $"IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'{dbName}') create database [{dbName}];",
+                connection);
 
-        //    command.ExecuteNonQuery();
-        //}
+            command.ExecuteNonQuery();
+        }
     }
 }

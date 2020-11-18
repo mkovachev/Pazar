@@ -29,10 +29,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.6.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\Configurations\" />
-    <Folder Include="Data\Models\" />
-    <Folder Include="Services\Messages\" />
-  </ItemGroup>
-
 </Project>
