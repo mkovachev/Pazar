@@ -38,6 +38,5 @@ namespace Pazar.Core.Services.Identity
 
         public IEnumerable<Claim> GetClaimsIdentity() => this.accessor.HttpContext?.User.Claims;
 
-
     }
 }

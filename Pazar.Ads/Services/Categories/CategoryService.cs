@@ -2,7 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using Pazar.Ads.Data;
-using Pazar.Ads.Features.Categories.Models;
+using Pazar.Ads.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,9 +20,9 @@ namespace Pazar.Ads.Services.Categories
             this.mapper = mapper;
         }
 
-        public async Task<CategoryDetailsVm> FindById(int categoryId)
+        public async Task<CategoryDetailsVm> FindById(int id)
             => await this.db.Categories
-                             .Where(c => c.Id == categoryId)
+                             .Where(c => c.Id == id)
                              .ProjectTo<CategoryDetailsVm>(this.mapper.ConfigurationProvider)
                              .FirstOrDefaultAsync();
 

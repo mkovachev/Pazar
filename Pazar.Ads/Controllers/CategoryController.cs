@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Pazar.Ads.Features.Categories.Models;
+using Pazar.Ads.Models;
 using Pazar.Ads.Services.Categories;
 using Pazar.Core.Controllers;
 using System.Collections.Generic;

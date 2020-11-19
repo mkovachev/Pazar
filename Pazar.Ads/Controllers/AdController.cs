@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Pazar.Ads.Features.Ads.Commands;
-using Pazar.Ads.Features.Ads.Models;
-using Pazar.Ads.Features.Ads.Queries;
+using Pazar.Ads.Models;
+using Pazar.Ads.Services.Ads;
+using Pazar.Ads.Services.Categories;
 using Pazar.Core.Controllers;
+using Pazar.Core.Services.Identity;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,39 +13,42 @@ namespace Pazar.Ads.Controllers
 {
     public class AdController : ApiController
     {
+        private readonly IAdService ads;
+        private readonly IUserService user;
+
+        public AdController(IAdService ads, IUserService user)
+        {
+            this.ads = ads;
+            this.user = user;
+        }
+
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<int>> Create(CreateAdCommand command)
-            => await Mediator.Send(command);
+        public async Task<ActionResult<int>> Create(AdVm input)
+            => await this.ads.Create(input);
 
+        [HttpPut]
+        [Authorize]
+        [Route(Id)]
+        public async Task<ActionResult<int>> Edit(int id)
+            => await this.ads.Edit(id);
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, UpdateAdCommand command)
-        {
-            if (id != command.Id)
-            {
-                return BadRequest();
-            }
+        [HttpPut]
+        [Authorize]
+        [Route(Id)]
+        public async Task<ActionResult<bool>> Delete(int id)
+            => await this.ads.Delete(id);
 
-            await Mediator.Send(command);
+        [HttpGet]
+        [Authorize]
+        [Route(nameof(MyAds))]
+        public async Task<IEnumerable<AdVm>> MyAds(string id)
+            => await this.ads.MyAds(id);
 
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
-        {
-            await Mediator.Send(new DeleteAdCommand { Id = id });
-
-            return NoContent();
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<AdVm>>> Category(
-           [FromQuery] GetAdsPerCategory query)
-        {
-            var adsPerCategory = await Mediator.Send(query);
-            return Ok(adsPerCategory);
-        }
+        [HttpGet]
+        [Authorize]
+        [Route(nameof(AdsPerCategory))]
+        public async Task<IEnumerable<AdVm>> AdsPerCategory(int id)
+           => await this.ads.GetAdsPerCategory(id);
     }
 }

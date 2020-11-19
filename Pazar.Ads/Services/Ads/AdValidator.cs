@@ -1,12 +1,13 @@
 ﻿using FluentValidation;
+using Pazar.Ads.Data.Models;
 
 namespace Pazar.Ads.Features.Ads.Commands
 {
     using static Data.DataConstants.Ads;
 
-    public class CreateAdCommandValidator : AbstractValidator<CreateAdCommand>
+    public class AdValidator : AbstractValidator<Ad>
     {
-        public CreateAdCommandValidator()
+        public AdValidator()
         {
             RuleFor(ad => ad.Title)
                 .Length(TitleMinLength, TitleMaxLength)

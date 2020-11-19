@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using Pazar.Ads.Data.Models;
 using Pazar.Ads.Mappings;
-using System.Linq;
 
-namespace Pazar.Ads.Features.Categories.Models
+namespace Pazar.Ads.Models
 {
-    public class CategoryDetailsVm : IMapFrom<Category>
+    public class CategoryVm : IMapFrom<Category>
     {
         public int Id { get; private set; }
 
@@ -17,6 +16,6 @@ namespace Pazar.Ads.Features.Categories.Models
             => profile
                 .CreateMap<Category, CategoryVm>()
                 .ForMember(c => c.TotalAds, cfg => cfg
-                    .MapFrom(c => c.Ads.ToList()));
+                    .MapFrom(c => c.Ads.Count));
     }
 }
