@@ -3,7 +3,7 @@ version: '3.8'
 # docker run -e "ACCEPT_EULA=Y" -e 'SA_PASSWORD=MyPass12!@" -e "MSSQL_PID=Express" -p 1433:1433 -d microsoft/mssql-server-linux:latest
 
 # remove <none>
-#docker rmi $(docker images -f "dangling=true" -q) 
+#docker rmi $(docker images -f "dangling=true" -q)
 
 services:
     data:
@@ -13,7 +13,7 @@ services:
             - '1433:1433'
         environment:
             - ACCEPT_EULA=Y
-            - SA_PASSWORD=MyPass12!@
+            - SA_PASSWORD=yourStrongPassword12!@
         volumes:
             - sqldata:/var/opt/mssql
         networks:
@@ -44,7 +44,7 @@ services:
         env_file:
             - pazar.Core/Common.env
         environment:
-            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Identity;User Id=sa; Password=MyPass12!@;MultipleActiveResultSets=true
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Identity;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - IdentitySettings__AdminPassword=admin1234
         restart: on-failure
         volumes:
@@ -65,8 +65,8 @@ services:
         env_file:
             - pazar.Core/Common.env
         environment:
-            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=MyPass12!@;MultipleActiveResultSets=true
-            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=MyPass12!@;MultipleActiveResultSets=true
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
+            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - MessageQueueSettings__Host=rabbitmq
             - MessageQueueSettings__UserName=rabbitmquser
             - MessageQueueSettings__Password=rabbitmq1234
