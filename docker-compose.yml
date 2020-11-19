@@ -1,5 +1,7 @@
 version: '3.8'
 
+# docker run -e "ACCEPT_EULA=Y" -e 'SA_PASSWORD=admin1234!!" -e "MSSQL_PID=Express" -p 1433:1433 -d microsoft/mssql-server-linux:latest
+
 services:
     data:
         container_name: sqlserver
@@ -8,7 +10,7 @@ services:
             - '1433:1433'
         environment:
             - ACCEPT_EULA=Y
-            - SA_PASSWORD=yourStrongPassword12!@
+            - SA_PASSWORD=MyPass12!@
         volumes:
             - sqldata:/var/opt/mssql
         networks:
@@ -39,8 +41,8 @@ services:
         env_file:
             - pazar.Core/Common.env
         environment:
-            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Identity;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
-            - IdentitySettings__AdminPassword=yourStrongPassword12!@
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Identity;User Id=sa; Password=MyPass12!@;MultipleActiveResultSets=true
+            - IdentitySettings__AdminPassword=admin1234
         restart: on-failure
         volumes:
             - data-protection:/root/.aspnet/DataProtection-Keys
@@ -60,8 +62,8 @@ services:
         env_file:
             - pazar.Core/Common.env
         environment:
-            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
-            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=admin123456;MultipleActiveResultSets=true
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=MyPass12!@;MultipleActiveResultSets=true
+            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=MyPass12!@;MultipleActiveResultSets=true
             - MessageQueueSettings__Host=rabbitmq
             - MessageQueueSettings__UserName=rabbitmquser
             - MessageQueueSettings__Password=rabbitmq1234
@@ -88,27 +90,27 @@ services:
             - HealthChecks-UI__HealthChecks__1__Name=Ads
             - HealthChecks-UI__HealthChecks__1__Uri=http://ads/health
         restart: on-failure
-        
-    client:
-        container_name: client
-        image: mkovachev/pazar-client
-        build:
-            context: ./
-            dockerfile: Pazar.Client/Dockerfile
-            args:
-                configuration: development
-        ports:
-            - '80:80'
-        restart: on-failure
-        
-        depends_on:
-            - identity
-            - ads
-        networks:
-            - pazar-network
-        depends_on:
-            - identity
-            - ads
+
+    # client:
+    #     container_name: client
+    #     image: mkovachev/pazar-client
+    #     build:
+    #         context: ./
+    #         dockerfile: Pazar.Client/Dockerfile
+    #         args:
+    #             configuration: development
+    #     ports:
+    #         - '80:80'
+    #     restart: on-failure
+
+    #     depends_on:
+    #         - identity
+    #         - ads
+    #     networks:
+    #         - pazar-network
+    #     depends_on:
+    #         - identity
+    #         - ads
 
 networks:
     pazar-network:
