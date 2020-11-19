@@ -16,17 +16,19 @@ namespace Pazar.Ads.Data
         }
         public void SeedData()
         {
-            var initialCategories = this.categories.GetInitialCategories();
 
             if (!this.db.Categories.Any())
             {
-                foreach (var entity in initialCategories)
-                {
-                    this.db.Add(entity);
-                }
 
-                this.db.SaveChanges();
+                var initialCategories = this.categories.GetInitialCategories();
+
+                foreach (var category in initialCategories)
+                {
+                    this.db.Categories.AddAsync(category);
+                }
             }
+
+            this.db.SaveChanges();
         }
     }
 }

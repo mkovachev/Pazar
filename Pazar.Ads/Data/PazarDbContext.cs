@@ -14,10 +14,10 @@ namespace Pazar.Ads.Data
         private readonly IUserService userService;
         private readonly IDateTime dateTime;
 
-        public PazarDbContext(DbContextOptions<PazarDbContext> options, IUserService userService, IDateTime dateTime)
+        public PazarDbContext(DbContextOptions<PazarDbContext> options, IDateTime dateTime)
             : base(options)
         {
-            this.userService = userService;
+            this.userService = default!;
             this.dateTime = dateTime;
         }
 

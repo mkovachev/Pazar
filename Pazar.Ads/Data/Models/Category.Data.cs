@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Pazar.Ads.Data.Models
 {
-    internal class CategoryData : IInitialCategories
+    public class CategoryData : IInitialCategories
     {
         public IEnumerable<Category> GetInitialCategories()
             => new List<Category>

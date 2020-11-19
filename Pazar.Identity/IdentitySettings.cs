@@ -2,6 +2,6 @@
 {
     public class IdentitySettings
     {
-        public string AdminPassword { get; private set; }
+        public string AdminPassword { get; private set; } = "admin1234";
     }
 }
