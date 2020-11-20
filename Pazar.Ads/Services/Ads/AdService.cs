@@ -49,7 +49,7 @@ namespace Pazar.Ads.Services.Ads
         public async Task<int> Total(AdsQuery query)
             => await this.db.Ads.CountAsync();
 
-        public async Task<int> Create(AdVm input)
+        public async Task<int> Create(AdIm input)
         {
 
             var category = await this.db.Categories.FirstOrDefaultAsync(c => c.Name == input.Category);

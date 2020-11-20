@@ -8,7 +8,7 @@
             public const int TitleMaxLength = 50;
 
             public const decimal MinPrice = 0.1M;
-            public const decimal MaxPrice = 500000000.0M;
+            public const decimal MaxPrice = 9999999999999999.99M;
 
             public const int DescriptionMinLength = 20;
             public const int DescriptionMaxLength = 200;

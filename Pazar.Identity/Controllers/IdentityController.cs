@@ -21,7 +21,7 @@ namespace Pazar.Identity.Controllers
 
         [HttpPost]
         [Route(nameof(Register))]
-        public async Task<ActionResult<UserOm>> Register(UserIm input)
+        public async Task<ActionResult<UserVm>> Register(UserIm input)
         {
             var result = await this.identity.Register(input);
 
@@ -35,7 +35,7 @@ namespace Pazar.Identity.Controllers
 
         [HttpPost]
         [Route(nameof(Login))]
-        public async Task<ActionResult<UserOm>> Login(UserIm input)
+        public async Task<ActionResult<UserVm>> Login(UserIm input)
         {
             var result = await this.identity.Login(input);
 
@@ -44,7 +44,7 @@ namespace Pazar.Identity.Controllers
                 return BadRequest(result.Errors); // return Unauthorized();
             }
 
-            return new UserOm(result.Data.Token);
+            return new UserVm(result.Data.Token);
         }
 
         [HttpPut]
@@ -60,11 +60,11 @@ namespace Pazar.Identity.Controllers
                 });
 
         [HttpPost]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [Route(nameof(Delete))]
         public async Task<ActionResult> Delete()
         {
-            var result = await this.identity.DeleteUserAsync(this.user.Id);
+            var result = await this.identity.DeleteUser(this.user.Id);
 
             if (!result.Succeeded)
             {

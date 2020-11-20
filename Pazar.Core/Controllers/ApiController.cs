@@ -1,6 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Pazar.Core.Controllers
 {
@@ -10,10 +8,5 @@ namespace Pazar.Core.Controllers
     {
         public const string PathSeparator = "/";
         public const string Id = "{id}";
-
-        private IMediator mediator;
-
-        protected IMediator Mediator
-            => this.mediator ??= this.HttpContext.RequestServices.GetService<IMediator>();
     }
 }

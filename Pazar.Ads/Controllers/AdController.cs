@@ -2,10 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Pazar.Ads.Models;
 using Pazar.Ads.Services.Ads;
-using Pazar.Ads.Services.Categories;
 using Pazar.Core.Controllers;
 using Pazar.Core.Services.Identity;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -24,7 +22,7 @@ namespace Pazar.Ads.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<int>> Create(AdVm input)
+        public async Task<ActionResult<int>> Create(AdIm input)
             => await this.ads.Create(input);
 
         [HttpPut]
@@ -33,7 +31,7 @@ namespace Pazar.Ads.Controllers
         public async Task<ActionResult<int>> Edit(int id)
             => await this.ads.Edit(id);
 
-        [HttpPut]
+        [HttpDelete]
         [Authorize]
         [Route(Id)]
         public async Task<ActionResult<bool>> Delete(int id)
@@ -46,7 +44,6 @@ namespace Pazar.Ads.Controllers
             => await this.ads.MyAds(id);
 
         [HttpGet]
-        [Authorize]
         [Route(nameof(AdsPerCategory))]
         public async Task<IEnumerable<AdVm>> AdsPerCategory(int id)
            => await this.ads.GetAdsPerCategory(id);

@@ -39,7 +39,7 @@ namespace Pazar.Identity.Services
                 : Result<User>.Failure(errors);
         }
 
-        public async Task<Result<UserOm>> Login(UserIm userInput)
+        public async Task<Result<UserVm>> Login(UserIm userInput)
         {
             var user = await this.userManager.FindByEmailAsync(userInput.Email);
 
@@ -59,7 +59,7 @@ namespace Pazar.Identity.Services
 
             var token = this.jwtTokenGenerator.GenerateToken(user, roles);
 
-            return new UserOm(token);
+            return new UserVm(token);
         }
 
         public async Task<Result> ChangePassword(string userId, ChangePasswordIm changePasswordInput)
@@ -83,7 +83,7 @@ namespace Pazar.Identity.Services
                 : Result.Failure(errors);
         }
 
-        public async Task<Result> DeleteUserAsync(string userId)
+        public async Task<Result> DeleteUser(string userId)
         {
             var user = userManager.Users.SingleOrDefault(u => u.Id == userId);
 

@@ -9,10 +9,10 @@ namespace Pazar.Identity.Services
     {
         Task<Result<User>> Register(UserIm userInput);
 
-        Task<Result<UserOm>> Login(UserIm userInput);
+        Task<Result<UserVm>> Login(UserIm userInput);
 
         Task<Result> ChangePassword(string userId, ChangePasswordIm changePasswordInput);
 
-        Task<Result> DeleteUserAsync(string userId);
+        Task<Result> DeleteUser(string userId);
     }
 }

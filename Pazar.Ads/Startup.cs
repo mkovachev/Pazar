@@ -7,6 +7,8 @@ using Pazar.Ads.Data;
 using Pazar.Ads.Data.Interfaces;
 using Pazar.Ads.Data.Models;
 using Pazar.Ads.Infrastructure;
+using Pazar.Ads.Services.Ads;
+using Pazar.Ads.Services.Categories;
 using Pazar.Core.Extensions;
 using Pazar.Core.Interfaces;
 using Pazar.Core.Services.Data;
@@ -27,6 +29,8 @@ namespace Pazar.Ads
             => services
                     .AddWebService<PazarDbContext>(this.Configuration)
                     .AddTransient<IDataSeeder, AdsDataSeeder>()
+                    .AddTransient<IAdService, AdService>()
+                    .AddTransient<ICategoryService, CategoryService>()
                     .AddTransient<IInitialCategories, CategoryData>()
                     .AddSingleton<IDateTime, DateTimeProvider>()
                     .AddSwaggerGen(c =>
