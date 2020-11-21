@@ -12,8 +12,8 @@ namespace Pazar.Ads.Models
 
         public int TotalAds { get; set; }
 
-        public void Mapping(Profile profile)
-            => profile
+        public void Mapping(Profile mapper)
+            => mapper
                 .CreateMap<Category, CategoryVm>()
                 .ForMember(c => c.TotalAds, cfg => cfg
                     .MapFrom(c => c.Ads.Count));
