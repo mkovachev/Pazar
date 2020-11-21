@@ -90,7 +90,15 @@ services:
             - HealthChecks-UI__HealthChecks__0__Uri=http://identity/health
             - HealthChecks-UI__HealthChecks__1__Name=Ads
             - HealthChecks-UI__HealthChecks__1__Uri=http://ads/health
+            - HealthChecks-UI__HealthChecks__2__Name=Notifications
+            - HealthChecks-UI__HealthChecks__2__Uri=http://notifications/health
         restart: on-failure
+        networks:
+            - pazar-network
+        depends_on:
+            - identity
+            - ads
+            - notifications
 
     notifications:
         container_name: notifications

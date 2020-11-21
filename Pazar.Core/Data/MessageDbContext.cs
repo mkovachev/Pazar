@@ -7,7 +7,7 @@ namespace Pazar.Core.Data
 {
     public abstract class MessageDbContext : DbContext
     {
-        protected MessageDbContext(DbContextOptions options)
+        protected MessageDbContext(DbContextOptions<MessageDbContext> options)
             : base(options)
         {
         }

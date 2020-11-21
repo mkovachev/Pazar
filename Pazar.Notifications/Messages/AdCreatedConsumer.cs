@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.AspNetCore.SignalR;
 using Pazar.Core.Messages.Ads;
+using Pazar.Notifications.Hubs;
 using System.Threading.Tasks;
 
 namespace Pazar.Notifications.Messages
