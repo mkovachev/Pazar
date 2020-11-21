@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Pazar.Core\Pazar.Core.csproj" />
   </ItemGroup>
 
 </Project>

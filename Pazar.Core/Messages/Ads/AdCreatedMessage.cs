@@ -1,6 +1,6 @@
 ﻿namespace Pazar.Core.Messages.Ads
 {
-    public class AdCreateMessage
+    public class AdCreatedMessage
     {
         public int Id { get; set; }
 

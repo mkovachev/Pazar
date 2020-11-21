@@ -3,48 +3,58 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using Pazar.Core.Extensions;
+using Pazar.Notifications.Hubs;
+using Pazar.Notifications.Infrastructure;
+using Pazar.Notifications.Messages;
 
 namespace Pazar.Notifications
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+            => this.Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
-        {
-
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pazar.Notifications", Version = "v1" });
-            });
-        }
+            => services
+                .AddCors()
+                .AddTokenAuthentication(
+                    this.Configuration,
+                    JwtConfiguration.BearerEvents)
+                .AddHealth(
+                    this.Configuration,
+                    databaseHealthChecks: false)
+                .AddMessaging(
+                    this.Configuration,
+                    usePolling: false,
+                    consumers: typeof(AdCreatedConsumer))
+                .AddSignalR();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pazar.Notifications v1"));
             }
 
-            app.UseHttpsRedirection();
+            var allowedOrigins = this.Configuration
+                .GetSection(nameof(NotificationSettings))
+                .GetValue<string>(nameof(NotificationSettings.AllowedOrigins));
 
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app
+                .UseRouting()
+                .UseCors(options => options
+                    .WithOrigins(allowedOrigins)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials())
+                .UseAuthentication()
+                .UseAuthorization()
+                .UseEndpoints(endpoints => endpoints
+                    .MapHealthChecks()
+                    .MapHub<NotificationsHub>("/notifications"));
         }
     }
 }

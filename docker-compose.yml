@@ -92,6 +92,29 @@ services:
             - HealthChecks-UI__HealthChecks__1__Uri=http://ads/health
         restart: on-failure
 
+    notifications:
+        container_name: notifications
+        image: mkovachev/pazar-notifications-service
+        build:
+            context: ./
+            dockerfile: Pazar.Notifications/Dockerfile
+        ports:
+            - '5004:80'
+        env_file:
+            - Pazar.Core/Common.env
+        environment:
+            - NotificationSettings__AllowedOrigins=http://localhost
+            - MessageQueueSettings__Host=rabbitmq
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmq1234
+        restart: on-failure
+        volumes:
+            - data-protection:/root/.aspnet/DataProtection-Keys
+        networks:
+            - pazar-network
+        depends_on:
+            - messages
+
     # client:
     #     container_name: client
     #     image: mkovachev/pazar-client
