@@ -155,6 +155,7 @@ namespace Pazar.Core.Extensions
             services
                 .AddMassTransit(mt =>
                 {
+                    //mt.AddConsumers(Assembly.GetExecutingAssembly());
                     consumers.ForEach(consumer => mt.AddConsumer(consumer));
 
                     mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
