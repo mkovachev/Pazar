@@ -8,6 +8,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
 using Pazar.Core.Mappings;
 using Pazar.Core.Messages;
@@ -152,6 +153,8 @@ namespace Pazar.Core.Extensions
 
             var messageQueueSettings = GetMessageQueueSettings(configuration);
 
+            services.Configure<MessageQueueSettings>(configuration.GetSection("Rabbitmq"));
+
             services
                 .AddMassTransit(mt =>
                 {
@@ -176,6 +179,11 @@ namespace Pazar.Core.Extensions
                             endpoint.ConfigureConsumer(context, consumer);
                         }));
                     }));
+                })
+                .Configure<HealthCheckPublisherOptions>(options =>
+                {
+                    options.Delay = TimeSpan.FromSeconds(2);
+                    options.Predicate = (check) => check.Tags.Contains("ready");
                 })
                 .AddMassTransitHostedService();
 
