@@ -35,12 +35,12 @@ services:
         container_name: identity
         image: mkovachev/pazar-identity-service
         build:
-            context: ./
+            context: ./Server
             dockerfile: Pazar.Identity/Dockerfile
         ports:
             - '5001:80'
         env_file:
-            - pazar.Core/Common.env
+            - Server/Pazar.Core/Common.env
         environment:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Identity;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - IdentitySettings__AdminPassword=admin1234
@@ -56,12 +56,12 @@ services:
         container_name: ads
         image: mkovachev/pazar-ads-service
         build:
-            context: ./
+            context: ./Server
             dockerfile: Pazar.Ads/Dockerfile
         ports:
             - '5002:80'
         env_file:
-            - pazar.Core/Common.env
+            - Server/Pazar.Core/Common.env
         environment:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
@@ -81,7 +81,7 @@ services:
         container_name: watchdog
         image: mkovachev/pazar-watchdog-service
         build:
-            context: ./
+            context: ./Server
             dockerfile: Pazar.Watchdog/Dockerfile
         ports:
             - '5500:80'
@@ -104,12 +104,12 @@ services:
         container_name: notifications
         image: mkovachev/pazar-notifications-service
         build:
-            context: ./
+            context: ./Server
             dockerfile: Pazar.Notifications/Dockerfile
         ports:
             - '5004:80'
         env_file:
-            - Pazar.Core/Common.env
+            - Server/Pazar.Core/Common.env
         environment:
             - NotificationSettings__AllowedOrigins=http://localhost
             - MessageQueueSettings__Host=rabbitmq
@@ -127,8 +127,8 @@ services:
     #     container_name: client
     #     image: mkovachev/pazar-client
     #     build:
-    #         context: ./
-    #         dockerfile: Pazar.Client/Dockerfile
+    #         context: ./Client
+    #         dockerfile: Dockerfile
     #         args:
     #             configuration: development
     #     ports:
@@ -143,6 +143,8 @@ services:
     #     depends_on:
     #         - identity
     #         - ads
+    #         - statistics
+    #         - notifications
 
 networks:
     pazar-network:
