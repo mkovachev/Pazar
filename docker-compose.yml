@@ -128,11 +128,11 @@ services:
         image: mkovachev/pazar-client
         build:
             context: ./Client
-            dockerfile: ./pazar/Dockerfile
+            dockerfile: ./Dockerfile
             args:
                 configuration: development
         ports:
-            - '80:80'
+            - '81:80'
         restart: on-failure
 
         depends_on:

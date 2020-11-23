@@ -10,7 +10,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 # install and cache app dependencies
 COPY package.json /app/package.json
 RUN npm install
-RUN npm install -g @angular/latest
+RUN npm install -g @angular/cli
 
 # add app
 COPY . /app
@@ -18,7 +18,8 @@ COPY . /app
 # generate build
 ARG configuration=production
 
-RUN ng build --output-path=dist --configuration=$configuration
+RUN npm run ng build -- --output-path=dist --configuration=$ENVIROMENT --verbose
+# RUN ng build --output-path=dist --configuration=$configuration
 
 # base image
 FROM nginx:latest
