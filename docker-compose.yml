@@ -123,28 +123,28 @@ services:
         depends_on:
             - messages
 
-    # client:
-    #     container_name: client
-    #     image: mkovachev/pazar-client
-    #     build:
-    #         context: ./Client
-    #         dockerfile: Dockerfile
-    #         args:
-    #             configuration: development
-    #     ports:
-    #         - '80:80'
-    #     restart: on-failure
+    client:
+        container_name: client
+        image: mkovachev/pazar-client
+        build:
+            context: ./Client
+            dockerfile: Dockerfile
+            args:
+                configuration: development
+        ports:
+            - '80:80'
+        restart: on-failure
 
-    #     depends_on:
-    #         - identity
-    #         - ads
-    #     networks:
-    #         - pazar-network
-    #     depends_on:
-    #         - identity
-    #         - ads
-    #         - statistics
-    #         - notifications
+        depends_on:
+            - identity
+            - ads
+        networks:
+            - pazar-network
+        depends_on:
+            - identity
+            - ads
+            - statistics
+            - notifications
 
 networks:
     pazar-network:
