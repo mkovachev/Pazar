@@ -128,7 +128,7 @@ services:
         image: mkovachev/pazar-client
         build:
             context: ./Client
-            dockerfile: ./Dockerfile
+            dockerfile: ./pazar/Dockerfile
             args:
                 configuration: development
         ports:
