@@ -36,7 +36,7 @@ services:
         image: mkovachev/pazar-identity-service
         build:
             context: ./Server
-            dockerfile: Pazar.Identity/Dockerfile
+            dockerfile: ./Pazar.Identity/Dockerfile
         ports:
             - '5001:80'
         env_file:
@@ -57,7 +57,7 @@ services:
         image: mkovachev/pazar-ads-service
         build:
             context: ./Server
-            dockerfile: Pazar.Ads/Dockerfile
+            dockerfile: ./Pazar.Ads/Dockerfile
         ports:
             - '5002:80'
         env_file:
@@ -82,7 +82,7 @@ services:
         image: mkovachev/pazar-watchdog-service
         build:
             context: ./Server
-            dockerfile: Pazar.Watchdog/Dockerfile
+            dockerfile: ./Pazar.Watchdog/Dockerfile
         ports:
             - '5500:80'
         environment:
@@ -105,7 +105,7 @@ services:
         image: mkovachev/pazar-notifications-service
         build:
             context: ./Server
-            dockerfile: Pazar.Notifications/Dockerfile
+            dockerfile: ./Pazar.Notifications/Dockerfile
         ports:
             - '5004:80'
         env_file:
@@ -128,7 +128,7 @@ services:
         image: mkovachev/pazar-client
         build:
             context: ./Client
-            dockerfile: Dockerfile
+            dockerfile: ./Dockerfile
             args:
                 configuration: development
         ports:
