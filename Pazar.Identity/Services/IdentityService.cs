@@ -10,6 +10,7 @@ namespace Pazar.Identity.Services
     public class IdentityService : IIdentityService
     {
         private const string InvalidErrorMessage = "Invalid credentials";
+        private const string InvalidUserId = "Invalid user id";
 
         private readonly UserManager<User> userManager;
         private readonly ITokenGeneratorService jwtTokenGenerator;
@@ -89,7 +90,7 @@ namespace Pazar.Identity.Services
 
             if (user == null)
             {
-                return InvalidErrorMessage;
+                return InvalidUserId;
             }
 
             await this.userManager.DeleteAsync(user);

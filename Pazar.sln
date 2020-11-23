@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pazar.Watchdog", "Pazar.Wat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pazar.Identity", "Pazar.Identity\Pazar.Identity.csproj", "{18D99853-3016-49A6-8F9D-1F22BBEDE72C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pazar.Notifications", "Pazar.Notifications\Pazar.Notifications.csproj", "{EDD422E4-8067-4E30-9C41-20B64B135D4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pazar.Notifications", "Pazar.Notifications\Pazar.Notifications.csproj", "{EDD422E4-8067-4E30-9C41-20B64B135D4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pazar.Statistics", "Pazar.Statistics\Pazar.Statistics.csproj", "{BEA5498A-7CD2-4430-93F8-37B73925C365}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{EDD422E4-8067-4E30-9C41-20B64B135D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDD422E4-8067-4E30-9C41-20B64B135D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDD422E4-8067-4E30-9C41-20B64B135D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA5498A-7CD2-4430-93F8-37B73925C365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA5498A-7CD2-4430-93F8-37B73925C365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA5498A-7CD2-4430-93F8-37B73925C365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA5498A-7CD2-4430-93F8-37B73925C365}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

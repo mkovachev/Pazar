@@ -158,7 +158,7 @@ namespace Pazar.Core.Extensions
             services
                 .AddMassTransit(mt =>
                 {
-                    //mt.AddConsumers(Assembly.GetExecutingAssembly());
+                    // mt.AddConsumers(Assembly.GetExecutingAssembly
                     consumers.ForEach(consumer => mt.AddConsumer(consumer));
 
                     mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
@@ -171,6 +171,8 @@ namespace Pazar.Core.Extensions
 
                         rmq.UseHealthCheck(context);
 
+
+
                         consumers.ForEach(consumer => rmq.ReceiveEndpoint(consumer.FullName, endpoint =>
                         {
                             endpoint.PrefetchCount = 6;
@@ -179,11 +181,6 @@ namespace Pazar.Core.Extensions
                             endpoint.ConfigureConsumer(context, consumer);
                         }));
                     }));
-                })
-                .Configure<HealthCheckPublisherOptions>(options =>
-                {
-                    options.Delay = TimeSpan.FromSeconds(2);
-                    options.Predicate = (check) => check.Tags.Contains("ready");
                 })
                 .AddMassTransitHostedService();
 
