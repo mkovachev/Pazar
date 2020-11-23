@@ -31,11 +31,11 @@ namespace Pazar.Identity.Services
                 UserName = userInput.Email
             };
 
-            var identityResult = await this.userManager.CreateAsync(user, userInput.Password);
+            var result = await this.userManager.CreateAsync(user, userInput.Password);
 
-            var errors = identityResult.Errors.Select(e => e.Description);
+            var errors = result.Errors.Select(e => e.Description);
 
-            return identityResult.Succeeded
+            return result.Succeeded
                 ? Result<User>.SuccessWith(user)
                 : Result<User>.Failure(errors);
         }
@@ -72,14 +72,14 @@ namespace Pazar.Identity.Services
                 return InvalidErrorMessage;
             }
 
-            var identityResult = await this.userManager.ChangePasswordAsync(
+            var result = await this.userManager.ChangePasswordAsync(
                 user,
                 changePasswordInput.CurrentPassword,
                 changePasswordInput.NewPassword);
 
-            var errors = identityResult.Errors.Select(e => e.Description);
+            var errors = result.Errors.Select(e => e.Description);
 
-            return identityResult.Succeeded
+            return result.Succeeded
                 ? Result.Success
                 : Result.Failure(errors);
         }
