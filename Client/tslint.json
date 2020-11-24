@@ -10,6 +10,7 @@
         "statements"
       ]
     },
+    "no-shadowed-variable": false,
     "array-type": false,
     "arrow-return-shorthand": true,
     "curly": true,
