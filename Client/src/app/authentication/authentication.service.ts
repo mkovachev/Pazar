@@ -20,6 +20,10 @@ export class AuthenticationService {
         return this.http.post(this.registerPath, payload);
     }
 
+    createUser(payload: any): Observable<any> {
+        return this.http.post(this.createUserPath, payload);
+    }
+
     login(payload: ExtractGroupValue<LoginFormModel>): Observable<any> {
         return this.http.post(this.loginPath, payload);
     }
