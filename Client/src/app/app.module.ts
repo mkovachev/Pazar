@@ -5,21 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AdsModule } from './ads/ads.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgStackFormsModule } from '@ng-stack/forms';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NgStackFormsModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
     AdsModule,
-    FormsModule,
-    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
