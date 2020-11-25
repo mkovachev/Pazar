@@ -9,10 +9,10 @@ import { LoginFormModel } from './login/login.model';
     providedIn: 'root'
 })
 export class AuthenticationService {
-    registerPath = `${environment.identityApiUrl}identity/register`;
-    loginPath = `${environment.identityApiUrl}identity/login`;
-    createUserPath = `${environment.adsApiUrl}users`;
-    userIdPath = `${environment.adsApiUrl}user/id`;
+    registerPath = `${environment.identityUrl}identity/register`;
+    loginPath = `${environment.identityUrl}identity/login`;
+    createUserPath = `${environment.adsUrl}users`;
+    userIdPath = `${environment.adsUrl}user/id`;
 
     constructor(private http: HttpClient) { }
 

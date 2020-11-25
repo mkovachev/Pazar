@@ -147,6 +147,7 @@ services:
 
 networks:
     pazar-network:
+        name: pazar-network
 
 volumes:
     sqldata:
