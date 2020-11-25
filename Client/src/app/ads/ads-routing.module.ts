@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MyAdsComponent } from '../my-ads/my-ads.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ViewComponent } from './view/view.component';
+import { MyAdsComponent } from './my-ads/my-ads.component';
+import { AllAdsComponent } from './all-ads/all-ads.component';
 import { AuthGuardService as AuthGuard } from '../shared/auth-guard.service';
-import { AllAdsComponent } from '../all-ads/all-ads.component';
 
 
 const routes: Routes = [
