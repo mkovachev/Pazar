@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
-import { RegisterModelForm } from './register.model';
+import { IRegisterModel } from './register.model';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +10,7 @@ import { RegisterModelForm } from './register.model';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm!: FormGroup<RegisterModelForm>;
+  registerForm!: FormGroup<IRegisterModel>;
 
   constructor(
     private fb: FormBuilder,
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.registerForm = this.fb.group<RegisterModelForm>({
+    this.registerForm = this.fb.group<IRegisterModel>({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });

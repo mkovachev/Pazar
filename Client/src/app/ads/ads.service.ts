@@ -9,7 +9,7 @@ import { Ad } from './ad.model';
     providedIn: 'root'
 })
 export class CarsService {
-    path = `${environment.adsApiUrl}ads/`;
+    path = `${environment.adsUrl}ads/`;
     carPathWithoutSlash = this.path.slice(0, -1);
 
     constructor(private http: HttpClient) { }

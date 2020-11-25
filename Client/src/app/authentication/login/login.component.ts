@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from 'ngx-strongly-typed-forms';
 import { AuthenticationService } from '../authentication.service';
-import { LoginFormModel } from './login.model';
+import { ILoginModel } from './login.model';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { LoginFormModel } from './login.model';
   //styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup<LoginFormModel>;
+  loginForm!: FormGroup<ILoginModel>;
   authenticationService!: AuthenticationService;
 
   constructor(
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     localStorage.removeItem('token');
-    this.loginForm = this.fb.group<LoginFormModel>({
+    this.loginForm = this.fb.group<ILoginModel>({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
