@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { IRegisterModel } from './register.model';
@@ -10,7 +10,7 @@ import { IRegisterModel } from './register.model';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm!: FormGroup<IRegisterModel>;
+  registerForm!: FormGroupTyped<IRegisterModel>;
 
   constructor(
     private fb: FormBuilder,

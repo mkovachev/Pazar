@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder, FormGroup, Validators } from 'ngx-strongly-typed-forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+// import { FormBuilder, FormGroup, Validators } from 'ngx-strongly-typed-forms';
 import { AuthenticationService } from '../authentication.service';
 import { ILoginModel } from './login.model';
 
