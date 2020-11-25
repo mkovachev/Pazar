@@ -8,7 +8,7 @@ import { Ad } from './ad.model';
 @Injectable({
     providedIn: 'root'
 })
-export class CarsService {
+export class AdsService {
     path = `${environment.adsUrl}ads/`;
     carPathWithoutSlash = this.path.slice(0, -1);
 

@@ -5,20 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AdsModule } from './ads/ads.module';
-import { NgStackFormsModule } from '@ng-stack/forms';
+//import { NgStackFormsModule } from '@ng-stack/forms';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NgStackFormsModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
     AdsModule,
+    //NgStackFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

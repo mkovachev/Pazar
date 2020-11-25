@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NgStackFormsModule } from '@ng-stack/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-    declarations: [],
+    declarations: [HomeComponent],
     imports: [
         CommonModule,
         BrowserAnimationsModule,
