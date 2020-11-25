@@ -32,11 +32,11 @@ export class AuthenticationService {
         return this.http.get(this.userIdPath);
     }
 
-    setToken(token: string): void {
+    setToken(token: string) {
         localStorage.setItem('token', token);
     }
 
-    setId(userId: string): void {
+    setId(userId: string) {
         localStorage.setItem('userId', userId);
     }
 }
