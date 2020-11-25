@@ -11,14 +11,6 @@
                     <label>Password</label>
                     <input type="password" class="form-control" id="password" formControlName="password">
                 </div>
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" formControlName="name">
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="text" class="form-control" formControlName="phoneNumber">
-                </div>
                 <p>Already have an account? <a [routerLink]="['/auth']">Sign In</a></p>
                 <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>
             </form>
