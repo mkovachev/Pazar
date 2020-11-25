@@ -7,7 +7,7 @@ import { LoginFormModel } from './login.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  //styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup<LoginFormModel>;
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     localStorage.removeItem('token');
     this.loginForm = this.fb.group<LoginFormModel>({
       email: ['', Validators.required],
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(): void {
+  login() {
     this.authenticationService.login(this.loginForm.value).subscribe(res => {
       this.authenticationService.setToken(res.token);
 
