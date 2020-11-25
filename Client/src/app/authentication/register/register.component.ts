@@ -17,14 +17,14 @@ export class RegisterComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.registerForm = this.fb.group<RegisterModelForm>({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
-  register(): void {
+  register() {
     const input = this.registerForm.value;
 
     this.authenticationService.register(input).subscribe(res => {
