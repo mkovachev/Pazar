@@ -69,7 +69,7 @@ namespace Pazar.Identity.Services
 
             if (user == null)
             {
-                return InvalidErrorMessage;
+                return InvalidUserId;
             }
 
             var result = await this.userManager.ChangePasswordAsync(

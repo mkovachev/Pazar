@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 using Pazar.Core.Extensions;
 using Pazar.Core.Services.Data;
 using Pazar.Identity.Data;
@@ -30,10 +29,7 @@ namespace Pazar.Identity
                 .AddTransient<IDataSeeder, IdentityDataSeeder>()
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<ITokenGeneratorService, TokenGeneratorService>()
-                .AddSwaggerGen(c =>
-                {
-                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pazar.Identity", Version = "v1" });
-                });
+                .AddSwaggerWithJwt();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
                     => app

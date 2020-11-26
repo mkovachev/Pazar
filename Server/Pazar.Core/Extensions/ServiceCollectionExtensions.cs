@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Pazar.Core.Mappings;
 using Pazar.Core.Messages;
 using Pazar.Core.Services.Identity;
@@ -35,7 +36,42 @@ namespace Pazar.Core.Extensions
                 .AddTokenAuthentication(configuration)
                 .AddHealth(configuration, databaseHealthChecks, messagingHealthChecks)
                 .AddAutoMapperProfile(Assembly.GetCallingAssembly())
+                .AddCors()
                 .AddControllers();
+
+            return services;
+        }
+
+        public static IServiceCollection AddSwaggerWithJwt(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "My API",
+                    Version = "v1"
+                });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please insert JWT with Bearer into field",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                   {
+                     new OpenApiSecurityScheme
+                     {
+                       Reference = new OpenApiReference
+                       {
+                         Type = ReferenceType.SecurityScheme,
+                         Id = "Bearer"
+                       }
+                      },
+                      Array.Empty<string>()
+                    }
+                  });
+            });
 
             return services;
         }
