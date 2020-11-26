@@ -5,20 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AdsModule } from './ads/ads.module';
-//import { NgStackFormsModule } from '@ng-stack/forms';
+import { SharedModule } from './shared/shared.module';
+import { NgStackFormsModule } from '@ng-stack/forms';
+import { UsersModule } from './users/users.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     AuthenticationModule,
     AdsModule,
-    //NgStackFormsModule
+    UsersModule,
+    NgStackFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

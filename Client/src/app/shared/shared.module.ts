@@ -17,7 +17,6 @@ import { HomeComponent } from './home/home.component';
         FormsModule,
         ReactiveFormsModule,
         ToastrModule.forRoot(),
-
     ],
     providers: [
 

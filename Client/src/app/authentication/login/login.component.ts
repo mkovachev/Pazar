@@ -11,10 +11,10 @@ import { ILoginModel } from './login.model';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup<ILoginModel>;
-  authenticationService!: AuthenticationService;
 
   constructor(
     private fb: FormBuilder,
+    private authenticationService: AuthenticationService,
     private router: Router) {
     if (localStorage.getItem('token')) {
       this.router.navigate(['ads']);
