@@ -23,21 +23,21 @@ import { ErrorInterceptorService } from './error-interceptor.service';
         ToastrModule.forRoot(),
     ],
     providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: InterceptorService,
-            multi: true
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: InterceptorService,
-            multi: true
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: ErrorInterceptorService,
-            multi: true
-        },
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: InterceptorService,
+        //     multi: true
+        // },
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: InterceptorService,
+        //     multi: true
+        // },
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: ErrorInterceptorService,
+        //     multi: true
+        // },
     ],
     exports: [ReactiveFormsModule, FormsModule]
 })
