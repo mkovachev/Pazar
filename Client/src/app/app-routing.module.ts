@@ -14,10 +14,10 @@ const routes: Routes = [
     path: 'users',
     loadChildren: () => import('./users/users-routing.module').then(m => m.UsersRoutingModule)
   },
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./shared/shared-routing.module').then(m => m.SharedRoutingModule)
-  // },
+  {
+    path: '',
+    loadChildren: () => import('./shared/shared-routing.module').then(m => m.SharedRoutingModule)
+  },
 ];
 
 @NgModule({

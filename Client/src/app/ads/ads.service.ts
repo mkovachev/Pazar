@@ -10,7 +10,7 @@ import { Ad } from './ad.model';
 })
 export class AdsService {
     path = `${environment.adsUrl}ads/`;
-    carPathWithoutSlash = this.path.slice(0, -1);
+    pathWithoutSlash = this.path.slice(0, -1);
 
     constructor(private http: HttpClient) { }
 
@@ -43,11 +43,11 @@ export class AdsService {
     }
 
     search(queryString: string): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.carPathWithoutSlash + queryString);
+        return this.http.get<Array<Ad>>(this.pathWithoutSlash + queryString);
     }
 
     sort(queryString: string): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.carPathWithoutSlash + queryString);
+        return this.http.get<Array<Ad>>(this.pathWithoutSlash + queryString);
     }
 
     changeAvailability(id: any): Observable<boolean> {
