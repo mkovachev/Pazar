@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import '@angular/platform-browser';
-import '@angular/platform-browser-dynamic'
+// import '@angular/platform-browser';
+// import '@angular/platform-browser-dynamic'
 
 const routes: Routes = [
   {

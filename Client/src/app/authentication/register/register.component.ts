@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       this.authenticationService.createUser(userData).subscribe(res => {
         this.authenticationService.setId(res);
 
-        this.router.navigate(['login']).then(() => {
+        this.router.navigate(['']).then(() => {
           window.location.reload();
         });
       });
