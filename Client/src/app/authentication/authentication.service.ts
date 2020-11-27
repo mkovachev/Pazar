@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { ILoginModel } from './login/login.model';
+import { Login } from './login/login.model';
 import { ExtractGroupValue } from '@ng-stack/forms/lib/types';
 
 @Injectable({
@@ -24,7 +24,7 @@ export class AuthenticationService {
         return this.http.post(this.createUserPath, payload);
     }
 
-    login(payload: ExtractGroupValue<ILoginModel>): Observable<any> {
+    login(payload: ExtractGroupValue<Login>): Observable<any> {
         return this.http.post(this.loginPath, payload);
     }
 

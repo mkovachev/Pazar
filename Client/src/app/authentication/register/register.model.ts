@@ -1,4 +1,4 @@
-export interface IRegisterModel {
+export interface Register {
     email: string;
     password: string;
 }

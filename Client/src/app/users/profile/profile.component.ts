@@ -12,9 +12,10 @@ import { ProfileService } from './profile.service';
 
 export class ProfileComponent implements OnInit {
   profileForm!: FormGroup<Profile>;
+  changePasswordForm!: FormGroup<PasswordChange>;
   user!: Profile;
-  changePasswordForm: FormGroup<PasswordChange>;
   id!: string;
+
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
@@ -26,10 +27,10 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = JSON.parse(localStorage.getItem('userId') || '{}');
+    this.id = localStorage.getItem('userId')!;
     this.profileService.getUser(this.id).subscribe(u => {
-      this.user = u
-      console.log(this.user.name)
+      //this.user = u
+      console.log(u.name)
       this.profileForm = this.fb.group<Profile>({
         name: [this.user.name, Validators.required],
         phoneNumber: [this.user.phoneNumber, Validators.required],
@@ -38,10 +39,10 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  getUser() {
-    this.profileService.getUser(this.id).subscribe(res => {
-      this.router.navigate(['user/id'])
-    })
+  fetchUser() {
+    // this.profileService.getUser(this.id).subscribe(res => {
+    //   this.router.navigate(['user/id'])
+    // })
   }
 
   editProfile() {

@@ -1,6 +1,6 @@
 export interface Profile {
-    id?: number;
+    //id?: string;
     name: string;
     phoneNumber: string;
-    totalCarAds?: number;
+    //totalCarAds?: number;
 }

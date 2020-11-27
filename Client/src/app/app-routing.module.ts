@@ -9,7 +9,15 @@ const routes: Routes = [
   {
     path: 'ads',
     loadChildren: () => import('./ads/ads-routing.module').then(m => m.AdsRoutingModule)
-  }
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users-routing.module').then(m => m.UsersRoutingModule)
+  },
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./shared/shared-routing.module').then(m => m.SharedRoutingModule)
+  // },
 ];
 
 @NgModule({

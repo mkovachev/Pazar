@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
 import { AuthenticationService } from '../authentication.service';
-import { ILoginModel } from './login.model';
+import { Login } from './login.model';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  //styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup<ILoginModel>;
+  loginForm!: FormGroup<Login>;
+  returnUrl!: string;
+  @Output() emitter: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private fb: FormBuilder,
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     localStorage.removeItem('token');
-    this.loginForm = this.fb.group<ILoginModel>({
+    this.loginForm = this.fb.group<Login>({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });

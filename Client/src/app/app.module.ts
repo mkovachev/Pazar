@@ -8,6 +8,7 @@ import { AdsModule } from './ads/ads.module';
 import { SharedModule } from './shared/shared.module';
 import { NgStackFormsModule } from '@ng-stack/forms';
 import { UsersModule } from './users/users.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -22,7 +23,8 @@ import { UsersModule } from './users/users.component';
     AuthenticationModule,
     AdsModule,
     UsersModule,
-    NgStackFormsModule
+    NgStackFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

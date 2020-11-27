@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
-import { IRegisterModel } from './register.model';
+import { Register } from './register.model';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent implements OnInit {
-  registerForm!: FormGroup<IRegisterModel>;
+  registerForm!: FormGroup<Register>;
 
   constructor(
     private fb: FormBuilder,
@@ -18,24 +17,23 @@ export class RegisterComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.registerForm = this.fb.group<IRegisterModel>({
+    this.registerForm = this.fb.group<Register>({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
   register() {
-    const form = this.registerForm.value;
-    const { email, password } = form
+    const { email, password } = this.registerForm.value;
     const userData = { email, password };
-    
+
     this.authenticationService.register(userData).subscribe(res => {
       this.authenticationService.setToken(res.token);
 
       this.authenticationService.createUser(userData).subscribe(res => {
         this.authenticationService.setId(res);
 
-        this.router.navigate(['']).then(() => {
+        this.router.navigate(['login']).then(() => {
           window.location.reload();
         });
       });
