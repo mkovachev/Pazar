@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    // this.adsService.getCategories().subscribe(res => {
-    //   this.categories = res;
-    // });
+    this.adsService.getCategories().subscribe(res => {
+      this.categories = res;
+    });
   }
 
   goToAds(id: number) {

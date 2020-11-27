@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import '@angular/platform-browser';
+import '@angular/platform-browser-dynamic'
 
 const routes: Routes = [
   {
@@ -14,10 +16,10 @@ const routes: Routes = [
     path: 'users',
     loadChildren: () => import('./users/users-routing.module').then(m => m.UsersRoutingModule)
   },
-  {
-    path: '',
-    loadChildren: () => import('./shared/shared-routing.module').then(m => m.SharedRoutingModule)
-  },
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./shared/shared-routing.module').then(m => m.SharedRoutingModule)
+  // },
 ];
 
 @NgModule({
