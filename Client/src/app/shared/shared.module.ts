@@ -8,8 +8,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './home/home.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { InterceptorService } from './interceptor.service';
-import '@angular/platform-browser';
-import '@angular/platform-browser-dynamic'
 import { ErrorInterceptorService } from './error-interceptor.service';
 
 @NgModule({
