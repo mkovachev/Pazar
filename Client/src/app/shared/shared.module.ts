@@ -10,6 +10,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { InterceptorService } from './interceptor.service';
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic'
+import { ErrorInterceptorService } from './error-interceptor.service';
 
 @NgModule({
     declarations: [HomeComponent],
@@ -27,6 +28,16 @@ import '@angular/platform-browser-dynamic'
         {
             provide: HTTP_INTERCEPTORS,
             useClass: InterceptorService,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: InterceptorService,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptorService,
             multi: true
         },
     ],
