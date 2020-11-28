@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Pazar.Ads.Models;
 using Pazar.Ads.Services.Categories;
 using Pazar.Core.Controllers;
@@ -17,7 +18,7 @@ namespace Pazar.Ads.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         [Route(Id)]
         public async Task<CategoryDetailsVm> Find(int id)
             => await this.categories.FindById(id);

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgStackFormsModule } from '@ng-stack/forms';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ViewComponent } from './view/view.component';
@@ -12,6 +14,9 @@ import { AllAdsComponent } from './all-ads/all-ads.component';
     declarations: [CreateComponent, EditComponent, MyAdsComponent, ViewComponent, AllAdsComponent],
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgStackFormsModule,
         SharedModule,
         AdsRoutingModule,
     ],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
+import { FormsModule } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 import { Ad } from '../ad.model';
 import { AdsService } from '../ads.service';

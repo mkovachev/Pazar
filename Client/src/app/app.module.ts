@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgStackFormsModule } from '@ng-stack/forms';
 
 import { AdsModule } from './ads/ads.module';
@@ -21,6 +21,7 @@ import { CategoriesModule } from './categories/categories.module';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    FormsModule,
     NgStackFormsModule,
     ReactiveFormsModule,
     AuthModule,

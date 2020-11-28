@@ -88,7 +88,6 @@ namespace Pazar.Ads.Data.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
 
