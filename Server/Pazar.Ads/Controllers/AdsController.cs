@@ -22,6 +22,7 @@ namespace Pazar.Ads.Controllers
 
         [HttpPost]
         [Authorize]
+        [Route(nameof(Create))]
         public async Task<ActionResult<int>> Create(AdIm input)
             => await this.ads.Create(input);
 

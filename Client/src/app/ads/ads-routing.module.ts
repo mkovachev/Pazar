@@ -10,9 +10,9 @@ import { AuthGuardService as AuthGuard } from '../shared/auth-guard.service';
 
 const routes: Routes = [
     { path: '', component: AllAdsComponent },
+    { path: ':id', component: ViewComponent },
     { path: 'myads', component: MyAdsComponent, canActivate: [AuthGuard] },
     { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
-    { path: ':id', component: ViewComponent },
     { path: ':id/edit', component: EditComponent, canActivate: [AuthGuard] },
 ];
 
