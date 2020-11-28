@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.loginForm.value).subscribe(res => {
-      this.authService.setToken(res.token);
+      this.authService.saveToken(res.token);
 
       // this.authService.getUserId().subscribe(res => {
       //   this.authService.setId(res);

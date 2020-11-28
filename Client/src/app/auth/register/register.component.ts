@@ -28,10 +28,10 @@ export class RegisterComponent implements OnInit {
     const userData = { email, password };
 
     this.authService.register(userData).subscribe(res => {
-      this.authService.setToken(res.token);
+      this.authService.saveToken(res.token);
 
       this.authService.createUser(userData).subscribe(res => {
-        this.authService.setId(res);
+        this.authService.saveUserId(res);
 
         this.router.navigate(['']).then(() => {
           window.location.reload();

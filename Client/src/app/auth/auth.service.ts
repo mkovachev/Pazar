@@ -28,18 +28,19 @@ export class AuthService {
         return this.http.post(this.loginPath, payload);
     }
 
+    isAuthenticated() {
+        return localStorage.getItem('token');
+    }
+
+    saveToken(token: string) {
+        localStorage.setItem('token', token);
+    }
+
     getUserId(): Observable<any> {
         return this.http.get(this.userIdPath);
     }
 
-    // get user id
-    setId(userId: string) {
+    saveUserId(userId: string) {
         localStorage.setItem('userId', userId);
     }
-
-    // save token
-    setToken(token: string) {
-        localStorage.setItem('token', token);
-    }
-
 }
