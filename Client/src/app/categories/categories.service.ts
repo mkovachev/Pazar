@@ -12,12 +12,12 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) { }
 
-  all(): Observable<Array<Category>> {
-    return this.http.get<Array<Category>>(`${this.path}all`);
+  find(id: string): Observable<Category> {
+    return this.http.get<Category>(this.path + id);
   }
 
-  byId(id: string): Observable<Category> {
-    return this.http.get<Category>(this.path + id);
+  all(): Observable<Array<Category>> {
+    return this.http.get<Array<Category>>(`${this.path}all`);
   }
 
   create(category: Category): Observable<Category> {
@@ -28,7 +28,7 @@ export class CategoriesService {
     return this.http.put<Category>(this.path + id, category);
   }
 
-  deleteC(id: string) {
+  delete(id: string) {
     return this.http.delete(this.path + id);
   }
 }

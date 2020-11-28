@@ -13,7 +13,7 @@ export class AdsService {
 
     constructor(private http: HttpClient) { }
 
-    byId(id: string): Observable<Ad> {
+    find(id: string): Observable<Ad> {
         return this.http.get<Ad>(this.path + id);
     }
 
