@@ -8,7 +8,7 @@ import { NgStackFormsModule } from '@ng-stack/forms';
 import { AdsModule } from './ads/ads.module';
 import { SharedModule } from './shared/shared.module';
 import { UsersModule } from './users/users.module';
-import { AuthModule } from './authentication/auth.module';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -17,8 +17,8 @@ import { AuthModule } from './authentication/auth.module';
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     NgStackFormsModule,
     ReactiveFormsModule,
     AuthModule,
