@@ -35,12 +35,12 @@ export class LoginComponent implements OnInit {
       this.authService.saveToken(res.token);
 
       // this.authService.getUserId().subscribe(res => {
-      //   this.authService.setId(res);
+      //   this.authService.saveUserId(res);
 
       this.router.navigate(['']).then(() => {
         window.location.reload();
       });
+      //});
     });
-    //});
   }
 }

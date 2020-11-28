@@ -30,13 +30,13 @@ export class RegisterComponent implements OnInit {
     this.authService.register(userData).subscribe(res => {
       this.authService.saveToken(res.token);
 
-      this.authService.createUser(userData).subscribe(res => {
-        this.authService.saveUserId(res);
+      // this.authService.createUser(userData).subscribe(res => {
+      //   this.authService.saveUserId(res);
 
-        this.router.navigate(['']).then(() => {
-          window.location.reload();
-        });
+      this.router.navigate(['']).then(() => {
+        window.location.reload();
       });
+      //});
     });
   }
 }
