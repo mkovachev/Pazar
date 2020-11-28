@@ -59,6 +59,7 @@ namespace Pazar.Ads.Services.Ads
                 Title = input.Title,
                 Price = input.Price,
                 Description = input.Description,
+                Images = input.Images,
                 IsActive = true,
                 Category = category,
                 UserId = input.UserId

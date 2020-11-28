@@ -9,12 +9,14 @@ import { AdsModule } from './ads/ads.module';
 import { SharedModule } from './shared/shared.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { CategoriesModule } from './categories/categories.module';
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -23,6 +25,7 @@ import { AuthModule } from './auth/auth.module';
     ReactiveFormsModule,
     AuthModule,
     AdsModule,
+    CategoriesModule,
     UsersModule,
     SharedModule,
   ],

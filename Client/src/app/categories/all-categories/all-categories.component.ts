@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoriesService } from 'src/app/categories/categories.service';
-import { Category } from 'src/app/categories/category.model';
+import { CategoriesService } from '../categories.service';
+import { Category } from '../category.model';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-all-categories',
+  templateUrl: './all-categories.component.html',
 })
-
-export class HomeComponent implements OnInit {
+export class AllCategoriesComponent implements OnInit {
   categories!: Array<Category>;
 
   constructor(
@@ -25,4 +23,5 @@ export class HomeComponent implements OnInit {
   goToAds(id: number) {
     this.router.navigate(['ads'], { queryParams: { category: id } });
   }
+
 }

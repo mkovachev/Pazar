@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Pazar.Ads.Controllers
 {
-    public class AdController : ApiController
+    public class AdsController : ApiController
     {
         private readonly IAdService ads;
         private readonly IUserService user;
 
-        public AdController(IAdService ads, IUserService user)
+        public AdsController(IAdService ads, IUserService user)
         {
             this.ads = ads;
             this.user = user;

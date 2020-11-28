@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Pazar.Ads.Data.Models;
-using Pazar.Ads.Mappings;
+using Pazar.Core.Mappings;
 using System.Collections.Generic;
 
 namespace Pazar.Ads.Models

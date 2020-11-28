@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./ads/ads-routing.module').then(m => m.AdsRoutingModule)
   },
   {
+    path: 'categories',
+    loadChildren: () => import('./categories/categories-routing.module').then(m => m.CategoriesRoutingModule)
+  },
+  {
     path: 'users',
     loadChildren: () => import('./users/users-routing.module').then(m => m.UsersRoutingModule)
   },

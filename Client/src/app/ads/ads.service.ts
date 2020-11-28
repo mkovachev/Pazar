@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Category } from './category.model';
+import { Category } from '../categories/category.model';
 import { Ad } from './ad.model';
 
 @Injectable({
@@ -38,9 +38,9 @@ export class AdsService {
         return this.http.delete(this.path + id);
     }
 
-    getCategories(): Observable<Array<Category>> {
-        return this.http.get<Array<Category>>(`${this.path}categories`);
-    }
+    // getCategories(): Observable<Array<Category>> {
+    //     return this.http.get<Array<Category>>(`${this.path}categories`);
+    // }
 
     search(queryString: string): Observable<Array<Ad>> {
         return this.http.get<Array<Ad>>(this.pathWithoutSlash + queryString);

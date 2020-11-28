@@ -18,9 +18,9 @@ import { ErrorInterceptorService } from './error-interceptor.service';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        SharedRoutingModule,
         NgStackFormsModule,
         ToastrModule.forRoot(),
+        SharedRoutingModule,
     ],
     providers: [
         // {
@@ -39,6 +39,6 @@ import { ErrorInterceptorService } from './error-interceptor.service';
         //     multi: true
         // },
     ],
-    exports: [ReactiveFormsModule, FormsModule]
+    exports: [ReactiveFormsModule, FormsModule,]
 })
 export class SharedModule { }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Pazar.Ads.Data.Models;
-using Pazar.Ads.Mappings;
+using Pazar.Core.Mappings;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Pazar.Ads.Models
@@ -11,12 +12,12 @@ namespace Pazar.Ads.Models
 
         public string Name { get; private set; }
 
-        public int TotalAds { get; set; }
+        public List<Ad> Ads { get; set; }
 
         public void Mapping(Profile profile)
             => profile
-                .CreateMap<Category, CategoryVm>()
-                .ForMember(c => c.TotalAds, cfg => cfg
+                .CreateMap<Category, CategoryDetailsVm>()
+                .ForMember(c => c.Ads, cfg => cfg
                     .MapFrom(c => c.Ads.ToList()));
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Pazar.Ads.Models;
 using Pazar.Ads.Services.Categories;
 using Pazar.Core.Controllers;
@@ -8,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace Pazar.Ads.Controllers
 {
-    public class CategoryController : ApiController
+    public class CategoriesController : ApiController
     {
         private readonly ICategoryService categories;
 
-        public CategoryController(ICategoryService categories)
+        public CategoriesController(ICategoryService categories)
         {
             this.categories = categories;
         }
 
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         [Route(Id)]
         public async Task<CategoryDetailsVm> Find(int id)
             => await this.categories.FindById(id);
 
 
         [HttpGet]
-        [Route(nameof(Categories))]
-        public async Task<IEnumerable<CategoryVm>> Categories()
+        [Route(nameof(All))]
+        public async Task<IEnumerable<CategoryVm>> All()
             => await this.categories.GetAll();
 
     }
