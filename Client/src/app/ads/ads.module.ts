@@ -9,9 +9,10 @@ import { AdsRoutingModule } from './ads-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { MyAdsComponent } from './my-ads/my-ads.component';
 import { AllAdsComponent } from './all-ads/all-ads.component';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
-    declarations: [CreateComponent, EditComponent, MyAdsComponent, ViewComponent, AllAdsComponent],
+    declarations: [CreateComponent, EditComponent, MyAdsComponent, ViewComponent, AllAdsComponent, DeleteComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -20,7 +21,7 @@ import { AllAdsComponent } from './all-ads/all-ads.component';
         SharedModule,
         AdsRoutingModule,
     ],
-    exports: [CreateComponent, EditComponent, MyAdsComponent, ViewComponent, AllAdsComponent]
+    exports: [CreateComponent, EditComponent, DeleteComponent, MyAdsComponent, ViewComponent, AllAdsComponent]
 })
 
 export class AdsModule { }
