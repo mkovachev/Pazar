@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.categoriesService.getCategories().subscribe(res => {
+    this.categoriesService.all().subscribe(res => {
       this.categories = res;
     });
   }

@@ -12,23 +12,23 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) { }
 
-  getCategories(): Observable<Array<Category>> {
+  all(): Observable<Array<Category>> {
     return this.http.get<Array<Category>>(`${this.path}all`);
   }
 
-  getCategory(id: string): Observable<Category> {
+  byId(id: string): Observable<Category> {
     return this.http.get<Category>(this.path + id);
   }
 
-  createCategory(category: Category): Observable<Category> {
+  create(category: Category): Observable<Category> {
     return this.http.post<Category>(this.path, category);
   }
 
-  editCategory(id: string, category: Category): Observable<Category> {
+  edit(id: string, category: Category): Observable<Category> {
     return this.http.put<Category>(this.path + id, category);
   }
 
-  deleteCategory(id: string) {
+  deleteC(id: string) {
     return this.http.delete(this.path + id);
   }
 }

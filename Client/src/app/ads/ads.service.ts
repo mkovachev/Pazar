@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Category } from '../categories/category.model';
 import { Ad } from './ad.model';
 
 @Injectable({
@@ -14,33 +13,29 @@ export class AdsService {
 
     constructor(private http: HttpClient) { }
 
-    getAds(): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.path);
-    }
-
-    getMyAds(): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(`${this.path}myads`);
-    }
-
-    getAd(id: string): Observable<Ad> {
+    byId(id: string): Observable<Ad> {
         return this.http.get<Ad>(this.path + id);
     }
 
-    createAd(ad: Ad): Observable<Ad> {
+    all(): Observable<Array<Ad>> {
+        return this.http.get<Array<Ad>>(this.path);
+    }
+
+    myAds(): Observable<Array<Ad>> {
+        return this.http.get<Array<Ad>>(`${this.path}myads`);
+    }
+
+    create(ad: Ad): Observable<Ad> {
         return this.http.post<Ad>(this.path, ad);
     }
 
-    editAd(id: string, ad: Ad): Observable<Ad> {
+    edit(id: string, ad: Ad): Observable<Ad> {
         return this.http.put<Ad>(this.path + id, ad);
     }
 
-    deleteAd(id: string) {
+    delete(id: string) {
         return this.http.delete(this.path + id);
     }
-
-    // getCategories(): Observable<Array<Category>> {
-    //     return this.http.get<Array<Category>>(`${this.path}categories`);
-    // }
 
     search(queryString: string): Observable<Array<Ad>> {
         return this.http.get<Array<Ad>>(this.pathWithoutSlash + queryString);

@@ -25,15 +25,6 @@ namespace Pazar.Ads.Services.Ads
         public async Task<Ad> FindById(int id)
             => await this.db.Ads.FirstOrDefaultAsync(ad => ad.Id == id);
 
-        public async Task<IEnumerable<AdVm>> GetAdsPerCategory(int id)
-                => await this.db.Categories
-                            .Where(c => c.Id == id)
-                            .Select(c => c.Ads
-                                            .Where(ad => ad.IsActive)
-                                            .OrderBy(ad => ad.Title))
-                            .ProjectTo<AdVm>(this.mapper.ConfigurationProvider)
-                            .ToListAsync();
-
         public async Task<AdVm> GetDetails(int id)
             => await this.db.Ads
                              .Where(ad => ad.Id == id)
@@ -45,6 +36,15 @@ namespace Pazar.Ads.Services.Ads
                         .Where(ad => ad.UserId == userId)
                         .ProjectTo<MyAdsVm>(this.mapper.ConfigurationProvider)
                         .ToListAsync();
+
+        public async Task<IEnumerable<AdVm>> GetAdsPerCategory(int id)
+                => await this.db.Categories
+                            .Where(c => c.Id == id)
+                            .Select(c => c.Ads
+                                            .Where(ad => ad.IsActive)
+                                            .OrderBy(ad => ad.Title))
+                            .ProjectTo<AdVm>(this.mapper.ConfigurationProvider)
+                            .ToListAsync();
 
         public async Task<int> Total(AdsQuery query)
             => await this.db.Ads.CountAsync();

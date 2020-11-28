@@ -22,7 +22,7 @@ export class CreateComponent implements OnInit {
     private categoriesService: CategoriesService,
     public toastr: ToastrService,
     private router: Router) {
-    this.categoriesService.getCategories().subscribe(res => {
+    this.categoriesService.all().subscribe(res => {
       this.categories = res;
     })
   }
@@ -38,7 +38,7 @@ export class CreateComponent implements OnInit {
   }
 
   create() {
-    this.adsService.createAd(this.adForm.value).subscribe(res => {
+    this.adsService.create(this.adForm.value).subscribe(res => {
       this.router.navigate(['ads', 'myads'])
     })
   }
