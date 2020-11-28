@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router) {
     if (localStorage.getItem('token')) {
-      this.router.navigate(['ads']);
+      this.router.navigate(['']);
     }
   }
 

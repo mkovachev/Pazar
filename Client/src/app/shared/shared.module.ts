@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NgStackFormsModule } from '@ng-stack/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './home/home.component';
@@ -16,9 +15,6 @@ import { ErrorInterceptorService } from './error-interceptor.service';
         CommonModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgStackFormsModule,
         ToastrModule.forRoot(),
         SharedRoutingModule,
     ],
@@ -34,6 +30,6 @@ import { ErrorInterceptorService } from './error-interceptor.service';
             multi: true
         },
     ],
-    exports: [ReactiveFormsModule, FormsModule,]
+    exports: [ReactiveFormsModule, FormsModule]
 })
 export class SharedModule { }

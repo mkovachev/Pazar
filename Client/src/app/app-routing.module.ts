@@ -1,25 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdsModule } from './ads/ads.module';
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: 'Auth',
     loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule)
   },
   {
-    path: 'shared',
+    path: 'Shared',
     loadChildren: () => import('./shared/shared-routing.module').then(m => m.SharedRoutingModule)
   },
   {
-    path: 'ads',
-    loadChildren: () => import('./ads/ads-routing.module').then(m => m.AdsRoutingModule)
+    path: 'Ads',
+    loadChildren: () => import('./ads/ads.module').then(m => m.AdsModule)
   },
   {
-    path: 'categories',
+    path: 'Categories',
     loadChildren: () => import('./categories/categories-routing.module').then(m => m.CategoriesRoutingModule)
   },
   {
-    path: 'users',
+    path: 'Users',
     loadChildren: () => import('./users/users-routing.module').then(m => m.UsersRoutingModule)
   },
 ];

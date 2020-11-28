@@ -9,7 +9,7 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     imports: [
         CommonModule,
         SharedModule,
-        CategoriesRoutingModule,
+        CategoriesRoutingModule
     ],
     exports: [AllCategoriesComponent]
 })
