@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Pazar.Ads.Data.Models;
 using static Pazar.Ads.Data.DataConstants.Categories;
+using static Pazar.Ads.Data.DataConstants.Image;
 
 namespace Pazar.Ads.Data.Configurations
 {
@@ -14,8 +15,13 @@ namespace Pazar.Ads.Data.Configurations
 
             builder
                 .Property(c => c.Name)
-                .IsRequired()
-                .HasMaxLength(NameMaxLength);
+                .HasMaxLength(NameMaxLength)
+                .IsRequired();
+
+            builder
+                .Property(c => c.Image)
+                .HasMaxLength(ImageUrlMaxLength)
+                .IsRequired();
 
             builder
                .HasMany(c => c.Ads)
