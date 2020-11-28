@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
-import { AuthenticationService } from '../authentication.service';
+import { AuthService } from '../auth.service';
 import { Login } from './login.model';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authenticationService: AuthenticationService,
+    private authService: AuthService,
     private router: Router) {
     if (localStorage.getItem('token')) {
       this.router.navigate(['ads']);
@@ -31,16 +31,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authenticationService.login(this.loginForm.value).subscribe(res => {
-      this.authenticationService.setToken(res.token);
+    this.authService.login(this.loginForm.value).subscribe(res => {
+      this.authService.setToken(res.token);
 
-      this.authenticationService.getUserId().subscribe(res => {
-        this.authenticationService.setId(res);
+      // this.authService.getUserId().subscribe(res => {
+      //   this.authService.setId(res);
 
-        this.router.navigate(['']).then(() => {
-          window.location.reload();
-        });
+      this.router.navigate(['']).then(() => {
+        window.location.reload();
       });
     });
+    //});
   }
 }

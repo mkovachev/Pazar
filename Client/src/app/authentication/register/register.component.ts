@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../authentication.service';
+import { AuthService } from '../auth.service';
 import { Register } from './register.model';
 
 @Component({
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authenticationService: AuthenticationService,
+    private authService: AuthService,
     private router: Router) { }
 
   ngOnInit() {
@@ -27,11 +27,11 @@ export class RegisterComponent implements OnInit {
     const { email, password } = this.registerForm.value;
     const userData = { email, password };
 
-    this.authenticationService.register(userData).subscribe(res => {
-      this.authenticationService.setToken(res.token);
+    this.authService.register(userData).subscribe(res => {
+      this.authService.setToken(res.token);
 
-      this.authenticationService.createUser(userData).subscribe(res => {
-        this.authenticationService.setId(res);
+      this.authService.createUser(userData).subscribe(res => {
+        this.authService.setId(res);
 
         this.router.navigate(['']).then(() => {
           window.location.reload();

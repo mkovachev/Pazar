@@ -8,7 +8,7 @@ import { ExtractGroupValue } from '@ng-stack/forms/lib/types';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthenticationService {
+export class AuthService {
     registerPath = `${environment.identityUrl}identity/register`;
     loginPath = `${environment.identityUrl}identity/login`;
     createUserPath = `${environment.usersUrl}users`;
@@ -32,11 +32,14 @@ export class AuthenticationService {
         return this.http.get(this.userIdPath);
     }
 
+    // get user id
+    setId(userId: string) {
+        localStorage.setItem('userId', userId);
+    }
+
+    // save token
     setToken(token: string) {
         localStorage.setItem('token', token);
     }
 
-    setId(userId: string) {
-        localStorage.setItem('userId', userId);
-    }
 }

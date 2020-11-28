@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('./authentication/authentication-routing.module').then(m => m.AuthenticationRoutingModule)
+    loadChildren: () => import('./authentication/auth-routing.module').then(m => m.AuthRoutingModule)
   },
   {
     path: 'ads',
