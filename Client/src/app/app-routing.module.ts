@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule)
   },
   {
+    path: 'shared',
+    loadChildren: () => import('./shared/shared-routing.module').then(m => m.SharedRoutingModule)
+  },
+  {
     path: 'ads',
     loadChildren: () => import('./ads/ads-routing.module').then(m => m.AdsRoutingModule)
   },
@@ -17,10 +21,6 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('./users/users-routing.module').then(m => m.UsersRoutingModule)
-  },
-  {
-    path: 'shared',
-    loadChildren: () => import('./shared/shared-routing.module').then(m => m.SharedRoutingModule)
   },
 ];
 

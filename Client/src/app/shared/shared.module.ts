@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './home/home.component';
 import { SharedRoutingModule } from './shared-routing.module';
-import { InterceptorService } from './interceptor.service';
+import { JwtInterceptorService } from './jwt-interceptor.service';
 import { ErrorInterceptorService } from './error-interceptor.service';
 
 @NgModule({
@@ -23,21 +23,16 @@ import { ErrorInterceptorService } from './error-interceptor.service';
         SharedRoutingModule,
     ],
     providers: [
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: InterceptorService,
-        //     multi: true
-        // },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: InterceptorService,
-        //     multi: true
-        // },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: ErrorInterceptorService,
-        //     multi: true
-        // },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptorService,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptorService,
+            multi: true
+        },
     ],
     exports: [ReactiveFormsModule, FormsModule,]
 })
