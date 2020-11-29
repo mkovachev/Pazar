@@ -4,11 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgStackFormsModule } from '@ng-stack/forms';
 
-import { AdsModule } from './ads/ads.module';
 import { SharedModule } from './shared/shared.module';
-import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { AdsModule } from './ads/ads.module';
 import { CategoriesModule } from './categories/categories.module';
+import { UsersModule } from './users/users.module';
 
 
 
@@ -18,8 +18,8 @@ import { CategoriesModule } from './categories/categories.module';
     AppComponent,
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule,
+    AppRoutingModule,
     NgStackFormsModule,
     SharedModule,
     AuthModule,

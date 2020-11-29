@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
 
 const routes: Routes = [
-    { path: '', component: AllCategoriesComponent },
+    { path: 'categories', component: AllCategoriesComponent },
 ];
 
 @NgModule({

@@ -26,6 +26,11 @@ import { ErrorInterceptorService } from './error-interceptor.service';
         },
         {
             provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptorService,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
             useClass: ErrorInterceptorService,
             multi: true
         },

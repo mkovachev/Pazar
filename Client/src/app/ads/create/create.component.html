@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label for="category">Select Category</label>
                     <select class="form-control" formControlName="category">
-                        <option *ngFor="let c of categories" [ngValue]="c.id">{{c.name}}</option>
+                        <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
                     </select>
                 </div>
                 <button class="btn btn-primary" type="submit" [disabled]="adForm.invalid">Create</button>

@@ -1,0 +1,30 @@
+<div class="container" *ngIf="ad">
+    <div class="row">
+        <div class="col-lg-6" style="border-right: 3px solid darkgrey;">
+            <img [src]="ad.imageUrl" alt="Ad image">
+        </div>
+        <div class="col-lg-6">
+            <div>
+                <h3>Titel:</h3><label>{{ ad.title }}</label>
+            </div>
+            <div>
+                <h3>Price: </h3><label>{{ ad.price }}</label>
+            </div>
+            <div>
+                <h3>Category:</h3><label>{{ ad.category }}</label>
+            </div>
+            <div>
+                <h3>Description:</h3> <label>${{ ad.description }}</label>
+            </div>
+            <!-- <div>
+                <h3>User Name: </h3><label>{{ ad.user.name }}</label>
+            </div>
+            <div>
+                <h3>User Phone: </h3><label>{{ ad.user.email }}</label>
+            </div>
+            <div>
+                <h3>User Phone: </h3><label>{{ ad.user.phoneNumber }}</label>
+            </div> -->
+        </div>
+    </div>
+</div>
