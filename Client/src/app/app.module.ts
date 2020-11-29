@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { AdsModule } from './ads/ads.module';
 import { CategoriesModule } from './categories/categories.module';
 import { UsersModule } from './users/users.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -20,6 +21,7 @@ import { UsersModule } from './users/users.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     NgStackFormsModule,
     SharedModule,
     AuthModule,

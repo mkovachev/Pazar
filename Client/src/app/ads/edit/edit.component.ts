@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CategoriesService } from 'src/app/categories/categories.service';
@@ -23,13 +23,9 @@ export class EditComponent implements OnInit {
     private adsService: AdsService,
     private categoriesService: CategoriesService,
     public toastr: ToastrService,
-    private router: Router) {
-    this.categoriesService.all().subscribe(res => {
-      this.categories = res;
-    })
-  }
-
-  ngOnInit(): void {
+    private router: Router,
+    private route: ActivatedRoute) {
+    this.id = this.route.snapshot.paramMap.get('id')!;
     this.adForm = this.fb.group<Ad>({
       id: [null],
       title: [null, Validators.required],
@@ -42,11 +38,44 @@ export class EditComponent implements OnInit {
     })
   }
 
+  async ngOnInit(): Promise<void> {
+    this.getCategories()
+    this.getAd()
+  }
+
   edit() {
     this.adsService.edit(this.id, this.adForm.value).subscribe(res => {
       this.router.navigate(['ads', 'myads'])
       this.toastr.success("Success")
     })
+  }
+
+  getCategories() {
+    this.categoriesService.all().subscribe(res => {
+      this.categories = res;
+    })
+  }
+
+  getAd() {
+    this.adsService.find(this.id).subscribe(ad => {
+      this.adForm = this.fb.group<Ad>({
+        id: [null],
+        title: [null, Validators.required],
+        price: [null, Validators.required],
+        description: [null, Validators.required],
+        imageUrl: [null, Validators.required],
+        category: [null, Validators.required],
+        isActive: [null],
+        //user: Profile
+      })
+      this.mapCategory(ad);
+      console.log(this.adForm.value)
+    })
+  }
+
+  mapCategory(ad: Ad) {
+    const category = this.categories.filter(c => c.id == ad.category)[0]
+    this.adForm.patchValue({ category: category.id })
   }
 
 }

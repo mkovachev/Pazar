@@ -1,1 +1,47 @@
-<p>my-ads works!</p>
+<div class="container-fluid">
+    <div class="row" *ngIf="ads && ads.length != 0; else noads">
+        <div class="col-lg-3">
+            <app-search (emitter)="assignAds($event)"></app-search>
+        </div>
+        <div class="col-lg-2" *ngFor="let ad of ads">
+            <div class="card">
+                <button class="btn btn-success" (click)="changeAvailability(ad.id.toString())"
+                        *ngIf="!ad.isActive">Show</button>
+                <button class="btn btn-info" (click)="changeAvailability(ad.id.toString())"
+                        *ngIf="ad.isActive">Hide</button>
+                <img [src]="ad.imageUrl" class="card-img-top" alt="Ad image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ ad.title }}</h5>
+                    <p class="card-text">${{ ad.price }}</p>
+                    <div *ngIf="ad.isActive">
+                        <a routerLink="/{{ad.id}}" class="btn btn-primary">Details</a>
+                        <a routerLink="/{{ad.id}}/edit" class="btn btn-warning">Edit</a>
+                        <button (click)="openModal(ad.id.toString())" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template class="row" #noads>
+        <h1>No ads Found</h1>
+    </ng-template>
+</div>
+
+<!-- <app-pop-up class="my-prompt" [isOpen]="popUpOpen">
+    <div class="pop-up-box" style="width: 30%">
+        <div class="box">
+            <header>
+                <span class="title">Delete item?</span>
+            </header>
+            <main>
+                Are you sure you want to delete this item?
+            </main>
+            <footer style="margin-top: 10%;">
+                <button class="btn btn-primary" (click)="deleteCar()"
+                        style="width: 25%; background-image: linear-gradient(#2D6AC6, #0747A6);">Delete</button>
+                <button class="btn btn-light" (click)="cancelModal()"
+                        style="margin-left: 25%; width: 25%; background-image: linear-gradient(#FFFFFF ,#DBE2EC); color: #0747A6;">Cancel</button>
+            </footer>
+        </div>
+    </div>
+</app-pop-up> -->

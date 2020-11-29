@@ -5,7 +5,6 @@ import { DetailsComponent } from './details/details.component';
 import { MyAdsComponent } from './my-ads/my-ads.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
-import { DeleteComponent } from './delete/delete.component';
 import { AuthGuardService as AuthGuard } from '../shared/auth-guard.service';
 
 const routes: Routes = [
@@ -13,8 +12,7 @@ const routes: Routes = [
     { path: 'ads:id', component: DetailsComponent },
     { path: 'ads/myads', component: MyAdsComponent, canActivate: [AuthGuard] },
     { path: 'ads/create', component: CreateComponent, canActivate: [AuthGuard] },
-    { path: 'ads:id/edit', component: EditComponent, canActivate: [AuthGuard] },
-    { path: 'ads:id/delete', component: DeleteComponent, canActivate: [AuthGuard] }
+    { path: 'ads:id/edit', component: EditComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

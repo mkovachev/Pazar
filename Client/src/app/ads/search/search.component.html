@@ -1,0 +1,25 @@
+<form [formGroup]="searchForm" (ngSubmit)="search()">
+    <div class="form-group">
+        <label for="title">Title: </label>
+        <input type="text" class="form-control" formControlName="title">
+    </div>
+    <div class="form-group">
+        <label for="user">User Name: </label>
+        <input type="text" class="form-control" formControlName="user">
+    </div>
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <select class="form-control" formControlName="category">
+            <option *ngFor="let c of categories" [ngValue]="c.id">{{c.name}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect2">Minimum Price: </label>
+        <input type="number" class="form-control" formControlName="minPricePerDay">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect2">Maximum Price: </label>
+        <input type="number" class="form-control" formControlName="maxPricePerDay">
+    </div>
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
