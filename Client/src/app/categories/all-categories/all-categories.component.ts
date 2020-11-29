@@ -6,6 +6,7 @@ import { Category } from '../category.model';
 @Component({
   selector: 'app-all-categories',
   templateUrl: './all-categories.component.html',
+  styleUrls: ['./all-categories.component.css']
 })
 export class AllCategoriesComponent implements OnInit {
   categories!: Array<Category>;
