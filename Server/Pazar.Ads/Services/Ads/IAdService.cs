@@ -9,6 +9,8 @@ namespace Pazar.Ads.Services.Ads
     {
         Task<Ad> FindById(int id);
 
+        Task<IEnumerable<AdVm>> GetAll();
+
         Task<IEnumerable<AdVm>> GetAdsPerCategory(int id);
 
         Task<IEnumerable<MyAdsVm>> MyAds(string userId);

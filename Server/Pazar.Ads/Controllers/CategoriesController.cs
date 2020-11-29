@@ -25,8 +25,8 @@ namespace Pazar.Ads.Controllers
 
 
         [HttpGet]
-        [Route(nameof(All))]
-        public async Task<IEnumerable<CategoryVm>> All()
+        //[Route(nameof(All))]
+        public async Task<IEnumerable<CategoryVm>> Index()
             => await this.categories.GetAll();
 
     }

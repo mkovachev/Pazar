@@ -17,7 +17,7 @@ export class CategoriesService {
   }
 
   all(): Observable<Array<Category>> {
-    return this.http.get<Array<Category>>(`${this.path}all`);
+    return this.http.get<Array<Category>>(this.path);
   }
 
   create(category: Category): Observable<Category> {

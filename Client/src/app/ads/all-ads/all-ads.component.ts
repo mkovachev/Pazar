@@ -20,11 +20,7 @@ export class AllAdsComponent implements OnInit {
     })
   }
 
-  // assignAds(event: any) {
-  //   this.ads = event['ads'];
-  // }
-  
-  adDetails(id: number) {
-    this.router.navigate(['ads'], { queryParams: { id } });
+  assignAds(event: any) {
+    this.ads = event['ads'];
   }
 }

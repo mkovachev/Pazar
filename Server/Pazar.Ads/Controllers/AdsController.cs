@@ -20,8 +20,12 @@ namespace Pazar.Ads.Controllers
             this.user = user;
         }
 
+        [HttpGet]
+        public async Task<IEnumerable<AdVm>> Index()
+          => await this.ads.GetAll();
+
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize]
         [Route(nameof(Create))]
         public async Task<ActionResult<int>> Create(AdIm input)
             => await this.ads.Create(input);

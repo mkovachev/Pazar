@@ -21,4 +21,8 @@ export class DetailsComponent implements OnInit {
       this.ad = ad;
     });
   }
+  
+  // adDetails(id: number) {
+  //   this.router.navigate(['ads'], { queryParams: { id } });
+  // }
 }

@@ -22,6 +22,12 @@ namespace Pazar.Ads.Services.Ads
             this.mapper = mapper;
         }
 
+        public async Task<IEnumerable<AdVm>> GetAll()
+            => await this.db.Ads
+                            .OrderByDescending(ad => ad.CreatedOn)
+                            .ProjectTo<AdVm>(this.mapper.ConfigurationProvider)
+                            .ToListAsync();
+
         public async Task<Ad> FindById(int id)
             => await this.db.Ads.FirstOrDefaultAsync(ad => ad.Id == id);
 
