@@ -26,11 +26,11 @@ export class SortComponent implements OnInit {
     })
   }
 
-  // sort() {
-  //   this.adsService.sort(this.getQueryUrl()).subscribe(ads => {
-  //     this.emitter.emit(ads)
-  //   })
-  // }
+  sort() {
+    //this.adsService.sort(this.getQueryUrl()).subscribe(ads => {
+    //  this.emitter.emit(ads)
+   // })
+  }
 
   // getQueryUrl() {
   //   const params = new URLSearchParams();

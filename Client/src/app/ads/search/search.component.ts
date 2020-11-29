@@ -44,12 +44,12 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  // search() {
-  //   var queryString = this.getQueryUrl();
-  //   this.adsService.search(queryString).subscribe(cars => {
-  //     this.emitter.emit(cars)
-  //   })
-  // }
+  search() {
+    //var queryString = this.getQueryUrl();
+    //this.adsService.search(queryString).subscribe(cars => {
+     // this.emitter.emit(cars)
+    //})
+  }
 
   // getQueryUrl() {
   //   const params = new URLSearchParams();
