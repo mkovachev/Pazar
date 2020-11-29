@@ -1,8 +1,7 @@
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-lg-3">
-            <!-- <app-search (emitter)="assignCars($event)"></app-search> -->
+            <!-- <app-search (emitter)="assignAds($event)"></app-search> -->
         </div>
         <div class="col-lg-9" *ngIf="ads && ads.length != 0; else noAds">
             <div class="row">
@@ -10,8 +9,8 @@
                     <div class="card">
                         <img [src]="ad.imageUrl" class="card-img-top" alt="Ad image">
                         <div class="card-body">
-                            <h5 class="card-title">{{ ad.title }}</h5>
-                            <p class="card-text">${{ ad.price }}</p>
+                            <h5 class="card-title">{{ad.title}}</h5>
+                            <p class="card-text">${{ad.price}}</p>
                             <a routerLink="/{{ad.id}}" class="btn btn-primary">Details</a>
                         </div>
                     </div>

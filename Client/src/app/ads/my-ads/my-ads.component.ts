@@ -25,16 +25,6 @@ export class MyAdsComponent implements OnInit {
     })
   }
 
-  openModal(id: string) {
-    this.popUpOpen = true;
-    this.id = id;
-  }
-
-  cancelModal() {
-    this.popUpOpen = false;
-    this.id = '';
-  }
-
   assignAds(event: any) {
     this.ads = event['ads'];
   }
@@ -50,6 +40,16 @@ export class MyAdsComponent implements OnInit {
     this.adsService.changeAvailability(id).subscribe(res => {
       this.getMyAds()
     })
+  }
+
+  openModal(id: string) {
+    this.popUpOpen = true;
+    this.id = id;
+  }
+
+  cancelModal() {
+    this.popUpOpen = false;
+    this.id = '';
   }
 
 }

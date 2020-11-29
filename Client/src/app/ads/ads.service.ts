@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Ad } from './ad.model';
+import { AdCreate } from './adcreate.model';
 
 @Injectable({
     providedIn: 'root'
@@ -25,7 +26,7 @@ export class AdsService {
         return this.http.get<Array<Ad>>(`${this.path}myads`);
     }
 
-    create(ad: Ad): Observable<Ad> {
+    create(ad: AdCreate): Observable<AdCreate> {
         return this.http.post<Ad>(this.path, ad);
     }
 
