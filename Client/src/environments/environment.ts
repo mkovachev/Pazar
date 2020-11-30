@@ -3,7 +3,7 @@ export const environment = {
   identityUrl: 'http://localhost:5001/',
   adsUrl: 'http://localhost:5002/',
   categoriesUrl: 'http://localhost:5003/',
-  usersUrl: 'http://localhost:5004/',
+  usersUrl: 'http://localhost:5002/',
   statisticsUrl: 'http://localhost:5005/',
   notificationsUrl: 'http://localhost:5006/'
 };

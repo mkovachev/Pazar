@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpInterceptor, HttpEvent } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
 })
-export class JwtInterceptorService {
+export class JwtInterceptorService implements HttpInterceptor{
 
     constructor() { }
 
-    intercept(request: HttpRequest<any>, next: HttpHandler,) {
+    intercept(request: HttpRequest<any>, next: HttpHandler,)
+        : Observable<HttpEvent<any>> {
         request = request.clone({
             setHeaders: {
                 'Content-Type': 'application/json',

@@ -29,9 +29,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.id = localStorage.getItem('userId')!;
     this.profileService.getUser(this.id).subscribe(u => {
-      //this.user = u
+      this.user = u
       console.log(u.name)
       this.profileForm = this.fb.group<Profile>({
+        id: [this.user.id, Validators.required],
         name: [this.user.name, Validators.required],
         phoneNumber: [this.user.phoneNumber, Validators.required],
       })
