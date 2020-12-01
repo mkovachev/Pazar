@@ -5,7 +5,10 @@ using Pazar.Ads.Data;
 using Pazar.Ads.Data.Models;
 using Pazar.Ads.Models;
 using Pazar.Core.Exceptions;
+using Pazar.Core.Services.Identity;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,11 +18,13 @@ namespace Pazar.Ads.Services.Ads
     {
         private readonly PazarDbContext db;
         private readonly IMapper mapper;
+        private readonly ILoggedUserService user;
 
-        public AdService(PazarDbContext db, IMapper mapper)
+        public AdService(PazarDbContext db, IMapper mapper, ILoggedUserService user)
         {
             this.db = db;
             this.mapper = mapper;
+            this.user = user;
         }
 
         public async Task<IEnumerable<AdVm>> GetAll()
@@ -60,6 +65,11 @@ namespace Pazar.Ads.Services.Ads
 
             var category = await this.db.Categories.FirstOrDefaultAsync(c => c.Name == input.Category);
 
+            if (category == null)
+            {
+                throw new InvalidOperationException($"This {input.Category} doesn't exits");
+            }
+
             var ad = new Ad
             {
                 Title = input.Title,
@@ -67,7 +77,7 @@ namespace Pazar.Ads.Services.Ads
                 Description = input.Description,
                 Images = input.Images,
                 Category = category,
-                UserId = input.UserId
+                UserId = user.Id
             };
 
             this.db.Ads.Add(ad);
