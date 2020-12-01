@@ -35,7 +35,7 @@ namespace Pazar.Core.Extensions
                 .AddTokenAuthentication(configuration)
                 .AddHealth(configuration, databaseHealthChecks, messagingHealthChecks)
                 .AddAutoMapperProfile(Assembly.GetCallingAssembly())
-                .AddCors()
+                //.AddCors()
                 .AddControllers();
 
             return services;
@@ -105,13 +105,13 @@ namespace Pazar.Core.Extensions
         {
             services
                 .AddHttpContextAccessor()
-                .AddScoped<IUserService, UserService>();
+                .AddScoped<ILoggedUserService, LoggedUserService>();
 
             var secret = configuration
                 .GetSection(nameof(ApplicationSettings))
                 .GetValue<string>(nameof(ApplicationSettings.Secret));
 
-            var key = Encoding.ASCII.GetBytes(nameof(ApplicationSettings.Secret));
+            var key = Encoding.ASCII.GetBytes("S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
 
             services
                 .AddAuthentication(authentication =>

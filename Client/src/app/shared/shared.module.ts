@@ -19,11 +19,11 @@ import { ErrorInterceptorService } from './error-interceptor.service';
         SharedRoutingModule,
     ],
     providers: [
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: JwtInterceptorService,
-        //     multi: true
-        // },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptorService,
+            multi: true
+        },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptorService,

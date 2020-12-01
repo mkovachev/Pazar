@@ -9,7 +9,7 @@ import { PasswordChange } from './password.model';
     providedIn: 'root'
 })
 export class ProfileService {
-    userPath: string = `${environment.usersUrl}Users/`
+    userPath: string = `${environment.adsUrl}users/`
     constructor(private http: HttpClient) { }
 
     getUser(id: string): Observable<Profile> {

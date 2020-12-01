@@ -19,6 +19,10 @@
                     <input type="text" class="form-control" formControlName="imageUrl">
                 </div>
                 <div class="form-group">
+                    <label for="userId">User Id</label>
+                    <input type="text" class="form-control" formControlName="userId">
+                </div>
+                <div class="form-group">
                     <label for="category">Select Category</label>
                     <select class="form-control" formControlName="category">
                         <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>

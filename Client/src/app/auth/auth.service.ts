@@ -11,8 +11,8 @@ import { ExtractGroupValue } from '@ng-stack/forms/lib/types';
 export class AuthService {
     registerPath = `${environment.identityUrl}identity/register`;
     loginPath = `${environment.identityUrl}identity/login`;
-    createUserPath = `${environment.usersUrl}users`;
-    userIdPath = `${environment.usersUrl}user/id`;
+    createUserPath = `${environment.adsUrl}identity/users`;
+    userIdPath = `${environment.identityUrl}identity/id`;
 
     constructor(private http: HttpClient) { }
 
@@ -28,7 +28,7 @@ export class AuthService {
         return this.http.post(this.loginPath, payload);
     }
 
-    isAuthenticated() {
+    getToken() {
         return localStorage.getItem('token');
     }
 

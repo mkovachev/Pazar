@@ -11,13 +11,19 @@ namespace Pazar.Identity.Controllers
     public class IdentityController : ApiController
     {
         private readonly IIdentityService identity;
-        private readonly IUserService user;
+        private readonly ILoggedUserService user;
 
-        public IdentityController(IIdentityService identity, IUserService user)
+        public IdentityController(IIdentityService identity, ILoggedUserService user)
         {
             this.identity = identity;
             this.user = user;
         }
+
+
+        [HttpGet]
+        [Route(Id)]
+        public async Task<ActionResult<string>> GetId()
+            => await this.identity.GetId();
 
         [HttpPost]
         [Route(nameof(Register))]
@@ -44,7 +50,7 @@ namespace Pazar.Identity.Controllers
                 return BadRequest(result.Errors); // return Unauthorized();
             }
 
-            return new UserVm(result.Data.Token);
+            return new UserVm(result.Data.Token); // result.Data.Id
         }
 
         [HttpPut]

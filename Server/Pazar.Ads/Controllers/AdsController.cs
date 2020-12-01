@@ -12,9 +12,9 @@ namespace Pazar.Ads.Controllers
     public class AdsController : ApiController
     {
         private readonly IAdService ads;
-        private readonly IUserService user;
+        private readonly ILoggedUserService user;
 
-        public AdsController(IAdService ads, IUserService user)
+        public AdsController(IAdService ads, ILoggedUserService user)
         {
             this.ads = ads;
             this.user = user;
@@ -29,6 +29,11 @@ namespace Pazar.Ads.Controllers
         [Route(nameof(Create))]
         public async Task<ActionResult<int>> Create(AdIm input)
             => await this.ads.Create(input);
+
+        [HttpGet]
+        [Route(Id)]
+        public async Task<ActionResult<AdVm>> Details(int id)
+           => await this.ads.GetDetails(id);
 
         [HttpPut]
         [Authorize]

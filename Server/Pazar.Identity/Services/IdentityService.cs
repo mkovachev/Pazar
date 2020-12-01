@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Pazar.Core.Services;
+using Pazar.Core.Services.Identity;
 using Pazar.Identity.Data.Models;
 using Pazar.Identity.Models;
 using System.Linq;
@@ -14,13 +15,15 @@ namespace Pazar.Identity.Services
 
         private readonly UserManager<User> userManager;
         private readonly ITokenGeneratorService jwtTokenGenerator;
+        private readonly ILoggedUserService loggedUser;
 
         public IdentityService(
             UserManager<User> userManager,
-            ITokenGeneratorService jwtTokenGenerator)
+            ITokenGeneratorService jwtTokenGenerator, ILoggedUserService loggedUser)
         {
             this.userManager = userManager;
             this.jwtTokenGenerator = jwtTokenGenerator;
+            this.loggedUser = loggedUser;
         }
 
         public async Task<Result<User>> Register(UserIm userInput)
@@ -60,7 +63,7 @@ namespace Pazar.Identity.Services
 
             var token = this.jwtTokenGenerator.GenerateToken(user, roles);
 
-            return new UserVm(token);
+            return new UserVm(token); //, user.Id
         }
 
         public async Task<Result> ChangePassword(string userId, ChangePasswordIm changePasswordInput)
@@ -97,5 +100,18 @@ namespace Pazar.Identity.Services
 
             return Result.Success;
         }
+
+        public Task<string> GetId()
+        {
+            var userId = this.loggedUser.Id;
+
+            //if (userId == null)
+            //{
+            //    return InvalidUserId;
+            //}
+
+            return Task.Run(() => this.loggedUser.Id);
+        }
+
     }
 }

@@ -28,7 +28,7 @@ namespace Pazar.Ads.Models
 
         public string UserId { get; set; }
 
-        [Required]
+        //[Required]
         [Url]
         public ICollection<Image> Images { get; }
     }

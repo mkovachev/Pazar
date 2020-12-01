@@ -12,14 +12,15 @@ namespace Pazar.Ads.Data
 {
     public class PazarDbContext : MessageDbContext
     {
-        private readonly IUserService userService;
+        private readonly ILoggedUserService userService;
         private readonly IDateTime dateTime;
 
-        public PazarDbContext(DbContextOptions<PazarDbContext> options, IDateTime dateTime)
+        public PazarDbContext(DbContextOptions<PazarDbContext> options, IDateTime dateTime, ILoggedUserService userService)
             : base(options)
         {
-            this.userService = default!;
+            this.userService = userService;
             this.dateTime = dateTime;
+            this.userService = userService;
         }
 
         public DbSet<Ad> Ads { get; set; }

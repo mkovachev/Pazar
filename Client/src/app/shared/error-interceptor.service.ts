@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
@@ -17,10 +16,10 @@ export class ErrorInterceptorService implements HttpInterceptor {
             catchError((err) => {
                 let message = ""
                 if (err.status === 401) {
-                    message = "401 Unauthorized: Please login"
+                    message = "401 Unauthorized"
                 }
                 else if (err.status === 404) {
-                    message = "404 Not Found"
+                    message = "404 Not Found: Source doesn't exits"
                 }
                 else if (err.status === 400) {
                     message = "400"

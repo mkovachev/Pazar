@@ -14,5 +14,7 @@ namespace Pazar.Identity.Services
         Task<Result> ChangePassword(string userId, ChangePasswordIm changePasswordInput);
 
         Task<Result> DeleteUser(string userId);
+
+        Task<string> GetId();
     }
 }

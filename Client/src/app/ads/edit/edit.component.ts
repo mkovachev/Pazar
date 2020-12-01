@@ -33,8 +33,8 @@ export class EditComponent implements OnInit {
       description: [null, Validators.required],
       imageUrl: [null, Validators.required],
       category: [null, Validators.required],
-      isActive: [null],
-      //user: Profile
+      isActive: [null, Validators.required],
+      //user: userProfile
     })
   }
 

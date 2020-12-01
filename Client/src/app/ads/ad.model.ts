@@ -8,5 +8,5 @@ export interface Ad {
     imageUrl: string;
     category: number;
     isActive: boolean;
-    //user?: Profile;
+    //user: Profile;
 }

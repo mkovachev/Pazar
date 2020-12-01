@@ -29,14 +29,12 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.adForm = this.fb.group<AdCreate>({
-      //id: [null],
       title: [null, Validators.required],
       price: [null, Validators.required],
       description: [null, Validators.required],
       imageUrl: [null, Validators.required],
       category: [null, Validators.required],
-      //isActive: [null],
-      //user: Profile
+      userId: [null, Validators.required],
     })
   }
 
