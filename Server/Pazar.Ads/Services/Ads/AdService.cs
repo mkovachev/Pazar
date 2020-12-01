@@ -89,13 +89,17 @@ namespace Pazar.Ads.Services.Ads
 
         public async Task<int> Edit(int id)
         {
-            // Todo check if ad belongs to user
 
             var ad = await this.db.Ads.FindAsync(id);
 
             if (ad == null)
             {
-                throw new NotFoundException(nameof(Ad));
+                throw new NotFoundException($"{ad} doesn't exists");
+            }
+
+            if (ad.UserId != this.user.Id)
+            {
+                throw new InvalidOperationException("You are not the owner of this ad");
             }
 
             this.db.Entry(ad).State = EntityState.Modified;
