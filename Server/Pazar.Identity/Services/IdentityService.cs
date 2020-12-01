@@ -106,10 +106,10 @@ namespace Pazar.Identity.Services
         {
             var userId = this.user.Id;
 
-            //if (userId == null)
-            //{
-            //    return InvalidUserId;
-            //}
+            if (userId == null)
+            {
+                return Task.Run(() => InvalidUserId);
+            }
 
             return Task.Run(() => this.user.Id);
         }
