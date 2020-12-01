@@ -19,10 +19,10 @@ export class ErrorInterceptorService implements HttpInterceptor {
                     message = "401 Unauthorized"
                 }
                 else if (err.status === 404) {
-                    message = "404 Not Found: Source doesn't exits"
+                    message = "404 Not Found"
                 }
                 else if (err.status === 400) {
-                    message = "400"
+                    message = "400 Invalid input"
                 }
                 else {
                     message = "Unknown error"

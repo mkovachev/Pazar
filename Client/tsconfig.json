@@ -19,9 +19,9 @@
     "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
+    //"enableIvy": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    //"enableIvy": false
+    "strictTemplates": true
   }
 }

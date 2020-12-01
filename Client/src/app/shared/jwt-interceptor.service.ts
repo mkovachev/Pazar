@@ -13,7 +13,7 @@ export class JwtInterceptorService implements HttpInterceptor {
         : Observable<HttpEvent<any>> {
         request = request.clone({
             setHeaders: {
-                //'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${this.auth.getToken()}`
             }
         });

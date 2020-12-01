@@ -1,6 +1,6 @@
 ﻿namespace Pazar.Core
 {
-    public class ApplicationSettings
+    public class AppSettings
     {
         public string Secret { get; private set; } = "THIS IS A TEST SECRET TO SIGN AND VERIFY JWT TOKENS";
 

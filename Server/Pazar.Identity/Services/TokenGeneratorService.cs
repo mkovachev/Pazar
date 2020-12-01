@@ -13,9 +13,9 @@ namespace Pazar.Identity.Services
 {
     public class TokenGeneratorService : ITokenGeneratorService
     {
-        private readonly ApplicationSettings applicationSettings;
+        private readonly AppSettings applicationSettings;
 
-        public TokenGeneratorService(IOptions<ApplicationSettings> applicationSettings)
+        public TokenGeneratorService(IOptions<AppSettings> applicationSettings)
         {
             this.applicationSettings = applicationSettings.Value;
         }

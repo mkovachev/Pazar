@@ -13,13 +13,13 @@ namespace Pazar.Identity.Data
     {
         private readonly UserManager<User> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
-        private readonly ApplicationSettings applicationSettings;
+        private readonly AppSettings applicationSettings;
         private readonly IdentitySettings identitySettings;
 
         public IdentityDataSeeder(
             UserManager<User> userManager,
             RoleManager<IdentityRole> roleManager,
-            IOptions<ApplicationSettings> applicationSettings,
+            IOptions<AppSettings> applicationSettings,
             IOptions<IdentitySettings> identitySettings)
         {
             this.userManager = userManager;

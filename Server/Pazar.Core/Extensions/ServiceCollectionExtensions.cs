@@ -94,8 +94,8 @@ namespace Pazar.Core.Extensions
             this IServiceCollection services,
             IConfiguration configuration)
             => services
-                .Configure<ApplicationSettings>(
-                    configuration.GetSection(nameof(ApplicationSettings)),
+                .Configure<AppSettings>(
+                    configuration.GetSection(nameof(AppSettings)),
                     config => config.BindNonPublicProperties = true);
 
         public static IServiceCollection AddTokenAuthentication(
@@ -108,10 +108,10 @@ namespace Pazar.Core.Extensions
                 .AddScoped<ILoggedUserService, LoggedUserService>();
 
             var secret = configuration
-                .GetSection(nameof(ApplicationSettings))
-                .GetValue<string>(nameof(ApplicationSettings.Secret));
+                .GetSection(nameof(AppSettings))
+                .GetValue<string>(nameof(AppSettings.Secret)); // Todo null
 
-            var key = Encoding.ASCII.GetBytes("S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+            var key = Encoding.ASCII.GetBytes("THIS IS A TEST SECRET TO SIGN AND VERIFY JWT TOKENS");
 
             services
                 .AddAuthentication(authentication =>
