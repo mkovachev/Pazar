@@ -1,7 +1,4 @@
-﻿using Pazar.Ads.Data.Models;
-using System.Collections.Generic;
-
-namespace Pazar.Ads.Models
+﻿namespace Pazar.Ads.Models
 {
     public class AdsQuery
     {
@@ -15,7 +12,7 @@ namespace Pazar.Ads.Models
 
         public int CategoryId { get; set; }
 
-        public ICollection<Image> Images { get; }
+        public string Image { get; }
 
         public string SortBy { get; set; }
 

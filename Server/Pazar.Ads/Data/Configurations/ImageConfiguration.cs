@@ -18,11 +18,11 @@ namespace Pazar.Ads.Data.Configurations
               .HasMaxLength(ImageUrlMaxLength)
               .IsRequired();
 
-            builder
-                .HasOne(i => i.Ad)
-                .WithMany(ad => ad.Images)
-                .HasForeignKey(ad => ad.AdId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .HasOne(i => i.Ad)
+            //    .WithMany(ad => ad.Images)
+            //    .HasForeignKey(ad => ad.AdId)
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Pazar.Ads.Data.Models;
 using Pazar.Core.Mappings;
-using System.Collections.Generic;
 
 namespace Pazar.Ads.Models
 {
@@ -13,11 +12,14 @@ namespace Pazar.Ads.Models
 
         public string Description { get; set; }
 
+        public string Image { get; set; }
+
+        //public ICollection<Image> Images { get; }
+
         public string Category { get; set; }
 
-        public string UserId { get; set; }
+        //public string UserId { get; set; }
 
-        public ICollection<Image> Images { get; }
 
         public virtual void Mapping(Profile mapper)
            => mapper

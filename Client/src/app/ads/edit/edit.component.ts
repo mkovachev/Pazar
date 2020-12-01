@@ -32,8 +32,8 @@ export class EditComponent implements OnInit {
       price: [null, Validators.required],
       description: [null, Validators.required],
       imageUrl: [null, Validators.required],
+      isActive: [null],
       category: [null, Validators.required],
-      isActive: [null, Validators.required],
       //user: userProfile
     })
   }
@@ -74,8 +74,8 @@ export class EditComponent implements OnInit {
   }
 
   mapCategory(ad: Ad) {
-    const category = this.categories.filter(c => c.id == ad.category)[0]
-    this.adForm.patchValue({ category: category.id })
+    const category = this.categories.filter(c => c.name == ad.category)[0]
+    this.adForm.patchValue({ category: category.name })
   }
 
 }

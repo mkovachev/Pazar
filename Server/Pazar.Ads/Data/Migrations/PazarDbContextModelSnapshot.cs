@@ -49,6 +49,11 @@ namespace Pazar.Ads.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -120,7 +125,7 @@ namespace Pazar.Ads.Data.Migrations
 
                     b.HasIndex("AdId");
 
-                    b.ToTable("Images");
+                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("Pazar.Core.Data.Models.Message", b =>
@@ -160,17 +165,12 @@ namespace Pazar.Ads.Data.Migrations
             modelBuilder.Entity("Pazar.Ads.Data.Models.Image", b =>
                 {
                     b.HasOne("Pazar.Ads.Data.Models.Ad", "Ad")
-                        .WithMany("Images")
+                        .WithMany()
                         .HasForeignKey("AdId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Ad");
-                });
-
-            modelBuilder.Entity("Pazar.Ads.Data.Models.Ad", b =>
-                {
-                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("Pazar.Ads.Data.Models.Category", b =>

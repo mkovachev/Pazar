@@ -11,8 +11,8 @@ const routes: Routes = [
     { path: 'ads', component: AllAdsComponent },
     { path: 'ads/create', component: CreateComponent, canActivate: [AuthGuard] },
     { path: 'ads/:id', component: DetailsComponent },
+    { path: 'ads/edit/:id', component: EditComponent, canActivate: [AuthGuard] },
     { path: 'ads/myads', component: MyAdsComponent, canActivate: [AuthGuard] },
-    { path: 'ads/edit/:id', component: EditComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

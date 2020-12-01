@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
 import { ToastrService } from 'ngx-toastr';
-import { AdCreate } from '../adcreate.model';
 import { AdsService } from '../ads.service';
 import { Category } from '../../categories/category.model';
 import { CategoriesService } from 'src/app/categories/categories.service';
+import { Ad } from '../ad.model';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { CategoriesService } from 'src/app/categories/categories.service';
   templateUrl: './create.component.html',
 })
 export class CreateComponent implements OnInit {
-  adForm!: FormGroup<AdCreate>;
+  adForm!: FormGroup<Ad>;
   categories!: Array<Category>;
 
   constructor(
@@ -28,13 +28,14 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.adForm = this.fb.group<AdCreate>({
+    this.adForm = this.fb.group<Ad>({
+      id: [null],
       title: [null, Validators.required],
       price: [null, Validators.required],
       description: [null, Validators.required],
       imageUrl: [null, Validators.required],
       category: [null, Validators.required],
-      userId: [null, Validators.required],
+      isActive: [null]
     })
   }
 

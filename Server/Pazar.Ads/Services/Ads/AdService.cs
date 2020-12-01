@@ -8,7 +8,6 @@ using Pazar.Core.Exceptions;
 using Pazar.Core.Services.Identity;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -75,7 +74,7 @@ namespace Pazar.Ads.Services.Ads
                 Title = input.Title,
                 Price = input.Price,
                 Description = input.Description,
-                Images = input.Images,
+                Image = input.Image,
                 Category = category,
                 UserId = user.Id
             };

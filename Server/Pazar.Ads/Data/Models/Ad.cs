@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Pazar.Ads.Data.Models
+﻿namespace Pazar.Ads.Data.Models
 {
     public class Ad : AuditableEntity
     {
@@ -12,6 +10,9 @@ namespace Pazar.Ads.Data.Models
 
         public string Description { get; set; }
 
+        public string Image { get; set; }
+        //public ICollection<Image> Images { get; set; } = new List<Image>();
+
         public bool IsActive { get; set; } = true;
 
         public int CategoryId { get; set; }
@@ -19,6 +20,5 @@ namespace Pazar.Ads.Data.Models
 
         public string UserId { get; set; }
 
-        public ICollection<Image> Images { get; set; } = new List<Image>();
     }
 }

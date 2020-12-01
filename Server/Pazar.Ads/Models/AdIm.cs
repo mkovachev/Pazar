@@ -1,6 +1,4 @@
-﻿using Pazar.Ads.Data.Models;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Pazar.Ads.Models
 {
@@ -13,7 +11,7 @@ namespace Pazar.Ads.Models
         [MaxLength(TitleMaxLength)]
         public string Title { get; set; }
 
-        [RegularExpression(@"^\d+\.\d{0,2}$")]
+        //[RegularExpression(@"^\d+\.\d{0,2}$")]
         [Range((double)MinPrice, (double)MaxPrice)]
         public decimal Price { get; set; }
 
@@ -22,14 +20,13 @@ namespace Pazar.Ads.Models
         [MaxLength(DescriptionMaxLength)]
         public string Description { get; set; }
 
+        [Required]
+        [Url]
+        public string Image { get; set; }
+        //public ICollection<Image> Images { get; }
 
         [Required]
         public string Category { get; set; }
 
-        //public string UserId { get; set; }
-
-        [Required]
-        [Url]
-        public ICollection<Image> Images { get; }
     }
 }

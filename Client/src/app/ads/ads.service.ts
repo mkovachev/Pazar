@@ -3,13 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Ad } from './ad.model';
-import { AdCreate } from './adcreate.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AdsService {
-    path = `${environment.adsUrl}ads/`;
+    path = environment.adsUrl + 'ads/';
     pathWithoutSlash = this.path.slice(0, -1);
 
     constructor(private http: HttpClient) { }
@@ -23,11 +22,11 @@ export class AdsService {
     }
 
     myAds(): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(`${this.path}myads`);
+        return this.http.get<Array<Ad>>(this.path + 'myads');
     }
 
-    create(ad: AdCreate): Observable<AdCreate> {
-        return this.http.post<AdCreate>(this.path, ad);
+    create(ad: Ad): Observable<Ad> {
+        return this.http.post<Ad>(this.path, ad);
     }
 
     edit(id: string, ad: Ad): Observable<Ad> {

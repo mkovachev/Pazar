@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Pazar.Core.Services.Data;
-using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Pazar.Core.Services.Identity
 {
-    using static DataConstants.Identity;
     public class LoggedUserService : ILoggedUserService
     {
         private readonly IHttpContextAccessor accessor;

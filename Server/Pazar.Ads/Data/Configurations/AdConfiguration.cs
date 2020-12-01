@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Pazar.Ads.Data.Models;
 using static Pazar.Ads.Data.DataConstants.Ads;
+using static Pazar.Ads.Data.DataConstants.Image;
 
 namespace Pazar.Ads.Data.Configurations
 {
@@ -32,6 +33,17 @@ namespace Pazar.Ads.Data.Configurations
              .HasMaxLength(DescriptionMaxLength);
 
             builder
+             .Property(ad => ad.Image)
+             .IsRequired()
+             .HasMaxLength(ImageUrlMaxLength);
+
+            //builder
+            //    .HasMany(ad => ad.Images)
+            //    .WithOne(i => i.Ad)
+            //    .HasForeignKey(ad => ad.AdId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            builder
              .Property(ad => ad.IsActive)
              .IsRequired();
 
@@ -45,11 +57,6 @@ namespace Pazar.Ads.Data.Configurations
                 .Property(ad => ad.UserId)
                 .IsRequired();
 
-            builder
-                .HasMany(ad => ad.Images)
-                .WithOne(i => i.Ad)
-                .HasForeignKey(ad => ad.AdId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
