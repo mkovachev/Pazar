@@ -94,7 +94,7 @@ namespace Pazar.Core.Extensions
             this IServiceCollection services,
             IConfiguration configuration)
             => services
-                .Configure<AppSettings>( // configure app settings
+                .Configure<AppSettings>(
                     configuration.GetSection(nameof(AppSettings)),
                     config => config.BindNonPublicProperties = true);
 
@@ -107,7 +107,6 @@ namespace Pazar.Core.Extensions
                 .AddHttpContextAccessor()
                 .AddScoped<ILoggedUserService, LoggedUserService>();
 
-            // get key from appSettings
             var secret = configuration
                 .GetSection(nameof(AppSettings))
                 .GetValue<string>(nameof(AppSettings.Secret)); // Todo null

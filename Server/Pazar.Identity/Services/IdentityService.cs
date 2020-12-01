@@ -15,15 +15,16 @@ namespace Pazar.Identity.Services
 
         private readonly UserManager<User> userManager;
         private readonly ITokenGeneratorService jwtTokenGenerator;
-        private readonly ILoggedUserService loggedUser;
+        private readonly ILoggedUserService user;
 
         public IdentityService(
             UserManager<User> userManager,
-            ITokenGeneratorService jwtTokenGenerator, ILoggedUserService loggedUser)
+            ITokenGeneratorService jwtTokenGenerator,
+            ILoggedUserService user)
         {
             this.userManager = userManager;
             this.jwtTokenGenerator = jwtTokenGenerator;
-            this.loggedUser = loggedUser;
+            this.user = user;
         }
 
         public async Task<Result<User>> Register(UserIm userInput)
@@ -103,14 +104,14 @@ namespace Pazar.Identity.Services
 
         public Task<string> GetId()
         {
-            var userId = this.loggedUser.Id;
+            var userId = this.user.Id;
 
             //if (userId == null)
             //{
             //    return InvalidUserId;
             //}
 
-            return Task.Run(() => this.loggedUser.Id);
+            return Task.Run(() => this.user.Id);
         }
 
     }

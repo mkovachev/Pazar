@@ -12,15 +12,17 @@ namespace Pazar.Ads.Data
 {
     public class PazarDbContext : MessageDbContext
     {
-        private readonly ILoggedUserService userService;
         private readonly IDateTime dateTime;
+        private readonly ILoggedUserService user;
 
-        public PazarDbContext(DbContextOptions<PazarDbContext> options, IDateTime dateTime, ILoggedUserService userService)
+        public PazarDbContext(
+            DbContextOptions<PazarDbContext> options,
+            IDateTime dateTime,
+            ILoggedUserService user)
             : base(options)
         {
-            this.userService = userService;
             this.dateTime = dateTime;
-            this.userService = userService;
+            this.user = user;
         }
 
         public DbSet<Ad> Ads { get; set; }
@@ -46,15 +48,15 @@ namespace Pazar.Ads.Data
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedBy = userService.Id;
+                        entry.Entity.CreatedBy = user.Id;
                         entry.Entity.CreatedOn = dateTime.UtcNow();
                         break;
                     case EntityState.Modified:
-                        entry.Entity.LastModifiedBy = userService.Id;
+                        entry.Entity.LastModifiedBy = user.Id;
                         entry.Entity.ModifiedOn = dateTime.UtcNow();
                         break;
                     case EntityState.Deleted:
-                        entry.Entity.DeleteBy = userService.Id;
+                        entry.Entity.DeleteBy = user.Id;
                         entry.Entity.DeletedOn = dateTime.UtcNow();
                         entry.Entity.IsDeleted = true;
                         break;

@@ -13,6 +13,6 @@ namespace Pazar.Core.Services.Identity
 
         IEnumerable<Claim> GetClaimsIdentity();
 
-        bool IsAdministrator { get; }
+        //bool IsAdministrator { get; }
     }
 }
