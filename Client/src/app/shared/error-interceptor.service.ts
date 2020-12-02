@@ -8,6 +8,7 @@ import {
 import { throwError } from 'rxjs';
 import { catchError, finalize, retry } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { error } from 'protractor';
 
 @Injectable({
     providedIn: 'root',
@@ -31,8 +32,11 @@ export class ErrorInterceptorService implements HttpInterceptor {
                 } else {
                     msg = 'Unknown error';
                 }
-                this.toastrService.error(msg);
-                return throwError(err);
+                this.toastrService.error(msg)
+                for (const e in err.error.errors) {
+                    console.log(err.error.errors[e])
+                }
+                return throwError(err)
             })
         );
     }
