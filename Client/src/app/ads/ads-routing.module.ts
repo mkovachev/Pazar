@@ -8,12 +8,12 @@ import { EditComponent } from './edit/edit.component';
 import { AuthGuardService as AuthGuard } from '../shared/auth-guard.service';
 
 const routes: Routes = [
-    { path: 'ads/:id/changeAvailability', component: MyAdsComponent, canActivate: [AuthGuard] },
-    { path: 'ads/:id/edit', component: EditComponent, canActivate: [AuthGuard] },
-    { path: 'ads/:id', component: DetailsComponent },
     { path: 'ads', component: AllAdsComponent },
-    { path: 'ads/create', component: CreateComponent, canActivate: [AuthGuard] },
     { path: 'ads/myads', component: MyAdsComponent, canActivate: [AuthGuard] },
+    { path: 'ads/create', component: CreateComponent, canActivate: [AuthGuard] },
+    { path: 'ads/:id/edit', component: EditComponent, canActivate: [AuthGuard] },
+    { path: 'ads/:id/changeAvailability', component: MyAdsComponent, canActivate: [AuthGuard] },
+    { path: 'ads/:id', component: DetailsComponent },
 ];
 
 @NgModule({

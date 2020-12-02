@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, Observer } from 'rxjs';
 import { CategoriesService } from 'src/app/categories/categories.service';
 import { Category } from 'src/app/categories/category.model';
 import { Ad } from '../ad.model';
@@ -32,8 +31,8 @@ export class EditComponent implements OnInit {
       id: [null, Validators.required],
       title: [null, Validators.required],
       price: [null, Validators.required],
-      description: [null, Validators.minLength(20)],
-      imageUrl: [null],
+      description: [null, Validators.required],
+      imageUrl: [null, Validators.required],
       isActive: [null, Validators.required],
       category: [null, Validators.required],
     }),
