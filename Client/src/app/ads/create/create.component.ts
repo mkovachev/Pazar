@@ -33,16 +33,16 @@ export class CreateComponent implements OnInit {
       title: [null, Validators.required],
       price: [null, Validators.required],
       description: [null, Validators.required],
-      imageUrl: [null],
+      imageUrl: [null, Validators.required],
       category: [null, Validators.required],
       isActive: [null]
-    })
+    }),
+      console.log(this.adForm)
   }
 
   create() {
     this.adsService.create(this.adForm.value).subscribe(res => {
       console.log(res)
-      console.log(this.adForm.value)
       this.router.navigate(['ads', 'myads'])
       this.toastr.success("Success")
     })

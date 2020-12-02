@@ -19,7 +19,7 @@
                     <input type="text" class="form-control" formControlName="imageUrl">
                 </div>
                 <div class="form-group">
-                    <label for="isActive">Show in Ads</label>
+                    <label for="isActive">Is active?</label>
                     <select class="form-control" formControlName="isActive">
                         <option [value]="true">Yes</option>
                         <option [value]="false">No</option>
@@ -31,7 +31,7 @@
                         <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
                     </select>
                 </div>
-                <button class="btn btn-primary" type="submit">Update</button>
+                <button class="btn btn-primary" type="submit">Edit</button>
             </form>
         </div>
     </div>

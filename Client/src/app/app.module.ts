@@ -11,9 +11,6 @@ import { CategoriesModule } from './categories/categories.module';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

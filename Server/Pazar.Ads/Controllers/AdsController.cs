@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Pazar.Ads.Models;
 using Pazar.Ads.Services.Ads;
 using Pazar.Core.Controllers;
-using Pazar.Core.Services.Identity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,12 +11,10 @@ namespace Pazar.Ads.Controllers
     public class AdsController : ApiController
     {
         private readonly IAdService ads;
-        private readonly ILoggedUserService user;
 
-        public AdsController(IAdService ads, ILoggedUserService user)
+        public AdsController(IAdService ads)
         {
             this.ads = ads;
-            this.user = user;
         }
 
         [HttpGet]
@@ -31,15 +28,14 @@ namespace Pazar.Ads.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route(nameof(Create))]
         public async Task<ActionResult<int>> Create(AdIm input)
             => await this.ads.Create(input);
 
         [HttpPut]
         [Authorize]
         [Route(Id)]
-        public async Task<ActionResult<int>> Edit(int id)
-            => await this.ads.Edit(id);
+        public async Task<ActionResult<int>> Edit(AdIm input, int id)
+            => await this.ads.Edit(input, id);
 
         [HttpDelete]
         [Authorize]

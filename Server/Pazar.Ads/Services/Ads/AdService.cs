@@ -86,7 +86,7 @@ namespace Pazar.Ads.Services.Ads
             return ad.Id;
         }
 
-        public async Task<int> Edit(int id)
+        public async Task<int> Edit(AdIm input, int id)
         {
 
             var ad = await this.db.Ads.FindAsync(id);
@@ -101,7 +101,14 @@ namespace Pazar.Ads.Services.Ads
                 throw new InvalidOperationException("You are not the owner of this ad");
             }
 
-            this.db.Entry(ad).State = EntityState.Modified;
+            var category = await this.db.Categories.FirstOrDefaultAsync(c => c.Name == input.Category);
+
+            if (category == null)
+            {
+                throw new InvalidOperationException($"This {input.Category} doesn't exits");
+            }
+
+            this.db.Entry(input).State = EntityState.Modified;
 
             await this.db.SaveChangesAsync();
 

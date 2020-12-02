@@ -26,7 +26,7 @@ export class AdsService {
     }
 
     create(ad: Ad): Observable<Ad> {
-        return this.http.post<Ad>(this.path + 'create', ad);
+        return this.http.post<Ad>(this.path, ad);
     }
 
     edit(id: string, ad: Ad): Observable<Ad> {

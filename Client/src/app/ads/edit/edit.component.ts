@@ -26,22 +26,32 @@ export class EditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id')!;
-    this.adForm = this.fb.group<Ad>({
-      id: [null],
-      title: [null, Validators.required],
-      price: [null, Validators.required],
-      description: [null, Validators.required],
-      imageUrl: [null, Validators.required],
-      isActive: [null],
-      category: [null, Validators.required],
-      //user: userProfile
+    // this.adForm = this.fb.group<Ad>({
+    //   id: [null, Validators.required],
+    //   title: [null, Validators.required],
+    //   price: [null, Validators.required],
+    //   description: [null, Validators.minLength(20)],
+    //   imageUrl: [null],
+    //   isActive: [null, Validators.required],
+    //   category: [null, Validators.required],
+    // }),
+    this.categoriesService.all().subscribe(res => {
+      this.categories = res;
     })
   }
 
-  async ngOnInit(): Promise<void> {
-    this.getCategories()
-    this.getAd()
+  ngOnInit(): void {
+    this.adForm = this.fb.group<Ad>({
+      id: [null, Validators.required],
+      title: [null, Validators.required],
+      price: [null, Validators.required],
+      description: [null, Validators.required],
+      imageUrl: [null],
+      isActive: [null, Validators.required],
+      category: [null, Validators.required],
+    })
   }
+
 
   edit() {
     this.adsService.edit(this.id, this.adForm.value).subscribe(res => {
@@ -50,14 +60,10 @@ export class EditComponent implements OnInit {
     })
   }
 
-  getCategories() {
-    this.categoriesService.all().subscribe(res => {
-      this.categories = res;
-    })
-  }
 
   getAd() {
     this.adsService.find(this.id).subscribe(ad => {
+      console.log(ad)
       this.adForm = this.fb.group<Ad>({
         id: [null],
         title: [null, Validators.required],
@@ -69,12 +75,11 @@ export class EditComponent implements OnInit {
         //user: Profile
       })
       this.mapCategory(ad);
-      console.log(this.adForm.value)
     })
   }
 
   mapCategory(ad: Ad) {
-    const category = this.categories.filter(c => c.name == ad.category)[0]
+    const category = this.categories.filter(c => c.name == ad.category)[1]
     this.adForm.patchValue({ category: category.name })
   }
 

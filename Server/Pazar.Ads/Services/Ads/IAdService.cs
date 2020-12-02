@@ -22,7 +22,7 @@ namespace Pazar.Ads.Services.Ads
 
         Task<int> Create(AdIm input);
 
-        Task<int> Edit(int id);
+        Task<int> Edit(AdIm input, int id);
 
         Task<bool> Delete(int id);
     }

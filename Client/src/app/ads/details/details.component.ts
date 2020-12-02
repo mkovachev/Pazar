@@ -17,11 +17,11 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.adService.find(this.id).subscribe((ad) => {
+    this.adService.find(this.id).subscribe(ad => {
       this.ad = ad;
     });
   }
-  
+
   // adDetails(id: number) {
   //   this.router.navigate(['ads'], { queryParams: { id } });
   // }
