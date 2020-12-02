@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
 import { ToastrService } from 'ngx-toastr';
+
 import { CategoriesService } from 'src/app/categories/categories.service';
 import { Category } from 'src/app/categories/category.model';
 import { Ad } from '../ad.model';
@@ -42,15 +43,18 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.adForm = this.fb.group<Ad>({
-    //   id: [null, Validators.required],
-    //   title: [null, Validators.required],
-    //   price: [null, Validators.required],
-    //   description: [null, Validators.required],
-    //   imageUrl: [null],
-    //   isActive: [null, Validators.required],
-    //   category: [null, Validators.required],
-    // })
+    this.adsService.find(this.id).subscribe(ad => {
+      console.log(ad.imageUrl)
+      this.adForm = this.fb.group<Ad>({
+        id: [ad.id, Validators.required],
+        title: [ad.title, Validators.required],
+        price: [ad.price, Validators.required],
+        description: [ad.description, Validators.required],
+        imageUrl: [null],
+        isActive: [ad.isActive, Validators.required],
+        category: [ad.category, Validators.required],
+      })
+    })
   }
 
   edit() {
