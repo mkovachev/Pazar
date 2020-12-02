@@ -22,22 +22,25 @@ export class CreateComponent implements OnInit {
     private categoriesService: CategoriesService,
     public toastr: ToastrService,
     private router: Router) {
-    this.categoriesService.all().subscribe(res => {
-      this.categories = res;
-    })
-  }
-
-  ngOnInit(): void {
     this.adForm = this.fb.group<Ad>({
       id: [null],
       title: [null, Validators.required],
       price: [null, Validators.required],
       description: [null, Validators.required],
-      imageUrl: [null, Validators.required],
+      imageUrl: [null],
       category: [null, Validators.required],
       isActive: [null]
     }),
-      console.log(this.adForm)
+      this.categoriesService.all().subscribe(res => {
+        this.categories = res;
+      })
+  }
+
+  ngOnInit(): void {
+  }
+
+  get imageUrl() {
+    return this.adForm.get('imageUrl');
   }
 
   create() {

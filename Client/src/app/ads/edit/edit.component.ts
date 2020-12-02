@@ -27,13 +27,12 @@ export class EditComponent implements OnInit {
     public toastr: ToastrService,
     private router: Router,
     private route: ActivatedRoute) {
-    this.id = this.route.snapshot.paramMap.get('id')!;
     this.adForm = this.fb.group<Ad>({
       id: [null, Validators.required],
       title: [null, Validators.required],
       price: [null, Validators.required],
       description: [null, Validators.required],
-      imageUrl: [null, Validators.required],
+      imageUrl: [null],
       isActive: [null, Validators.required],
       category: [null, Validators.required],
     }),
@@ -43,16 +42,17 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id')!;
     this.adsService.find(this.id).subscribe(ad => {
-      console.log(ad.imageUrl)
+      console.log(ad.category)
       this.adForm = this.fb.group<Ad>({
-        id: [ad.id, Validators.required],
-        title: [ad.title, Validators.required],
-        price: [ad.price, Validators.required],
-        description: [ad.description, Validators.required],
-        imageUrl: [null],
-        isActive: [ad.isActive, Validators.required],
-        category: [ad.category, Validators.required],
+        id: [ad.id],
+        title: [ad.title],
+        price: [ad.price],
+        description: [ad.description],
+        imageUrl: [ad.imageUrl],
+        isActive: [ad.isActive],
+        category: [ad.category],
       })
     })
   }
