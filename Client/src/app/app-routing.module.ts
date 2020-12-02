@@ -22,6 +22,10 @@ const routes: Routes = [
   //   path: 'Users',
   //   loadChildren: () => import('./users/users-routing.module').then(m => m.UsersRoutingModule)
   // },
+  // {
+  //   path: '**',
+  //   component: NotFoundComponent
+  // }
 ];
 
 @NgModule({

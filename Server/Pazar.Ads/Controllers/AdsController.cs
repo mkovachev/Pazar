@@ -24,16 +24,16 @@ namespace Pazar.Ads.Controllers
         public async Task<IEnumerable<AdVm>> Index()
           => await this.ads.GetAll();
 
+        [HttpGet]
+        [Route(Id)]
+        public async Task<ActionResult<AdVm>> Details(int id)
+           => await this.ads.GetDetails(id);
+
         [HttpPost]
         [Authorize]
         [Route(nameof(Create))]
         public async Task<ActionResult<int>> Create(AdIm input)
             => await this.ads.Create(input);
-
-        [HttpGet]
-        [Route(Id)]
-        public async Task<ActionResult<AdVm>> Details(int id)
-           => await this.ads.GetDetails(id);
 
         [HttpPut]
         [Authorize]
