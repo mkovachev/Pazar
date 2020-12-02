@@ -6,9 +6,8 @@ import {
     HttpInterceptor,
 } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import { catchError, finalize, retry } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import { error } from 'protractor';
 
 @Injectable({
     providedIn: 'root',
