@@ -22,7 +22,7 @@ export class AdsService {
     }
 
     myAds(userId: string): Observable<Array<Ad>> {
-        const params = new HttpParams().append( "userId", userId);
+        const params = new HttpParams().set( "userId", userId);
         return this.http.get<Array<Ad>>(this.path + 'myads', { params });
     }
 
