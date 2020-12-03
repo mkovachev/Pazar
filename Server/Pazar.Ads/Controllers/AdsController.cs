@@ -32,13 +32,13 @@ namespace Pazar.Ads.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<int>> Create(AdCreateIm input)
+        public async Task<ActionResult<bool>> Create(AdCreateIm input)
             => await this.ads.Create(input);
 
         [HttpPut]
         [Authorize]
         [Route(Id)]
-        public async Task<ActionResult<int>> Edit(AdEditIm input)
+        public async Task<ActionResult<bool>> Edit(AdEditIm input)
             => await this.ads.Edit(input);
 
         [HttpDelete]

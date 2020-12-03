@@ -60,7 +60,7 @@ namespace Pazar.Ads.Services.Ads
         public async Task<int> Total(AdsQuery query)
             => await this.db.Ads.CountAsync();
 
-        public async Task<int> Create(AdCreateIm input)
+        public async Task<bool> Create(AdCreateIm input)
         {
             var category = await this.db.Categories.FirstOrDefaultAsync(c => c.Id == input.CategoryId);
 
@@ -84,10 +84,10 @@ namespace Pazar.Ads.Services.Ads
 
             await this.db.SaveChangesAsync();
 
-            return ad.Id;
+            return true;
         }
 
-        public async Task<int> Edit(AdEditIm input)
+        public async Task<bool> Edit(AdEditIm input)
         {
             var ad = await this.db.Ads.FindAsync(input.Id);
 
@@ -114,7 +114,7 @@ namespace Pazar.Ads.Services.Ads
 
             await this.db.SaveChangesAsync();
 
-            return ad.Id;
+            return true;
         }
 
 

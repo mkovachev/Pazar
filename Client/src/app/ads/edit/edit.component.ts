@@ -59,7 +59,7 @@ export class EditComponent implements OnInit {
   edit() {
     this.adsService.edit(this.id, this.adForm.value).subscribe(res => {
       this.router.navigate(['ads', 'myads'])
-      this.toastr.success("Success")
+      this.toastr.info("The ad was updated")
     })
   }
 

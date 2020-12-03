@@ -42,7 +42,7 @@ export class CreateComponent implements OnInit {
   create() {
     this.adsService.create(this.adForm.value).subscribe(res => {
       this.router.navigate(['ads', 'myads'])
-      this.toastr.success("Success")
+      this.toastr.success("The ad was successfully created")
     })
   }
 }
