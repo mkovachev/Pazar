@@ -23,13 +23,13 @@ export class CreateComponent implements OnInit {
     public toastr: ToastrService,
     private router: Router) {
     this.adForm = this.fb.group<Ad>({
-      id: [null],
+      id: [null, Validators.required],
       title: [null, Validators.required],
       price: [null, Validators.required],
       description: [null, Validators.required],
-      imageUrl: [null],
-      category: [null, Validators.required],
-      isActive: [null]
+      imageUrl: [null, Validators.required],
+      isActive: [null, Validators.required],
+      categoryId: [null, Validators.required],
     }),
       this.categoriesService.all().subscribe(res => {
         this.categories = res;
@@ -39,13 +39,8 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get imageUrl() {
-    return this.adForm.get('imageUrl');
-  }
-
   create() {
     this.adsService.create(this.adForm.value).subscribe(res => {
-      console.log(res)
       this.router.navigate(['ads', 'myads'])
       this.toastr.success("Success")
     })

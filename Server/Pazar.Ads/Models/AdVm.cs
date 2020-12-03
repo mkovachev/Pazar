@@ -12,9 +12,7 @@ namespace Pazar.Ads.Models
 
         public string Description { get; set; }
 
-        public string Image { get; set; }
-
-        //public ICollection<Image> Images { get; }
+        public string ImageUrl { get; set; }
 
         public string Category { get; set; }
 

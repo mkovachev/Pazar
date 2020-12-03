@@ -21,14 +21,14 @@
                 <div class="form-group">
                     <label for="isActive">Is active?</label>
                     <select class="form-control" formControlName="isActive">
-                        <option [value]="true">Yes</option>
-                        <option [value]="false">No</option>
+                        <option [ngValue]="true">Yes</option>
+                        <option [ngValue]="false">No</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="category">Select Category</label>
-                    <select class="form-control" formControlName="category">
-                        <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
+                    <label for="categoryId">Select Category</label>
+                    <select class="form-control" formControlName="categoryId">
+                        <option *ngFor="let c of categories" [ngValue]="c.id">{{c.name}}</option>
                     </select>
                 </div>
                 <button class="btn btn-primary" type="submit">Edit</button>

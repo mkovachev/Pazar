@@ -15,13 +15,20 @@
                     <input type="text" class="form-control" formControlName="description">
                 </div>
                 <div class="form-group">
-                    <label for="imageUrl">Image URL</label>
+                    <label for="imageUrl">Image Url</label>
                     <input type="text" class="form-control" formControlName="imageUrl">
                 </div>
                 <div class="form-group">
-                    <label for="category">Select Category</label>
-                    <select class="form-control" formControlName="category">
-                        <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
+                    <label for="isActive">Is active?</label>
+                    <select class="form-control" formControlName="isActive">
+                        <option [ngValue]="true">Yes</option>
+                        <option [ngValue]="false">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="categoryId">Select Category</label>
+                    <select class="form-control" formControlName="categoryId">
+                        <option *ngFor="let c of categories" [ngValue]="c.id">{{c.name}}</option>
                     </select>
                 </div>
                 <button class="btn btn-outline-info" type="submit">Create</button>

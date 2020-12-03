@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Pazar.Ads.Data.Models;
 using Pazar.Ads.Models;
 using Pazar.Ads.Services.Ads;
 using Pazar.Core.Controllers;
@@ -11,10 +14,12 @@ namespace Pazar.Ads.Controllers
     public class AdsController : ApiController
     {
         private readonly IAdService ads;
+        private readonly IMapper mapper;
 
-        public AdsController(IAdService ads)
+        public AdsController(IAdService ads, IMapper mapper)
         {
             this.ads = ads;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -28,13 +33,13 @@ namespace Pazar.Ads.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<int>> Create(AdIm input)
+        public async Task<ActionResult<int>> Create(AdCreateIm input)
             => await this.ads.Create(input);
 
         [HttpPut]
         [Authorize]
         [Route(Id)]
-        public async Task<ActionResult<int>> Edit(AdIm input, int id)
+        public async Task<ActionResult<int>> Edit(AdEditIm input, int id)
             => await this.ads.Edit(input, id);
 
         [HttpDelete]

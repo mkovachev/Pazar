@@ -1,10 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AutoMapper;
+using Pazar.Ads.Data.Models;
+using Pazar.Core.Mappings;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pazar.Ads.Models
 {
     using static Data.DataConstants.Ads;
+    using static Data.DataConstants.Image;
 
-    public class AdIm
+    public class AdCreateIm : IMapTo<Ad>
     {
         [Required]
         [MinLength(TitleMinLength)]
@@ -22,11 +26,19 @@ namespace Pazar.Ads.Models
 
         [Required]
         [Url]
-        public string Image { get; set; }
-        //public ICollection<Image> Images { get; }
+        [MinLength(ImageUrlMinLength)]
+        [MaxLength(ImageUrlMaxLength)]
+        public string ImageUrl { get; set; }
 
         [Required]
-        public string Category { get; set; }
+        public bool IsActive { get; set; }
+
+        [Required]
+        public int CategoryId { get; set; }
+
+        public void Mapping(Profile profile)
+            => profile
+                .CreateMap<AdCreateIm, Ad>().ReverseMap();
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Internal;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -16,7 +17,8 @@ namespace Pazar.Core.Mappings
                 .GetExportedTypes()
                 .Where(t => t
                     .GetInterfaces()
-                    .Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>)))
+                    .Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapTo<>)
+                            || i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>)))
                 .ToList();
 
             foreach (var type in types)
@@ -27,6 +29,9 @@ namespace Pazar.Core.Mappings
 
                 var methodInfo = type.GetMethod(mappingMethodName)
                                  ?? type.GetInterface("IMapFrom`1")?.GetMethod(mappingMethodName);
+
+                methodInfo = type.GetMethod(mappingMethodName)
+                                 ?? type.GetInterface("IMapTo`1")?.GetMethod(mappingMethodName);
 
                 methodInfo?.Invoke(instance, new object[] { this });
             }

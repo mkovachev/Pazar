@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pazar.Ads.Data;
 using Pazar.Ads.Data.Models;
@@ -59,14 +61,13 @@ namespace Pazar.Ads.Services.Ads
         public async Task<int> Total(AdsQuery query)
             => await this.db.Ads.CountAsync();
 
-        public async Task<int> Create(AdIm input)
+        public async Task<int> Create(AdCreateIm input)
         {
-
-            var category = await this.db.Categories.FirstOrDefaultAsync(c => c.Name == input.Category);
+            var category = await this.db.Categories.FirstOrDefaultAsync(c => c.Id == input.CategoryId);
 
             if (category == null)
             {
-                throw new InvalidOperationException($"This {input.Category} doesn't exits");
+                throw new InvalidOperationException($"Category with id {input.CategoryId} doesn't exits");
             }
 
             var ad = new Ad
@@ -74,8 +75,9 @@ namespace Pazar.Ads.Services.Ads
                 Title = input.Title,
                 Price = input.Price,
                 Description = input.Description,
-                Image = input.Image,
-                Category = category,
+                ImageUrl = input.ImageUrl,
+                IsActive = input.IsActive,
+                CategoryId = input.CategoryId,
                 UserId = user.Id
             };
 
@@ -86,9 +88,8 @@ namespace Pazar.Ads.Services.Ads
             return ad.Id;
         }
 
-        public async Task<int> Edit(AdIm input, int id)
+        public async Task<int> Edit(AdEditIm input, int id)
         {
-
             var ad = await this.db.Ads.FindAsync(id);
 
             if (ad == null)
@@ -101,14 +102,16 @@ namespace Pazar.Ads.Services.Ads
                 throw new InvalidOperationException("You are not the owner of this ad");
             }
 
-            var category = await this.db.Categories.FirstOrDefaultAsync(c => c.Name == input.Category);
+            var category = await this.db.Categories.FirstOrDefaultAsync(c => c.Id == input.CategoryId);
 
             if (category == null)
             {
-                throw new InvalidOperationException($"This {input.Category} doesn't exits");
+                throw new InvalidOperationException($"This {input.CategoryId} doesn't exits");
             }
 
-            this.db.Entry(input).State = EntityState.Modified;
+            var entity = this.mapper.Map<AdEditIm, Ad>(input);
+
+            this.db.Entry(entity).State = EntityState.Modified;
 
             await this.db.SaveChangesAsync();
 

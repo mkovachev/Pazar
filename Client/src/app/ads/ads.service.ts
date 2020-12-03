@@ -12,11 +12,11 @@ export class AdsService {
     pathWithoutSlash = this.path.slice(0, -1);
 
     constructor(private http: HttpClient) { }
-    
+
     all(): Observable<Array<Ad>> {
         return this.http.get<Array<Ad>>(this.path);
     }
-    
+
     find(id: string): Observable<Ad> {
         return this.http.get<Ad>(this.path + id);
     }

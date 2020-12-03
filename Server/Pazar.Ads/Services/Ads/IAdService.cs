@@ -20,9 +20,9 @@ namespace Pazar.Ads.Services.Ads
         Task<int> Total(AdsQuery query);
 
 
-        Task<int> Create(AdIm input);
+        Task<int> Create(AdCreateIm input);
 
-        Task<int> Edit(AdIm input, int id);
+        Task<int> Edit(AdEditIm input, int id);
 
         Task<bool> Delete(int id);
     }

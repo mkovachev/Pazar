@@ -32,9 +32,9 @@ export class EditComponent implements OnInit {
       title: [null, Validators.required],
       price: [null, Validators.required],
       description: [null, Validators.required],
-      imageUrl: [null],
+      imageUrl: [null, Validators.required],
       isActive: [null, Validators.required],
-      category: [null, Validators.required],
+      categoryId: [null, Validators.required],
     }),
       this.categoriesService.all().subscribe(res => {
         this.categories = res;
@@ -44,7 +44,7 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')!;
     this.adsService.find(this.id).subscribe(ad => {
-      console.log(ad.category)
+      console.log(ad.categoryId)
       this.adForm = this.fb.group<Ad>({
         id: [ad.id],
         title: [ad.title],
@@ -52,7 +52,7 @@ export class EditComponent implements OnInit {
         description: [ad.description],
         imageUrl: [ad.imageUrl],
         isActive: [ad.isActive],
-        category: [ad.category],
+        categoryId: [ad.categoryId],
       })
     })
   }

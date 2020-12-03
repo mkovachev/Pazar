@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Pazar.Core.Services.Data;
 using System.Collections.Generic;
 using System.Security.Claims;
 
