@@ -14,15 +14,11 @@ export class DetailsComponent implements OnInit {
 
   constructor(private adService: AdsService, private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id')!;
-  }
-
-  ngOnInit(): void {
     this.adService.find(this.id).subscribe(ad => {
       this.ad = ad;
     });
   }
 
-  // adDetails(id: number) {
-  //   this.router.navigate(['ads'], { queryParams: { id } });
-  // }
+  ngOnInit(): void {
+  }
 }
