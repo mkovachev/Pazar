@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.loginForm.value).subscribe(res => {
       this.authService.saveToken(res.token);
-      //this.authService.saveUserId(res.id);
+      this.authService.saveUserId(res.id);
 
         this.router.navigate(['']).then(() => {
           window.location.reload();

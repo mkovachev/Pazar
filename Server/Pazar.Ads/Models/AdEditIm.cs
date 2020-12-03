@@ -35,7 +35,6 @@ namespace Pazar.Ads.Models
 
         public int CategoryId { get; set; }
 
-
         public void Mapping(Profile profile)
            => profile
                .CreateMap<AdEditIm, Ad>().ReverseMap();

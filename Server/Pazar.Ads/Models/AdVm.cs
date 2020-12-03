@@ -16,7 +16,7 @@ namespace Pazar.Ads.Models
 
         public string Category { get; set; }
 
-        //public string UserId { get; set; }
+        public string UserId { get; set; }
 
 
         public virtual void Mapping(Profile mapper)

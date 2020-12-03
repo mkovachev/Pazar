@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
 using Pazar.Ads.Data;
 using Pazar.Ads.Data.Models;
@@ -42,9 +41,9 @@ namespace Pazar.Ads.Services.Ads
                              .ProjectTo<AdVm>(this.mapper.ConfigurationProvider)
                              .FirstOrDefaultAsync();
 
-        public async Task<IEnumerable<MyAdsVm>> MyAds(string userId)
+        public async Task<IEnumerable<MyAdsVm>> MyAds(string id)
             => await this.db.Ads
-                        .Where(ad => ad.UserId == userId)
+                        .Where(ad => ad.UserId == id)
                         .ProjectTo<MyAdsVm>(this.mapper.ConfigurationProvider)
                         .ToListAsync();
 
@@ -116,7 +115,6 @@ namespace Pazar.Ads.Services.Ads
 
             return true;
         }
-
 
         public async Task<bool> Delete(int id)
         {

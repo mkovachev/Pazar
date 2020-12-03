@@ -4,27 +4,18 @@
             <img [src]="ad.imageUrl" alt="Ad image">
         </div>
         <div class="col-lg-6">
+            <h4>Titel: {{ ad.title }}</h4>
+            <h5>Price: {{ ad.price }}</h5>
+            <h5>Category: {{ ad.categoryId }}</h5>
+            <h5>Description: {{ ad.description }}</h5>
+            <hr />
             <div>
-                <h3>Titel:</h3><label>{{ ad.title }}</label>
+                <h3>Contact me:</h3>
             </div>
-            <div>
-                <h3>Price: </h3><label>{{ ad.price }}</label>
-            </div>
-            <div>
-                <h3>Category:</h3><label>{{ ad.categoryId }}</label>
-            </div>
-            <div>
-                <h3>Description:</h3> <label>${{ ad.description }}</label>
-            </div>
-            <!-- <div>
-                <h3>User Name: </h3><label>{{ ad.user.name }}</label>
-            </div>
-            <div>
-                <h3>User Phone: </h3><label>{{ ad.user.email }}</label>
-            </div>
-            <div>
-                <h3>User Phone: </h3><label>{{ ad.user.phoneNumber }}</label>
-            </div> -->
+            <hr />
+            <h5>{{ user.name }}</h5>
+            <h5>{{ user.email }}</h5>
+            <h5>{{ user.phoneNumber }}</h5>
         </div>
     </div>
 </div>

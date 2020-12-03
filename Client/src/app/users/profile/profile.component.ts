@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
-import { PasswordChange } from './password.model';
-import { Profile } from './profile.model';
-import { ProfileService } from './profile.service';
+import { PasswordChange } from '../password.model';
+import { User } from '../user.model';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,52 +11,45 @@ import { ProfileService } from './profile.service';
 })
 
 export class ProfileComponent implements OnInit {
-  profileForm!: FormGroup<Profile>;
+  profileForm!: FormGroup<User>;
   changePasswordForm!: FormGroup<PasswordChange>;
-  user!: Profile;
+  user!: User;
   id!: string;
 
   constructor(
     private fb: FormBuilder,
-    private profileService: ProfileService,
-    private router: Router) {
+    private userService: UsersService,
+    private router: Router,
+    private route: ActivatedRoute) {
     this.changePasswordForm = this.fb.group<PasswordChange>({
-      currentPassword: ['', Validators.required],
-      newPassword: ['', Validators.required],
+      currentPassword: [null, Validators.required],
+      newPassword: [null, Validators.required],
     })
   }
 
   ngOnInit(): void {
     this.id = localStorage.getItem('userId')!;
-    this.profileService.getUser(this.id).subscribe(u => {
-      this.user = u
-      console.log(u.name)
-      this.profileForm = this.fb.group<Profile>({
-        id: [this.user.id, Validators.required],
-        name: [this.user.name, Validators.required],
-        phoneNumber: [this.user.phoneNumber, Validators.required],
+    this.userService.find(this.id).subscribe(user => {
+      this.user = user
+      this.profileForm = this.fb.group<User>({
+        name: [this.user.name],
+        email: [this.user.email],
+        phoneNumber: [this.user.phoneNumber]
       })
-      console.log(this.profileForm.value)
     })
   }
 
-  fetchUser() {
-    // this.profileService.getUser(this.id).subscribe(res => {
-    //   this.router.navigate(['user/id'])
-    // })
-  }
-
   editProfile() {
-    this.profileService.editUser(this.id, this.profileForm.value).subscribe(res => {
-      this.router.navigate(['ads'])
+    this.userService.edit(this.id, this.profileForm.value).subscribe(res => {
+      this.router.navigate(['users', 'profile'])
     })
   }
 
   changePassword() {
-    this.profileService.changePassword(this.changePasswordForm.value).subscribe(res => {
+    this.userService.changePassword(this.changePasswordForm.value).subscribe(res => {
       localStorage.clear()
       window.location.reload()
-      this.router.navigate(['auth']);
+      this.router.navigate(['users', 'profile'])
     })
   }
 

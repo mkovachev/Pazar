@@ -19,15 +19,14 @@ namespace Pazar.Identity.Controllers
             this.user = user;
         }
 
-
         [HttpGet]
         [Route(Id)]
-        public async Task<ActionResult<string>> GetId()
-            => await this.identity.GetId();
+        public async Task<ActionResult<UserVm>> Details(string id)
+            => await this.identity.Details(id);
 
         [HttpPost]
         [Route(nameof(Register))]
-        public async Task<ActionResult<UserVm>> Register(UserIm input)
+        public async Task<ActionResult<UserAuthVm>> Register(UserIm input)
         {
             var result = await this.identity.Register(input);
 
@@ -41,20 +40,20 @@ namespace Pazar.Identity.Controllers
 
         [HttpPost]
         [Route(nameof(Login))]
-        public async Task<ActionResult<UserVm>> Login(UserIm input)
+        public async Task<ActionResult<UserAuthVm>> Login(UserIm input)
         {
             var result = await this.identity.Login(input);
 
             if (!result.Succeeded)
             {
-                return BadRequest(result.Errors); // return Unauthorized();
+                return BadRequest(result.Errors); // Unauthorized();
             }
 
-            return new UserVm(result.Data.Token); // result.Data.Id
+            return new UserAuthVm(result.Data.Id, result.Data.Token);
         }
 
         [HttpPut]
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize]
         [Route(nameof(ChangePassword))]
         public async Task<ActionResult> ChangePassword(ChangePasswordIm input)
             => await this.identity.ChangePassword(
@@ -70,7 +69,7 @@ namespace Pazar.Identity.Controllers
         [Route(nameof(Delete))]
         public async Task<ActionResult> Delete()
         {
-            var result = await this.identity.DeleteUser(this.user.Id);
+            var result = await this.identity.Delete(this.user.Id);
 
             if (!result.Succeeded)
             {

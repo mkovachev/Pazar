@@ -1,5 +1,3 @@
-import { Profile } from '../users/profile/profile.model';
-
 export interface Ad {
     id: number;
     title: string;
@@ -8,5 +6,4 @@ export interface Ad {
     imageUrl: string;
     isActive: boolean;
     categoryId: number;
-    //user: Profile;
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.JsonPatch;
-using Pazar.Ads.Data.Models;
+﻿using Pazar.Ads.Data.Models;
 using Pazar.Ads.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
