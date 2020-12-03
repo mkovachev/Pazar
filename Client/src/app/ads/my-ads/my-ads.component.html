@@ -5,18 +5,18 @@
         </div>
         <div class="col-lg-2" *ngFor="let ad of ads">
             <div class="card">
-                <button class="btn btn-success" (click)="changeAvailability(ad.id.toString())"
+                <button class="btn btn-outline-info" (click)="changeAvailability(ad.id.toString())"
                         *ngIf="!ad.isActive">Show</button>
-                <button class="btn btn-info" (click)="changeAvailability(ad.id.toString())"
+                <button class="btn btn-outline-info" (click)="changeAvailability(ad.id.toString())"
                         *ngIf="ad.isActive">Hide</button>
                 <img [src]="ad.imageUrl" class="card-img-top" alt="Ad image">
                 <div class="card-body">
                     <h5 class="card-title">{{ ad.title }}</h5>
                     <p class="card-text">${{ ad.price }}</p>
                     <div *ngIf="ad.isActive">
-                        <a routerLink="/{{ad.id}}" class="btn btn-primary">Details</a>
-                        <a routerLink="/{{ad.id}}/edit" class="btn btn-warning">Edit</a>
-                        <button (click)="openModal(ad.id.toString())" class="btn btn-danger">Delete</button>
+                        <a routerLink="/ads/{{ad.id}}" class="btn btn-outline-info">Details</a>
+                        <a routerLink="/ads/{{ad.id}}/edit" class="btn btn-outline-warning">Edit</a>
+                        <button (click)="openModal(ad.id.toString())" class="btn btn-outline-danger">Delete</button>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@ export class MyAdsComponent implements OnInit {
     this.userId = localStorage.getItem('userId')!;
     this.adsService.myAds(this.userId).subscribe(ads => {
       this.ads = ads;
+      console.log(ads)
     })
   }
 
