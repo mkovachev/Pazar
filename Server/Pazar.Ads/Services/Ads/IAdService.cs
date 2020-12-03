@@ -1,4 +1,5 @@
-﻿using Pazar.Ads.Data.Models;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Pazar.Ads.Data.Models;
 using Pazar.Ads.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace Pazar.Ads.Services.Ads
 
         Task<int> Create(AdCreateIm input);
 
-        Task<int> Edit(AdEditIm input, int id);
+        Task<int> Edit(AdEditIm input);
 
         Task<bool> Delete(int id);
     }

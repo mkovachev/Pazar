@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Pazar.Ads.Data.Models;
 using Pazar.Ads.Models;
 using Pazar.Ads.Services.Ads;
 using Pazar.Core.Controllers;
@@ -39,8 +38,8 @@ namespace Pazar.Ads.Controllers
         [HttpPut]
         [Authorize]
         [Route(Id)]
-        public async Task<ActionResult<int>> Edit(AdEditIm input, int id)
-            => await this.ads.Edit(input, id);
+        public async Task<ActionResult<int>> Edit(AdEditIm input)
+            => await this.ads.Edit(input);
 
         [HttpDelete]
         [Authorize]

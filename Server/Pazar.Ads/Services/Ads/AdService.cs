@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pazar.Ads.Data;
 using Pazar.Ads.Data.Models;
@@ -88,9 +87,9 @@ namespace Pazar.Ads.Services.Ads
             return ad.Id;
         }
 
-        public async Task<int> Edit(AdEditIm input, int id)
+        public async Task<int> Edit(AdEditIm input)
         {
-            var ad = await this.db.Ads.FindAsync(id);
+            var ad = await this.db.Ads.FindAsync(input.Id);
 
             if (ad == null)
             {
@@ -109,14 +108,15 @@ namespace Pazar.Ads.Services.Ads
                 throw new InvalidOperationException($"This {input.CategoryId} doesn't exits");
             }
 
-            var entity = this.mapper.Map<AdEditIm, Ad>(input);
+            this.mapper.Map(input, ad);
 
-            this.db.Entry(entity).State = EntityState.Modified;
+            this.db.Entry(ad).State = EntityState.Modified;
 
             await this.db.SaveChangesAsync();
 
             return ad.Id;
         }
+
 
         public async Task<bool> Delete(int id)
         {

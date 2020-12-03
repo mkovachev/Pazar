@@ -44,9 +44,8 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')!;
     this.adsService.find(this.id).subscribe(ad => {
-      console.log(ad.categoryId)
       this.adForm = this.fb.group<Ad>({
-        id: [ad.id],
+        id: [Number(this.id)],
         title: [ad.title],
         price: [ad.price],
         description: [ad.description],

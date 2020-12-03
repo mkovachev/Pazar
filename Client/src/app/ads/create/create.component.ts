@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
     public toastr: ToastrService,
     private router: Router) {
     this.adForm = this.fb.group<Ad>({
-      id: [null, Validators.required],
+      id: [null],
       title: [null, Validators.required],
       price: [null, Validators.required],
       description: [null, Validators.required],

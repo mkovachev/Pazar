@@ -11,6 +11,8 @@ namespace Pazar.Ads.Models
 
     public class AdEditIm : IMapTo<Ad>
     {
+        public int Id { get; set; }
+
         [MinLength(TitleMinLength)]
         [MaxLength(TitleMaxLength)]
         public string Title { get; set; }
@@ -31,7 +33,6 @@ namespace Pazar.Ads.Models
 
         public bool IsActive { get; set; }
 
-        [Required]
         public int CategoryId { get; set; }
 
 
