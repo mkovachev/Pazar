@@ -4,10 +4,10 @@
             <img [src]="ad.imageUrl" alt="Ad image">
         </div>
         <div class="col-lg-6">
-            <h4>Titel: {{ ad.title }}</h4>
-            <h5>Price: {{ ad.price }}</h5>
-            <h5>Category: {{ ad.categoryId }}</h5>
+            <h4>{{ ad.title }}</h4>
+            <h5>Price: ${{ ad.price }}</h5>
             <h5>Description: {{ ad.description }}</h5>
+            <h5>Category: {{ ad.category }}</h5>
             <hr />
             <div>
                 <h3>Contact me:</h3>

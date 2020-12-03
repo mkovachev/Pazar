@@ -14,6 +14,8 @@ namespace Pazar.Identity.Models
 
         public void Mapping(Profile profile)
          => profile
-             .CreateMap<User, UserVm>().ReverseMap();
+             .CreateMap<User, UserVm>()
+             .ForMember(user => user.Name, cfg => cfg
+                   .MapFrom(user => user.UserName));
     }
 }

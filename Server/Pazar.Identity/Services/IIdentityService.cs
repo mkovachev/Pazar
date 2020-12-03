@@ -8,6 +8,7 @@ namespace Pazar.Identity.Services
     public interface IIdentityService
     {
         Task<UserVm> Details(string id);
+
         Task<Result<User>> Register(UserIm input);
 
         Task<Result<UserAuthVm>> Login(UserIm input);

@@ -30,6 +30,7 @@ export class CreateComponent implements OnInit {
       imageUrl: [null, Validators.required],
       isActive: [null, Validators.required],
       categoryId: [null, Validators.required],
+      category: [null, Validators.required],
     }),
       this.categoriesService.all().subscribe(res => {
         this.categories = res;

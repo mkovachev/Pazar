@@ -6,4 +6,5 @@ export interface Ad {
     imageUrl: string;
     isActive: boolean;
     categoryId: number;
+    category: string;
 }
