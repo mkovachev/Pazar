@@ -49,8 +49,8 @@ namespace Pazar.Ads.Controllers
         [HttpGet]
         [Authorize]
         [Route(nameof(MyAds))]
-        public async Task<IEnumerable<AdVm>> MyAds(string id)
-            => await this.ads.MyAds(id);
+        public async Task<IEnumerable<AdVm>> MyAds(string userId)
+            => await this.ads.MyAds(userId);
 
         [HttpGet]
         [Route(nameof(AdsPerCategory))]

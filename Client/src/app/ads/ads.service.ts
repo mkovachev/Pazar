@@ -21,9 +21,9 @@ export class AdsService {
         return this.http.get<Array<Ad>>(this.path);
     }
 
-    myAds(id: string): Observable<Array<Ad>> {
-        let userId = new HttpParams().set("userId", id);
-        return this.http.get<Array<Ad>>(this.path + 'myads', { params: userId });
+    myAds(userId: string): Observable<Array<Ad>> {
+        const params = new HttpParams().append( "userId", userId);
+        return this.http.get<Array<Ad>>(this.path + 'myads', { params });
     }
 
     create(ad: Ad): Observable<Ad> {
