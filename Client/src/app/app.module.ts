@@ -24,7 +24,7 @@ import { RouterModule } from '@angular/router';
     AuthModule,
     AdsModule,
     CategoriesModule,
-    UsersModule,
+    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

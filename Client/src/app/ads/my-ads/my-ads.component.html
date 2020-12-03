@@ -16,7 +16,7 @@
                     <div *ngIf="ad.isActive">
                         <a routerLink="/ads/{{ad.id}}" class="btn btn-outline-info">Details</a>
                         <a routerLink="/ads/{{ad.id}}/edit" class="btn btn-outline-warning">Edit</a>
-                        <button (click)="openModal(ad.id.toString())" class="btn btn-outline-danger">Delete</button>
+                        <button class="btn btn-outline-danger" (click)="open(deletemodal)">Delete</button>
                     </div>
                 </div>
             </div>
@@ -27,8 +27,33 @@
     </ng-template>
 </div>
 
+<ng-template #deletemodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Do you want to delete this item?</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" (click)="modal.close('Delete click')">Delete</button>
+    </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <app-pop-up class="my-prompt" [isOpen]="popUpOpen">
     <div class="pop-up-box" style="width: 30%">
+
         <div class="box">
             <header>
                 <span class="title">Delete item?</span>
@@ -43,5 +68,6 @@
                         style="margin-left: 25%; width: 25%; background-image: linear-gradient(#FFFFFF ,#DBE2EC); color: #0747A6;">Cancel</button>
             </footer>
         </div>
+
     </div>
 </app-pop-up> -->

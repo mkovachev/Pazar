@@ -9,13 +9,15 @@ import { MyAdsComponent } from './my-ads/my-ads.component';
 import { AllAdsComponent } from './all-ads/all-ads.component';
 import { SearchComponent } from './search/search.component';
 import { SortComponent } from './sort/sort.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [CreateComponent, EditComponent, DetailsComponent, MyAdsComponent, AllAdsComponent, SearchComponent, SortComponent],
     imports: [
         CommonModule,
         SharedModule,
-        AdsRoutingModule
+        AdsRoutingModule,
+        NgbModule
     ],
     exports: []
 })
