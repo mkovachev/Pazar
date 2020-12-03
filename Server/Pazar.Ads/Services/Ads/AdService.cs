@@ -41,9 +41,9 @@ namespace Pazar.Ads.Services.Ads
                              .ProjectTo<AdVm>(this.mapper.ConfigurationProvider)
                              .FirstOrDefaultAsync();
 
-        public async Task<IEnumerable<MyAdsVm>> MyAds(string id)
+        public async Task<IEnumerable<MyAdsVm>> MyAds(string userId)
             => await this.db.Ads
-                        .Where(ad => ad.UserId == id)
+                        .Where(ad => ad.UserId == userId)
                         .ProjectTo<MyAdsVm>(this.mapper.ConfigurationProvider)
                         .ToListAsync();
 

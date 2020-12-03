@@ -18,7 +18,6 @@ export class EditComponent implements OnInit {
   categories!: Array<Category>;
   id!: string;
   ad!: Ad;
-  base64Image!: string;
 
   constructor(
     private fb: FormBuilder,

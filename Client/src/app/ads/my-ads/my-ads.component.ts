@@ -10,19 +10,19 @@ import { AdsService } from '../ads.service';
 export class MyAdsComponent implements OnInit {
   ads!: Array<Ad>;
   popUpOpen: boolean = false;
-  id!: string;
+  userId!: string;
+  adId!: string;
 
-  constructor(private adsService: AdsService) { }
+  constructor(private adsService: AdsService) {
+    this.userId = localStorage.getItem('userId')!;
+    this.adsService.myAds(this.userId).subscribe(ads => {
+      this.ads = ads;
+    })
+  }
 
   ngOnInit(): void {
     this.popUpOpen = false
-    this.getMyAds()
-  }
-
-  getMyAds() {
-    this.adsService.myAds().subscribe(ads => {
-      this.ads = ads;
-    })
+    //this.getMyAds()
   }
 
   assignAds(event: any) {
@@ -30,26 +30,24 @@ export class MyAdsComponent implements OnInit {
   }
 
   delete() {
-    this.adsService.delete(this.id).subscribe(res => {
+    this.adsService.delete(this.adId).subscribe(res => {
       this.popUpOpen = false;
-      this.getMyAds();
     })
   }
 
   changeAvailability(id: string) {
     this.adsService.changeAvailability(id).subscribe(res => {
-      this.getMyAds()
     })
   }
 
   openModal(id: string) {
     this.popUpOpen = true;
-    this.id = id;
+    this.adId = id;
   }
 
   cancelModal() {
     this.popUpOpen = false;
-    this.id = '';
+    this.adId = '';
   }
 
 }

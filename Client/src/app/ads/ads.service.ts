@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Ad } from './ad.model';
@@ -13,16 +13,17 @@ export class AdsService {
 
     constructor(private http: HttpClient) { }
 
-    all(): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.path);
-    }
-
     find(id: string): Observable<Ad> {
         return this.http.get<Ad>(this.path + id);
     }
 
-    myAds(): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.path + 'myads');
+    all(): Observable<Array<Ad>> {
+        return this.http.get<Array<Ad>>(this.path);
+    }
+
+    myAds(id: string): Observable<Array<Ad>> {
+        let userId = new HttpParams().set("userId", id);
+        return this.http.get<Array<Ad>>(this.path + 'myads', { params: userId });
     }
 
     create(ad: Ad): Observable<Ad> {
