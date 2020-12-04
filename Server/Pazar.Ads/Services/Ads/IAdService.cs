@@ -7,15 +7,13 @@ namespace Pazar.Ads.Services.Ads
 {
     public interface IAdService
     {
-        Task<Ad> FindById(int id);
+        Task<Ad> Find(int id);
 
-        Task<IEnumerable<AdVm>> GetAll();
-
-        Task<IEnumerable<AdVm>> GetAdsPerCategory(int id);
+        Task<IEnumerable<AdVm>> All();
 
         Task<IEnumerable<MyAdsVm>> MyAds(string userId);
 
-        Task<AdVm> GetDetails(int id);
+        Task<AdVm> Details(int id);
 
         Task<int> Total(AdsQuery query);
 

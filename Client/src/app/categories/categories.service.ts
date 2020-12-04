@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Ad } from '../ads/ad.model';
 import { Category } from './category.model';
 
 @Injectable({
@@ -18,6 +19,10 @@ export class CategoriesService {
 
   all(): Observable<Array<Category>> {
     return this.http.get<Array<Category>>(this.url);
+  }
+
+  adsPerCategory(id: string): Observable<Array<Ad>> {
+    return this.http.get<Array<Ad>>(this.url + id + '/adsPerCategory');
   }
 
   create(category: Category): Observable<Category> {

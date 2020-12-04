@@ -20,16 +20,24 @@ namespace Pazar.Ads.Services.Categories
             this.mapper = mapper;
         }
 
-        public async Task<CategoryDetailsVm> FindById(int id)
+        public async Task<CategoryVm> Find(int id)
             => await this.db.Categories
                              .Where(c => c.Id == id)
-                             .ProjectTo<CategoryDetailsVm>(this.mapper.ConfigurationProvider)
+                             .ProjectTo<CategoryVm>(this.mapper.ConfigurationProvider)
                              .FirstOrDefaultAsync();
 
-        public async Task<IEnumerable<CategoryVm>> GetAll()
+        public async Task<IEnumerable<CategoryVm>> All()
             => await this.db.Categories
                             .OrderBy(c => c.Name)
                             .ProjectTo<CategoryVm>(this.mapper.ConfigurationProvider)
                             .ToListAsync();
+
+        public async Task<IEnumerable<AdVm>> AdsPerCategory(int id)
+                    => await this.db.Ads
+                                    .Where(ad => ad.CategoryId == id)
+                                    .Where(ad => ad.IsActive)
+                                    .OrderBy(ad => ad.CreatedBy)
+                                    .ProjectTo<AdVm>(this.mapper.ConfigurationProvider)
+                                    .ToListAsync();
     }
 }

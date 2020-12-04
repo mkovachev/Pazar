@@ -20,9 +20,10 @@ namespace Pazar.Ads.Models
 
 
         public virtual void Mapping(Profile mapper)
-           => mapper
-               .CreateMap<Ad, AdVm>()
-               .ForMember(ad => ad.Category, cfg => cfg
-                   .MapFrom(ad => ad.Category.Name));
+            => mapper
+                  .CreateMap<Ad, AdVm>()
+                  .ForMember(ad => ad.Category, cfg => cfg
+                      .MapFrom(ad => ad.Category.Name))
+                  .ReverseMap();
     }
 }

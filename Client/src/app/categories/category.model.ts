@@ -1,5 +1,7 @@
+import { Ad } from '../ads/ad.model';
+
 export interface Category {
     id: number;
     name: string;
-    ads: [];
+    ads: Array<Ad>;
 }

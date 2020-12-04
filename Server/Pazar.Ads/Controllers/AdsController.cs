@@ -22,12 +22,12 @@ namespace Pazar.Ads.Controllers
 
         [HttpGet]
         public async Task<IEnumerable<AdVm>> Index()
-          => await this.ads.GetAll();
+          => await this.ads.All();
 
         [HttpGet]
         [Route(Id)]
         public async Task<ActionResult<AdVm>> Details(int id)
-           => await this.ads.GetDetails(id);
+           => await this.ads.Details(id);
 
         [HttpPost]
         [Authorize]
@@ -57,10 +57,5 @@ namespace Pazar.Ads.Controllers
         [Route(nameof(MyAds))]
         public async Task<IEnumerable<AdVm>> MyAds(string userId)
             => await this.ads.MyAds(userId);
-
-        [HttpGet]
-        [Route(nameof(AdsPerCategory))]
-        public async Task<IEnumerable<AdVm>> AdsPerCategory(int id)
-           => await this.ads.GetAdsPerCategory(id);
     }
 }

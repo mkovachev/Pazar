@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row" *ngIf="ads && ads.length != 0; else noads">
+        <div class="col-lg-2" *ngFor="let ad of ads">
+            <div class="card">
+                <img [src]="ad.imageUrl" class="card-img-top" alt="image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ad.title}}</h5>
+                    <p class="card-text">${{ad.price}}</p>
+                    <div>
+                        <a routerLink="/ads/{{ad.id}}" class="btn btn-outline-info">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template class="row" #noads>
+        <h4>You have no ads</h4>
+    </ng-template>
+</div>

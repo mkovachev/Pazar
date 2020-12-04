@@ -20,14 +20,18 @@ namespace Pazar.Ads.Controllers
         [HttpGet]
         [Authorize]
         [Route(Id)]
-        public async Task<CategoryDetailsVm> Find(int id)
-            => await this.categories.FindById(id);
+        public async Task<CategoryVm> Find(int id)
+            => await this.categories.Find(id);
 
 
         [HttpGet]
-        //[Route(nameof(All))]
         public async Task<IEnumerable<CategoryVm>> Index()
-            => await this.categories.GetAll();
+            => await this.categories.All();
 
+
+        [HttpGet]
+        [Route(Id + PathSeparator + nameof(AdsPerCategory))]
+        public async Task<IEnumerable<AdVm>> AdsPerCategory(int id)
+            => await this.categories.AdsPerCategory(id);
     }
 }

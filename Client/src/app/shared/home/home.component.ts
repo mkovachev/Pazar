@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Ad } from 'src/app/ads/ad.model';
 import { CategoriesService } from 'src/app/categories/categories.service';
 import { Category } from 'src/app/categories/category.model';
 
@@ -11,18 +11,20 @@ import { Category } from 'src/app/categories/category.model';
 
 export class HomeComponent implements OnInit {
   categories!: Array<Category>;
+  ads!: Array<Ad>;
 
-  constructor(
-    private categoriesService: CategoriesService,
-    private router: Router) { }
+  constructor(private categoryService: CategoriesService) { }
 
   ngOnInit(): void {
-    this.categoriesService.all().subscribe(res => {
+    this.categoryService.all().subscribe(res => {
       this.categories = res;
     });
   }
 
-  goToAds(id: number) {
-    this.router.navigate(['ads'], { queryParams: { category: id } });
+  adsPerCategory(id: string) {
+    this.categoryService.adsPerCategory(id).subscribe(res => {
+      console.log(res)
+      this.ads = res
+    })
   }
 }

@@ -4,10 +4,10 @@
 }
 
 .box {
-    border: 1px solid grey;
+    border: 1px solid black;
     margin: 2%;
     position: relative;
-    height: 32rem;
+    height: 18rem;
     padding: 5%;
 }
 
@@ -16,10 +16,6 @@
     bottom: 0;
     left: 0;   
     margin: 5%;
-}
-
-.btn-primary {
-    background-color: #6c757d!important;
 }
 
 .container {
