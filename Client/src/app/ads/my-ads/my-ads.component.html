@@ -3,9 +3,9 @@
         <div class="col-lg-2" *ngFor="let ad of ads">
             <div class="card">
                 <button class="btn btn-outline-info" (click)="changeAvailability(ad.id.toString())"
-                        *ngIf="!ad.isActive">Show</button>
-                <button class="btn btn-outline-info" (click)="changeAvailability(ad.id.toString())"
-                        *ngIf="ad.isActive">Hide</button>
+                        *ngIf="!ad.isActive">Activate</button>
+                <button class="btn btn-outline-danger" (click)="changeAvailability(ad.id.toString())"
+                        *ngIf="ad.isActive">Deactivate</button>
                 <img [src]="ad.imageUrl" class="card-img-top" alt="image">
                 <div class="card-body">
                     <h5 class="card-title">{{ad.title}}</h5>

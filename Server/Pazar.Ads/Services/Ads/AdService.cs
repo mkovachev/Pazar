@@ -131,5 +131,28 @@ namespace Pazar.Ads.Services.Ads
 
             return true;
         }
+
+        public async Task<bool> ChangeAvailability(int id)
+        {
+            var ad = await this.db.Ads.FindAsync(id);
+
+            if (ad == null)
+            {
+                throw new NotFoundException($"{ad} doesn't exists");
+            }
+
+            if (ad.UserId != this.user.Id)
+            {
+                throw new InvalidOperationException("You are not the owner of this ad");
+            }
+
+            ad.IsActive = !ad.IsActive;
+
+            this.db.Entry(ad).State = EntityState.Modified;
+
+            await this.db.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

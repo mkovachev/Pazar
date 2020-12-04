@@ -42,6 +42,7 @@ export class MyAdsComponent implements OnInit {
 
   changeAvailability(id: string) {
     this.adsService.changeAvailability(id).subscribe(res => {
+      location.reload()
     })
   }
 

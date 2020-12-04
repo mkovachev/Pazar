@@ -25,5 +25,7 @@ namespace Pazar.Ads.Services.Ads
         Task<bool> Edit(AdEditIm input);
 
         Task<bool> Delete(int id);
+
+        Task<bool> ChangeAvailability(int id);
     }
 }

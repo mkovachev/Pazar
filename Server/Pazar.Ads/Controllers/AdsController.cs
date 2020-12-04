@@ -40,6 +40,12 @@ namespace Pazar.Ads.Controllers
         public async Task<ActionResult<bool>> Edit(AdEditIm input)
             => await this.ads.Edit(input);
 
+        [HttpPut]
+        [Authorize]
+        [Route(Id + PathSeparator + nameof(ChangeAvailability))]
+        public async Task<ActionResult<bool>> ChangeAvailability(int id)
+        => await this.ads.ChangeAvailability(id);
+
         [HttpDelete]
         [Authorize]
         [Route(Id)]
