@@ -26,6 +26,7 @@ export class DetailsComponent implements OnInit {
       this.ad = ad;
     }),
       this.userService.find(this.userId).subscribe(res => {
+        console.log(res)
         this.user = res
       })
   }
