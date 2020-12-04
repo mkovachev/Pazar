@@ -9,7 +9,6 @@ import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng
   styleUrls: ['./my-ads.component.css']
 })
 export class MyAdsComponent implements OnInit {
-  title = 'ng-bootstrap-modal-demo';
   closeResult!: string;
   modalOptions!: NgbModalOptions;
 

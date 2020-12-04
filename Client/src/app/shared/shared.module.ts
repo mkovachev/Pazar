@@ -8,10 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { ErrorInterceptorService } from './error-interceptor.service';
-import { PopUpComponent } from './pop-up/pop-up.component';
+
 
 @NgModule({
-    declarations: [HomeComponent, PopUpComponent],
+    declarations: [HomeComponent],
     imports: [
         CommonModule,
         BrowserAnimationsModule,
