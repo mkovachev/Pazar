@@ -32,7 +32,7 @@ export class MyAdsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  open(content: any) {
+  openDelete(content: any) {
     this.modalService.open(content, this.modalOptions)
   }
 
