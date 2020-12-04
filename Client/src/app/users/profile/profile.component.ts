@@ -42,17 +42,16 @@ export class ProfileComponent implements OnInit {
 
   edit() {
     this.userService.edit(this.id, this.profileForm.value).subscribe(res => {
-      this.router.navigate(['users', 'profile'])
+      this.router.navigate([''])
       this.toastr.info("Your profile has been updated")
     })
   }
 
   changePassword() {
     this.userService.changePassword(this.id, this.changePasswordForm.value).subscribe(res => {
-      console.log(res)
       localStorage.clear()
       window.location.reload()
-      this.router.navigate(['ads', 'myads'])
+      this.router.navigate([''])
     })
   }
 

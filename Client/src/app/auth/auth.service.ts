@@ -17,12 +17,8 @@ export class AuthService {
         return this.http.post(this.url + 'register', payload);
     }
 
-    createUser(payload: any): Observable<any> {
-        return this.http.post(this.url + 'login', payload);
-    }
-
     login(payload: ExtractGroupValue<Login>): Observable<any> {
-        return this.http.post(this.url, payload);
+        return this.http.post(this.url + 'login', payload);
     }
 
     getToken() {

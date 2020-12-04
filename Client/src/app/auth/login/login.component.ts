@@ -10,8 +10,6 @@ import { Login } from './login.model';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup<Login>;
-  returnUrl!: string;
-  @Output() emitter: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private fb: FormBuilder,

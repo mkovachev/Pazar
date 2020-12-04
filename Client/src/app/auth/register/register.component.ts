@@ -24,19 +24,9 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    const { email, password } = this.registerForm.value;
-    const userData = { email, password };
-
-    this.authService.register(userData).subscribe(res => {
+    this.authService.register(this.registerForm.value).subscribe(res => {
       this.authService.saveToken(res.token);
-
-      // this.authService.createUser(userData).subscribe(res => {
-      //   this.authService.saveUserId(res);
-
-      this.router.navigate(['']).then(() => {
-        window.location.reload();
-      });
-      //});
+      this.router.navigate(['']);
     });
   }
 }
