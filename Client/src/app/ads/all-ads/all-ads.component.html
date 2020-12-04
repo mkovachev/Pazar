@@ -1,8 +1,5 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3">
-            <!-- <app-search (emitter)="assignAds($event)"></app-search> -->
-        </div>
         <div class="col-lg-9" *ngIf="ads && ads.length != 0; else noAds">
             <div class="row">
                 <div class="col-lg-2" *ngFor="let ad of ads">
