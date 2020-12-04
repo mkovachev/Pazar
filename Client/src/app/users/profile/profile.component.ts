@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@ng-stack/forms';
 import { PasswordChange } from '../password.model';
 import { User } from '../user.model';
 import { UsersService } from '../users.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -20,17 +21,17 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UsersService,
     private router: Router,
-    private route: ActivatedRoute) {
+    public toastr: ToastrService) {
     this.changePasswordForm = this.fb.group<PasswordChange>({
       currentPassword: [null, Validators.required],
-      newPassword: [null, Validators.required],
+      newPassword: [null, Validators.required]
     })
   }
 
   ngOnInit(): void {
     this.id = localStorage.getItem('userId')!;
-    this.userService.find(this.id).subscribe(user => {
-      this.user = user
+    this.userService.find(this.id).subscribe(u => {
+      this.user = u
       this.profileForm = this.fb.group<User>({
         name: [this.user.name],
         email: [this.user.email],
@@ -39,17 +40,19 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  editProfile() {
+  edit() {
     this.userService.edit(this.id, this.profileForm.value).subscribe(res => {
       this.router.navigate(['users', 'profile'])
+      this.toastr.info("Your profile has been updated")
     })
   }
 
   changePassword() {
-    this.userService.changePassword(this.changePasswordForm.value).subscribe(res => {
+    this.userService.changePassword(this.id, this.changePasswordForm.value).subscribe(res => {
+      console.log(res)
       localStorage.clear()
       window.location.reload()
-      this.router.navigate(['users', 'profile'])
+      this.router.navigate(['ads', 'myads'])
     })
   }
 

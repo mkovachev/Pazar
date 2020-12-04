@@ -89,9 +89,9 @@ namespace Pazar.Identity.Services
             }
 
             var result = await this.userManager.ChangePasswordAsync(
-                user,
-                changePasswordInput.CurrentPassword,
-                changePasswordInput.NewPassword);
+                            user,
+                            changePasswordInput.CurrentPassword,
+                            changePasswordInput.NewPassword);
 
             var errors = result.Errors.Select(e => e.Description);
 

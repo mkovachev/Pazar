@@ -55,14 +55,13 @@ namespace Pazar.Identity.Controllers
         [HttpPut]
         [Authorize]
         [Route(nameof(ChangePassword))]
-        public async Task<ActionResult> ChangePassword(ChangePasswordIm input)
-            => await this.identity.ChangePassword(
-                this.user.Id,
-                new ChangePasswordIm
-                {
-                    CurrentPassword = input.CurrentPassword,
-                    NewPassword = input.NewPassword
-                });
+        public async Task<ActionResult> ChangePassword(string id, ChangePasswordIm input)
+            => await this.identity.ChangePassword(id, input);
+        //new ChangePasswordIm
+        //{
+        //    CurrentPassword = input.CurrentPassword,
+        //    NewPassword = input.NewPassword
+        //});
 
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]

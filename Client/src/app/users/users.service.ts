@@ -25,7 +25,7 @@ export class UsersService {
         return this.http.delete(this.url + 'delete')
     }
 
-    changePassword(payload: PasswordChange): Observable<any> {
+    changePassword(id: string, payload: PasswordChange): Observable<any> {
         return this.http.put(this.url + 'changePassword', payload);
     }
 }
