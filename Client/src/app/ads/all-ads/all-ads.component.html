@@ -8,7 +8,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ad.title}}</h5>
                             <p class="card-text">${{ad.price}}</p>
-                            <a routerLink="/{{ad.id}}" class="btn btn-primary">Details</a>
+                            <a routerLink="/ads/{{ad.id}}" class="btn btn-outline-info">Details</a>
                         </div>
                     </div>
                 </div>
@@ -23,5 +23,4 @@
     <ng-template class="row" #noAds>
         <h3>No Ads Found</h3>
     </ng-template>
-
 </div>

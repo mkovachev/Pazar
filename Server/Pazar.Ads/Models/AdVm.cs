@@ -6,6 +6,8 @@ namespace Pazar.Ads.Models
 {
     public class AdVm : IMapFrom<Ad>
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public decimal Price { get; set; }

@@ -17,10 +17,7 @@ export class AllAdsComponent implements OnInit {
   ngOnInit(): void {
     this.adsService.all().subscribe(res => {
       this.ads = res;
+      console.log(this.ads)
     })
-  }
-
-  assignAds(event: any) {
-    this.ads = event['ads'];
   }
 }
