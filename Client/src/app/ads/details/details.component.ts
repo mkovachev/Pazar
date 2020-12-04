@@ -25,8 +25,8 @@ export class DetailsComponent implements OnInit {
     this.adService.find(this.adId).subscribe(ad => {
       this.ad = ad;
     }),
-      this.userService.find(this.userId).subscribe(user => {
-        this.user = user;
+      this.userService.find(this.userId).subscribe(res => {
+        this.user = res
       })
   }
 
