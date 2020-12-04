@@ -7,28 +7,28 @@ import { Category } from './category.model';
   providedIn: 'root'
 })
 export class CategoriesService {
-  path = `${environment.adsUrl}categories/`;
-  pathWithoutSlash = this.path.slice(0, -1);
+  url = `${environment.adsUrl}categories/`;
+  urlWithoutSlash = this.url.slice(0, -1);
 
   constructor(private http: HttpClient) { }
 
   find(id: string): Observable<Category> {
-    return this.http.get<Category>(this.path + id);
+    return this.http.get<Category>(this.url + id);
   }
 
   all(): Observable<Array<Category>> {
-    return this.http.get<Array<Category>>(this.path);
+    return this.http.get<Array<Category>>(this.url);
   }
 
   create(category: Category): Observable<Category> {
-    return this.http.post<Category>(this.path, category);
+    return this.http.post<Category>(this.url, category);
   }
 
   edit(id: string, category: Category): Observable<Category> {
-    return this.http.put<Category>(this.path + id, category);
+    return this.http.put<Category>(this.url + id, category);
   }
 
   delete(id: string) {
-    return this.http.delete(this.path + id);
+    return this.http.delete(this.url + id);
   }
 }

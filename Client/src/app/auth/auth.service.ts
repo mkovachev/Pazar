@@ -9,23 +9,20 @@ import { ExtractGroupValue } from '@ng-stack/forms/lib/types';
     providedIn: 'root'
 })
 export class AuthService {
-    registerPath = `${environment.identityUrl}identity/register`;
-    loginPath = `${environment.identityUrl}identity/login`;
-    createUserPath = `${environment.adsUrl}identity/users`;
-    userIdPath = `${environment.identityUrl}identity/id`;
+    url = `${environment.identityUrl}identity/`;
 
     constructor(private http: HttpClient) { }
 
     register(payload: any): Observable<any> {
-        return this.http.post(this.registerPath, payload);
+        return this.http.post(this.url + 'register', payload);
     }
 
     createUser(payload: any): Observable<any> {
-        return this.http.post(this.createUserPath, payload);
+        return this.http.post(this.url + 'login', payload);
     }
 
     login(payload: ExtractGroupValue<Login>): Observable<any> {
-        return this.http.post(this.loginPath, payload);
+        return this.http.post(this.url, payload);
     }
 
     getToken() {
@@ -37,7 +34,7 @@ export class AuthService {
     }
 
     getUserId(): Observable<any> {
-        return this.http.get(this.userIdPath);
+        return this.http.get(this.url + 'id');
     }
 
     saveUserId(userId: string) {

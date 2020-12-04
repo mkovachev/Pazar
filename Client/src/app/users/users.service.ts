@@ -9,22 +9,23 @@ import { PasswordChange } from './password.model';
     providedIn: 'root'
 })
 export class UsersService {
-    userPath: string = `${environment.identityUrl}identity/`
+    url: string = `${environment.identityUrl}identity/`
+    
     constructor(private http: HttpClient) { }
 
     find(id: string): Observable<User> {
-        return this.http.get<User>(this.userPath + id)
+        return this.http.get<User>(this.url + id)
     }
 
     edit(id: string, payload: User): Observable<any> {
-        return this.http.put(this.userPath + id, payload)
+        return this.http.put(this.url + id, payload)
     }
 
     delete(): Observable<any> {
-        return this.http.delete(this.userPath + 'delete')
+        return this.http.delete(this.url + 'delete')
     }
 
     changePassword(payload: PasswordChange): Observable<any> {
-        return this.http.put(this.userPath + 'changePassword', payload);
+        return this.http.put(this.url + 'changePassword', payload);
     }
 }

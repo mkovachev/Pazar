@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ad } from '../ad.model';
 import { AdsService } from '../ads.service';
-import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-my-ads',
@@ -10,7 +10,6 @@ import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng
 })
 export class MyAdsComponent implements OnInit {
   closeResult!: string;
-  modalOptions!: NgbModalOptions;
 
   ads!: Array<Ad>;
   userId!: string;
@@ -22,18 +21,14 @@ export class MyAdsComponent implements OnInit {
     this.userId = localStorage.getItem('userId')!;
     this.adsService.myAds(this.userId).subscribe(ads => {
       this.ads = ads;
-    }),
-      this.modalOptions = {
-        backdrop: 'static',
-        backdropClass: 'customBackdrop'
-      }
+    })
   }
 
   ngOnInit(): void {
   }
 
   openDelete(content: any) {
-    this.modalService.open(content, this.modalOptions)
+    this.modalService.open(content)
   }
 
   delete() {

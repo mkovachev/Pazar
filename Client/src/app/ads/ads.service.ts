@@ -8,45 +8,45 @@ import { Ad } from './ad.model';
     providedIn: 'root'
 })
 export class AdsService {
-    path = environment.adsUrl + 'ads/';
-    pathWithoutSlash = this.path.slice(0, -1);
+    url = environment.adsUrl + 'ads/';
+    urlWithoutSlash = this.url.slice(0, -1);
 
     constructor(private http: HttpClient) { }
 
     find(id: string): Observable<Ad> {
-        return this.http.get<Ad>(this.path + id);
+        return this.http.get<Ad>(this.url + id);
     }
 
     all(): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.path);
+        return this.http.get<Array<Ad>>(this.url);
     }
 
     myAds(userId: string): Observable<Array<Ad>> {
-        const params = new HttpParams().set( "userId", userId);
-        return this.http.get<Array<Ad>>(this.path + 'myads', { params });
+        const params = new HttpParams().set("userId", userId);
+        return this.http.get<Array<Ad>>(this.url + 'myads', { params });
     }
 
     create(ad: Ad): Observable<Ad> {
-        return this.http.post<Ad>(this.path, ad);
+        return this.http.post<Ad>(this.url, ad);
     }
 
     edit(id: string, ad: Ad): Observable<Ad> {
-        return this.http.put<Ad>(this.path + id, ad);
+        return this.http.put<Ad>(this.url + id, ad);
     }
 
-    delete(id: string) {
-        return this.http.delete(this.path + id);
+    delete(id: any): Observable<any> {
+        return this.http.delete(this.url + id);
     }
 
     search(queryString: string): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.pathWithoutSlash + queryString);
+        return this.http.get<Array<Ad>>(this.urlWithoutSlash + queryString);
     }
 
     sort(queryString: string): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.pathWithoutSlash + queryString);
+        return this.http.get<Array<Ad>>(this.urlWithoutSlash + queryString);
     }
 
     changeAvailability(id: any): Observable<boolean> {
-        return this.http.put<boolean>(`${this.path + id}/changeAvailability`, {});
+        return this.http.put<boolean>(`${this.url + id}/changeAvailability`, {});
     }
 }
