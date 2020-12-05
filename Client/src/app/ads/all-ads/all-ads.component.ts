@@ -11,13 +11,11 @@ export class AllAdsComponent implements OnInit {
   ads!: Array<Ad>
 
   constructor(
-    private adsService: AdsService,
-    private router: Router) { }
+    private adsService: AdsService,) { }
 
   ngOnInit(): void {
     this.adsService.all().subscribe(res => {
       this.ads = res;
-      console.log(this.ads)
     })
   }
 }
