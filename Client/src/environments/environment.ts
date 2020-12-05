@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   identityUrl: 'http://localhost:5001/',
   adsUrl: 'http://localhost:5002/',
   statisticsUrl: 'http://localhost:5005/',
