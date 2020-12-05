@@ -10,6 +10,6 @@ namespace Pazar.Ads.Services.Categories
 
         Task<IEnumerable<CategoryVm>> All();
 
-        Task<IEnumerable<AdVm>> AdsPerCategory(int id);
+        Task<IEnumerable<AdVm>> Ads(int id);
     }
 }

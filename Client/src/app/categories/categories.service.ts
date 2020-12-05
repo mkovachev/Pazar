@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Ad } from '../ads/ad.model';
@@ -21,8 +21,8 @@ export class CategoriesService {
     return this.http.get<Array<Category>>(this.url);
   }
 
-  adsPerCategory(id: string): Observable<Array<Ad>> {
-    return this.http.get<Array<Ad>>(this.url + id + '/adsPerCategory');
+  ads(id: string): Observable<Array<Ad>> {
+    return this.http.get<Array<Ad>>(this.url + id + '/ads');
   }
 
   create(category: Category): Observable<Category> {

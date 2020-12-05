@@ -32,7 +32,7 @@ namespace Pazar.Ads.Services.Categories
                             .ProjectTo<CategoryVm>(this.mapper.ConfigurationProvider)
                             .ToListAsync();
 
-        public async Task<IEnumerable<AdVm>> AdsPerCategory(int id)
+        public async Task<IEnumerable<AdVm>> Ads(int id)
                     => await this.db.Ads
                                     .Where(ad => ad.CategoryId == id)
                                     .Where(ad => ad.IsActive)

@@ -22,8 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   adsPerCategory(id: string) {
-    this.categoryService.adsPerCategory(id).subscribe(res => {
-      console.log(res)
+    this.categoryService.ads(id).subscribe(res => {
       this.ads = res
     })
   }

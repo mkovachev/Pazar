@@ -4,11 +4,11 @@ import { CategoriesService } from '../categories.service';
 import { Category } from '../category.model';
 
 @Component({
-  selector: 'app-all-categories',
-  templateUrl: './all-categories.component.html',
-  styleUrls: ['./all-categories.component.css']
+  selector: 'app-all',
+  templateUrl: './all.component.html',
+  styleUrls: ['./all.component.css']
 })
-export class AllCategoriesComponent implements OnInit {
+export class AllComponent implements OnInit {
   categories!: Array<Category>;
   ads!: Array<Ad>;
 
@@ -20,8 +20,8 @@ export class AllCategoriesComponent implements OnInit {
     });
   }
 
-  adsPerCategory(id: string) {
-    this.categoryService.adsPerCategory(id).subscribe(res => {
+  adsInCategory(id: string) {
+    this.categoryService.ads(id).subscribe(res => {
       this.ads = res
     })
   }

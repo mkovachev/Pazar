@@ -30,8 +30,8 @@ namespace Pazar.Ads.Controllers
 
 
         [HttpGet]
-        [Route(Id + PathSeparator + nameof(AdsPerCategory))]
-        public async Task<IEnumerable<AdVm>> AdsPerCategory(int id)
-            => await this.categories.AdsPerCategory(id);
+        [Route(Id + PathSeparator + nameof(Ads))]
+        public async Task<IEnumerable<AdVm>> Ads(int id)
+            => await this.categories.Ads(id);
     }
 }

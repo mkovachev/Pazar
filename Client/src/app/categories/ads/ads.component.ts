@@ -5,11 +5,11 @@ import { CategoriesService } from '../categories.service';
 import { Category } from '../category.model';
 
 @Component({
-  selector: 'app-ads-per-category',
-  templateUrl: './ads-per-category.component.html',
-  styleUrls: ['./ads-per-category.component.css']
+  selector: 'app-ads',
+  templateUrl: './ads.component.html',
+  styleUrls: ['./ads.component.css']
 })
-export class AdsPerCategoryComponent implements OnInit {
+export class AdsComponent implements OnInit {
   category!: Category
   id!: string
   ads!: Array<Ad>
@@ -18,7 +18,7 @@ export class AdsPerCategoryComponent implements OnInit {
     private categoryService: CategoriesService,
     private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id')!;
-    this.categoryService.adsPerCategory(this.id).subscribe(res => {
+    this.categoryService.ads(this.id).subscribe(res => {
       this.ads = res
       console.log(this.ads)
     })
@@ -28,6 +28,3 @@ export class AdsPerCategoryComponent implements OnInit {
   }
 
 }
-
-// 
-// 
