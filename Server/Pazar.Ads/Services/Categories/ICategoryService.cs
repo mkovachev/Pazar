@@ -6,7 +6,7 @@ namespace Pazar.Ads.Services.Categories
 {
     public interface ICategoryService
     {
-        Task<CategoryVm> Find(int id);
+        Task<CategoryDetailsVm> Find(int id);
 
         Task<IEnumerable<CategoryVm>> All();
 

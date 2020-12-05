@@ -20,7 +20,7 @@ namespace Pazar.Ads.Controllers
         [HttpGet]
         [Authorize]
         [Route(Id)]
-        public async Task<CategoryVm> Find(int id)
+        public async Task<CategoryDetailsVm> Find(int id)
             => await this.categories.Find(id);
 
 

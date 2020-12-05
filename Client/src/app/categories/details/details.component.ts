@@ -18,6 +18,7 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id')!;
     this.categoryService.find(this.id).subscribe(res => {
+      console.log(res)
       this.category = res;
     })
   }

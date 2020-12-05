@@ -4,5 +4,5 @@ export interface Category {
     id: number;
     name: string;
     imageUrl: string;
-    ads: Array<Ad>;
+    totalAds: number;
 }

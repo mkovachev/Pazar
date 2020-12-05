@@ -20,10 +20,10 @@ namespace Pazar.Ads.Services.Categories
             this.mapper = mapper;
         }
 
-        public async Task<CategoryVm> Find(int id)
+        public async Task<CategoryDetailsVm> Find(int id)
             => await this.db.Categories
                              .Where(c => c.Id == id)
-                             .ProjectTo<CategoryVm>(this.mapper.ConfigurationProvider)
+                             .ProjectTo<CategoryDetailsVm>(this.mapper.ConfigurationProvider)
                              .FirstOrDefaultAsync();
 
         public async Task<IEnumerable<CategoryVm>> All()
