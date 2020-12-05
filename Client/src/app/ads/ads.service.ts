@@ -38,14 +38,6 @@ export class AdsService {
         return this.http.delete(this.url + id);
     }
 
-    search(queryString: string): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.urlWithoutSlash + queryString);
-    }
-
-    sort(queryString: string): Observable<Array<Ad>> {
-        return this.http.get<Array<Ad>>(this.urlWithoutSlash + queryString);
-    }
-
     changeAvailability(id: any): Observable<boolean> {
         return this.http.put<boolean>(`${this.url + id}/changeAvailability`, {});
     }
