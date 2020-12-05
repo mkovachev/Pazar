@@ -19,7 +19,7 @@ namespace Pazar.Ads.Data.Configurations
                 .IsRequired();
 
             builder
-                .Property(c => c.Image)
+                .Property(c => c.ImageUrl)
                 .HasMaxLength(ImageUrlMaxLength);
             //.IsRequired();
 

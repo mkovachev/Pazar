@@ -13,7 +13,7 @@ namespace Pazar.Ads.Data.Models
 
         public string Name { get; private set; }
 
-        public string Image { get; set; }
+        public string ImageUrl { get; set; }
 
         public ICollection<Ad> Ads { get; set; } = new List<Ad>();
     }

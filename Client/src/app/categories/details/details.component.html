@@ -1,1 +1,12 @@
-<p>details works!</p>
+<div class="container-fluid" *ngIf="category">
+    <div class="row">
+        <div class="col-lg-6">
+            <img [src]="category.imageUrl" alt="Ad image">
+        </div>
+        <div class="col-lg-6">
+            <h4>{{ category.name }}</h4>
+            <hr />
+            <h5>{{ category.ads }}</h5>
+        </div>
+    </div>
+</div>
