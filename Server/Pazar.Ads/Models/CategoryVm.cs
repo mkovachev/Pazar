@@ -10,6 +10,7 @@ namespace Pazar.Ads.Models
         public string Name { get; private set; }
 
         public void Mapping(Profile mapper)
-            => mapper.CreateMap<Category, CategoryVm>().ReverseMap();
+            => mapper.CreateMap<Category, CategoryVm>()
+                     .ReverseMap();
     }
 }
