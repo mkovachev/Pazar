@@ -11,7 +11,7 @@ services:
             - '1433:1433'
         environment:
             - ACCEPT_EULA=Y
-            - SA_PASSWORD=Admin1234!@
+            - SA_PASSWORD=yourStrongPassword12!@
         volumes:
             - sqldata:/var/opt/mssql
         networks:
@@ -44,7 +44,7 @@ services:
         env_file:
             - Server/Pazar.Core/Common.env
         environment:
-            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Identity;User Id=sa; Password=Admin1234!@;MultipleActiveResultSets=true
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Identity;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - IdentitySettings__AdminPassword=admin1234
         restart: on-failure
         volumes:
@@ -65,8 +65,8 @@ services:
         env_file:
             - Server/Pazar.Core/Common.env
         environment:
-            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=Admin1234!@;MultipleActiveResultSets=true
-            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=Admin1234!@;MultipleActiveResultSets=true
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
+            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - MessageQueueSettings__Host=rabbitmq
             - MessageQueueSettings__UserName=guest
             - MessageQueueSettings__Password=guest
