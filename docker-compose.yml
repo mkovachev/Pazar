@@ -32,6 +32,32 @@ services:
             # - rabbitmq/logs:/var/log/rabbitmq/log
         networks:
             - pazar-network
+            
+            
+        statistics:
+        container_name: statistics
+        image: mkovachev/pazar-statistics-service
+        build:
+            context: ./Server
+            dockerfile: ./Pazar.Statistics/Dockerfile
+        ports:
+            - '5004:80'
+        env_file:
+            - Server/Pazar.Core/Common.env
+        environment:
+             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
+            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
+            - MessageQueueSettings__Host=rabbitmq
+            - MessageQueueSettings__UserName=guest
+            - MessageQueueSettings__Password=guest
+        restart: on-failure
+        volumes:
+            - data-protection:/root/.aspnet/DataProtection-Keys
+        networks:
+              - pazar-network
+        depends_on:
+            - data
+            - messages
 
     identity:
         container_name: identity

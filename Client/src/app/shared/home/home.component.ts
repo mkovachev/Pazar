@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
       this.categories = res;
     });
 
-    this.statisticsService.getStatistics().subscribe(res => {
+    this.statisticsService.adsStatistics().subscribe(res => {
       this.statistics = res;
     });
   }
