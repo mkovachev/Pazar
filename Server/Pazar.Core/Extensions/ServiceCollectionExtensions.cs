@@ -193,14 +193,15 @@ namespace Pazar.Core.Extensions
             services
                 .AddMassTransit(mt =>
                 {
+                    // mt.AddConsumers(Assembly.GetExecutingAssembly
                     consumers.ForEach(consumer => mt.AddConsumer(consumer));
 
                     mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
                     {
-                        rmq.Host(messageQueueSettings.Host, host =>
+                        rmq.Host("localhost", host =>
                         {
-                            host.Username(messageQueueSettings.UserName);
-                            host.Password(messageQueueSettings.Password);
+                            host.Username("guest");
+                            host.Password("guest");
                         });
 
                         rmq.UseHealthCheck(context);
@@ -220,7 +221,7 @@ namespace Pazar.Core.Extensions
 
             if (usePolling)
             {
-                //CreateHangfireDatabase(configuration);
+                CreateHangfireDatabase(configuration);
 
                 services
                     .AddHangfire(config => config
