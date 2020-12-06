@@ -6,7 +6,7 @@ using static Pazar.Ads.Data.DataConstants.Image;
 
 namespace Pazar.Ads.Data.Configurations
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
+    internal class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {

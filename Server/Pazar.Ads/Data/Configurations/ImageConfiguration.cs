@@ -6,7 +6,7 @@ using static Pazar.Ads.Data.DataConstants.Image;
 
 namespace Pazar.Ads.Data.Configurations
 {
-    public class ImageConfiguration : IEntityTypeConfiguration<Image>
+    internal class ImageConfiguration : IEntityTypeConfiguration<Image>
     {
         public void Configure(EntityTypeBuilder<Image> builder)
         {

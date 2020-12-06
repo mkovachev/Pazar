@@ -1,6 +1,7 @@
 ﻿using Pazar.Ads.Data.Interfaces;
 using Pazar.Core.Services.Data;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Pazar.Ads.Data
 {
@@ -16,19 +17,25 @@ namespace Pazar.Ads.Data
         }
         public void SeedData()
         {
+            Task
+               .Run(async () =>
+               {
 
-            if (!this.db.Categories.Any())
-            {
+                   if (!this.db.Categories.Any())
+                   {
 
-                var initialCategories = this.categories.GetInitialCategories();
+                       var initialCategories = this.categories.GetInitialCategories();
 
-                foreach (var category in initialCategories)
-                {
-                    this.db.Categories.AddAsync(category);
-                }
-            }
+                       foreach (var category in initialCategories)
+                       {
+                           await this.db.Categories.AddAsync(category);
+                       }
+                   }
 
-            this.db.SaveChanges();
+                   await this.db.SaveChangesAsync();
+               })
+               .GetAwaiter()
+               .GetResult();
         }
     }
 }
