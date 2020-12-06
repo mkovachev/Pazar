@@ -18,9 +18,9 @@ namespace Ads.Statistics.Services.Statistics
             this.mapper = mapper;
         }
 
-        public async Task<StatisticsVm> AdsOverview()
+        public async Task<AdsStatisticsVm> AdsOverview()
             => await this.mapper
-                .ProjectTo<StatisticsVm>((IQueryable)this.db.Ads.Find())
+                .ProjectTo<AdsStatisticsVm>((IQueryable)this.db.Ads.Find())
                 .SingleOrDefaultAsync();
     }
 }

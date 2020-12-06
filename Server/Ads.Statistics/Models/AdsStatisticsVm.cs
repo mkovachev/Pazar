@@ -3,7 +3,7 @@ using Pazar.Core.Mappings;
 
 namespace Ads.Statistics.Models
 {
-    public class StatisticsVm : IMapFrom<AdsStatistics>
+    public class AdsStatisticsVm : IMapFrom<AdsStatistics>
     {
         public int TotalAds { get; set; }
     }

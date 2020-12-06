@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Ad } from 'src/app/ads/ad.model';
 import { CategoriesService } from 'src/app/categories/categories.service';
 import { Category } from 'src/app/categories/category.model';
+import { AdsStatistics } from '../statistics/ads-statistics.model';
+import { StatisticsService } from '../statistics/statistics.service';
 
 @Component({
   selector: 'app-home',
@@ -12,18 +15,20 @@ import { Category } from 'src/app/categories/category.model';
 export class HomeComponent implements OnInit {
   categories!: Array<Category>;
   ads!: Array<Ad>;
+  statistics!: AdsStatistics;
 
-  constructor(private categoryService: CategoriesService) { }
+  constructor(
+    private categoryService: CategoriesService,
+    private statisticsService: StatisticsService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.categoryService.all().subscribe(res => {
       this.categories = res;
     });
-  }
 
-  adsPerCategory(id: string) {
-    this.categoryService.ads(id).subscribe(res => {
-      this.ads = res
-    })
+    this.statisticsService.getStatistics().subscribe(res => {
+      this.statistics = res;
+    });
   }
 }

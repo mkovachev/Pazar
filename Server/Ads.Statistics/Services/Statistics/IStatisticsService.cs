@@ -5,6 +5,6 @@ namespace Ads.Statistics.Services.Statistics
 {
     public interface IStatisticsService
     {
-        Task<StatisticsVm> AdsOverview();
+        Task<AdsStatisticsVm> AdsOverview();
     }
 }
