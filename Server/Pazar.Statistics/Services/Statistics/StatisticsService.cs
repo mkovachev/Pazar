@@ -1,11 +1,11 @@
-﻿using Ads.Statistics.Data;
-using Ads.Statistics.Models;
+﻿using Pazar.Statistics.Data;
+using Pazar.Statistics.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ads.Statistics.Services.Statistics
+namespace Pazar.Statistics.Services.Statistics
 {
     public class StatisticsService : IStatisticsService
     {

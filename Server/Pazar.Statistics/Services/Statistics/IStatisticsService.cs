@@ -1,7 +1,7 @@
-﻿using Ads.Statistics.Models;
+﻿using Pazar.Statistics.Models;
 using System.Threading.Tasks;
 
-namespace Ads.Statistics.Services.Statistics
+namespace Pazar.Statistics.Services.Statistics
 {
     public interface IStatisticsService
     {

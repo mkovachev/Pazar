@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Ads.Statistics.Data.Migrations
+namespace Pazar.Statistics.Data.Migrations
 {
-    public partial class initTables : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -1,4 +1,4 @@
-﻿namespace Ads.Statistics.Models
+﻿namespace Pazar.Statistics.Models
 {
     public class AdVm
     {

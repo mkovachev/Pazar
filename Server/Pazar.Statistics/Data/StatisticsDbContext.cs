@@ -1,9 +1,9 @@
-﻿using Ads.Statistics.Data.Models;
+﻿using Pazar.Statistics.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Pazar.Core.Data;
 using System.Reflection;
 
-namespace Ads.Statistics.Data
+namespace Pazar.Statistics.Data
 {
     public class StatisticsDbContext : MessageDbContext
     {
