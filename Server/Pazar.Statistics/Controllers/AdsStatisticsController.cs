@@ -2,10 +2,11 @@
 using Pazar.Statistics.Services.Statistics;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Pazar.Core.Controllers;
 
 namespace Pazar.Statistics.Controllers
 {
-    public class AdsStatisticsController
+    public class AdsStatisticsController : ApiController
     {
         private readonly IStatisticsService adsStatistics;
 

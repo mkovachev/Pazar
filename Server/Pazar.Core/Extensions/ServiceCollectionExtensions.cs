@@ -259,7 +259,7 @@ namespace Pazar.Core.Extensions
 
         private static void CreateHangfireDatabase(IConfiguration configuration)
         {
-            var connectionString = configuration.GetCronJobsConnectionString();
+            var connectionString = configuration.GetCronJobsConnectionString(); //Todo null
 
             var dbName = connectionString
                 .Split(";")[1]
