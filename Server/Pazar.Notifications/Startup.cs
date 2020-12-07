@@ -46,7 +46,7 @@ namespace Pazar.Notifications
             app
                 .UseRouting()
                 .UseCors(options => options
-                    .WithOrigins(allowedOrigins)
+                    //.WithOrigins(allowedOrigins)
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials())
