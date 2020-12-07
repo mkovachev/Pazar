@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pazar.Core.Data.Models;
+using Pazar.Core.Exceptions;
 using Pazar.Core.Services.Messages;
 using System.Linq;
 using System.Threading;
@@ -30,11 +31,16 @@ namespace Pazar.Core.Messages
         {
             using var scope = this.serviceScopeFactory.CreateScope();
 
-            var data = scope.ServiceProvider.GetService<DbContext>();
+            var db = scope.ServiceProvider.GetService<DbContext>();
 
-            if (!data.Database.CanConnect())
+            if (db == null)
             {
-                data.Database.Migrate();
+                throw new NullException();
+            }
+
+            if (!db.Database.CanConnect())
+            {
+                db.Database.Migrate();
             }
 
             this.recurringJob.AddOrUpdate(
@@ -52,9 +58,14 @@ namespace Pazar.Core.Messages
         {
             using var scope = this.serviceScopeFactory.CreateScope();
 
-            var data = scope.ServiceProvider.GetService<DbContext>();
+            var db = scope.ServiceProvider.GetService<DbContext>();
 
-            var messages = data
+            if (db == null)
+            {
+                throw new NullException();
+            }
+
+            var messages = db
                 .Set<Message>()
                 .Where(m => !m.Published)
                 .OrderBy(m => m.Id)
@@ -69,7 +80,7 @@ namespace Pazar.Core.Messages
 
                 message.MarkAsPublished();
 
-                data.SaveChanges();
+                db.SaveChanges();
             }
         }
     }

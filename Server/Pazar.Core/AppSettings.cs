@@ -2,8 +2,8 @@
 {
     public class AppSettings
     {
-        public string Secret { get; private set; } = "THIS IS A TEST SECRET TO SIGN AND VERIFY JWT TOKENS";
+        public string Secret { get; set; } = "THIS IS A TEST SECRET TO SIGN AND VERIFY JWT TOKENS";
 
-        public bool SeedInitialData { get; private set; } = true;
+        public bool SeedInitialData { get; set; } = true;
     }
 }

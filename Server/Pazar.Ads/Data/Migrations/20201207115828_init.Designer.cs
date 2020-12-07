@@ -10,8 +10,8 @@ using Pazar.Ads.Data;
 namespace Pazar.Ads.Data.Migrations
 {
     [DbContext(typeof(PazarDbContext))]
-    [Migration("20201204173827_addedAdsToCategory")]
-    partial class addedAdsToCategory
+    [Migration("20201207115828_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,7 +94,7 @@ namespace Pazar.Ads.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Image")
+                    b.Property<string>("ImageUrl")
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
 

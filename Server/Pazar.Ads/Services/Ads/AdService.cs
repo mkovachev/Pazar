@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Pazar.Ads.Data;
 using Pazar.Ads.Data.Models;
@@ -8,6 +7,7 @@ using Pazar.Ads.Models;
 using Pazar.Core.Exceptions;
 using Pazar.Core.Messages.Ads;
 using Pazar.Core.Services.Identity;
+using Pazar.Core.Services.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,14 +20,14 @@ namespace Pazar.Ads.Services.Ads
         private readonly PazarDbContext db;
         private readonly IMapper mapper;
         private readonly ILoggedUserService user;
-        private readonly IBus bus;
+        //private readonly IPublisher publisher;
 
-        public AdService(PazarDbContext db, IMapper mapper, ILoggedUserService user, IBus bus)
+        public AdService(PazarDbContext db, IMapper mapper, ILoggedUserService user)
         {
             this.db = db;
             this.mapper = mapper;
             this.user = user;
-            this.bus = bus;
+            // this.publisher = publisher;
         }
 
         public async Task<IEnumerable<AdVm>> All()
@@ -87,7 +87,8 @@ namespace Pazar.Ads.Services.Ads
 
             await this.db.SaveChangesAsync();
 
-            await this.bus.Publish(message);
+            //await this.publisher.Publish(message);
+
             return true;
         }
 

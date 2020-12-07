@@ -31,7 +31,7 @@ namespace Pazar.Core.Extensions
         {
             services
                 .AddDatabase<TDbContext>(configuration)
-                .AddApplicationSettings(configuration)
+                .AddAppSettings(configuration)
                 .AddTokenAuthentication(configuration)
                 .AddHealth(configuration, databaseHealthChecks, messagingHealthChecks)
                 .AddAutoMapperProfile(Assembly.GetCallingAssembly())
@@ -47,7 +47,7 @@ namespace Pazar.Core.Extensions
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "My API",
+                    Title = "Pazar",
                     Version = "v1"
                 });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -90,18 +90,18 @@ namespace Pazar.Core.Extensions
                                 maxRetryDelay: TimeSpan.FromSeconds(30),
                                 errorNumbersToAdd: null)));
 
-        public static IServiceCollection AddApplicationSettings(
+        public static IServiceCollection AddAppSettings(
             this IServiceCollection services,
             IConfiguration configuration)
-            => services
-                .Configure<AppSettings>(
-                    configuration.GetSection(nameof(AppSettings)),
-                    config => config.BindNonPublicProperties = true);
+                => services
+                          .Configure<AppSettings>(
+                              configuration.GetSection(nameof(AppSettings)),
+                              config => config.BindNonPublicProperties = true);
 
         public static IServiceCollection AddTokenAuthentication(
             this IServiceCollection services,
             IConfiguration configuration,
-            JwtBearerEvents events = null)
+            JwtBearerEvents? events = null)
         {
             services
                 .AddHttpContextAccessor()
@@ -193,20 +193,17 @@ namespace Pazar.Core.Extensions
             services
                 .AddMassTransit(mt =>
                 {
-                    // mt.AddConsumers(Assembly.GetExecutingAssembly
                     consumers.ForEach(consumer => mt.AddConsumer(consumer));
 
                     mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
                     {
-                        rmq.Host("localhost", host =>
+                        rmq.Host(messageQueueSettings.Host, host =>
                         {
-                            host.Username("guest");
-                            host.Password("guest");
+                            host.Username(messageQueueSettings.UserName);
+                            host.Password(messageQueueSettings.Password);
                         });
 
                         rmq.UseHealthCheck(context);
-
-
 
                         consumers.ForEach(consumer => rmq.ReceiveEndpoint(consumer.FullName, endpoint =>
                         {
@@ -257,6 +254,7 @@ namespace Pazar.Core.Extensions
                 settings.GetValue<string>(nameof(MessageQueueSettings.Password)));
         }
 
+        // manual update due to conflict with EF
         private static void CreateHangfireDatabase(IConfiguration configuration)
         {
             var connectionString = configuration.GetCronJobsConnectionString(); //Todo null
