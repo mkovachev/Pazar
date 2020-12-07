@@ -32,6 +32,7 @@ namespace Pazar.Ads
                     .AddTransient<ICategoryService, CategoryService>()
                     .AddTransient<IInitialCategories, CategoryData>()
                     .AddSingleton<IDateTime, DateTimeProvider>()
+                    .AddMessaging(this.Configuration)
                     .AddSwaggerWithJwt();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

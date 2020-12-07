@@ -35,7 +35,6 @@ namespace Pazar.Core.Extensions
                 .AddTokenAuthentication(configuration)
                 .AddHealth(configuration, databaseHealthChecks, messagingHealthChecks)
                 .AddAutoMapperProfile(Assembly.GetCallingAssembly())
-                //.AddCors()
                 .AddControllers();
 
             return services;
