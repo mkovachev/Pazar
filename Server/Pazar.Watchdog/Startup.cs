@@ -10,14 +10,13 @@ namespace Pazar.Watchdog
             services
                 .AddHealthChecksUI()
                 .AddInMemoryStorage();
-            //.AddSwaggerWithJwt()
         }
 
         public void Configure(IApplicationBuilder app)
         {
             app
-                .UseRouting()
-                .UseEndpoints(endpoints => endpoints
+               .UseRouting()
+               .UseEndpoints(endpoints => endpoints
                     .MapHealthChecksUI(healthChecks => healthChecks
                         .UIPath = "/healthchecks"));
         }

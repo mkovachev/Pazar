@@ -40,7 +40,7 @@ namespace Pazar.Core.Extensions
             var serviceProvider = serviceScope.ServiceProvider;
 
             var db = serviceProvider.GetRequiredService<DbContext>();
-            //db.Database.EnsureDeleted();
+
             db.Database.Migrate();
 
             var seeders = serviceProvider.GetServices<IDataSeeder>();
