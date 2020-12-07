@@ -12,7 +12,7 @@ namespace Pazar.Core.Data
         {
         }
 
-        public DbSet<Message> Messages { get; set; }
+        public DbSet<Message>? Messages { get; set; }
 
         protected abstract Assembly ConfigurationsAssembly { get; }
 

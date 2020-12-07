@@ -26,7 +26,8 @@ namespace Pazar.Statistics
                 .AddTransient<IAdStatsService, AdStatsService>()
                 .AddMessaging(
                     this.Configuration,
-                    consumers: typeof(AdCreatedConsumer));
+                    consumers: typeof(AdCreatedConsumer))
+                .AddSwaggerWithJwt();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             => app
