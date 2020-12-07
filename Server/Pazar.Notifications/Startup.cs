@@ -41,12 +41,12 @@ namespace Pazar.Notifications
 
             var allowedOrigins = this.Configuration
                 .GetSection(nameof(NotificationSettings))
-                .GetValue<string>(nameof(NotificationSettings.AllowedOrigins));
+                .GetValue<string>(nameof(NotificationSettings.AllowedOrigins));  // Todo null
 
             app
                 .UseRouting()
                 .UseCors(options => options
-                    .WithOrigins(allowedOrigins) // Todo null
+                    .WithOrigins(allowedOrigins)
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials())
