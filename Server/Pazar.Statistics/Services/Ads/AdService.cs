@@ -1,6 +1,6 @@
-﻿using Pazar.Statistics.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Pazar.Statistics.Data;
 using Pazar.Statistics.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Pazar.Statistics.Services.Ads
 {
-    public class AdStatsService : IAdStatsService
+    public class AdService : IAdService
     {
         private readonly StatisticsDbContext db;
-        public AdStatsService(StatisticsDbContext db)
+        public AdService(StatisticsDbContext db)
         {
             this.db = db;
         }

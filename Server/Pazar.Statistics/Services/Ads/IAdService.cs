@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Pazar.Statistics.Services.Ads
 {
-    public interface IAdStatsService
+    public interface IAdService
     {
         Task<int> TotalViews(int Id);
 

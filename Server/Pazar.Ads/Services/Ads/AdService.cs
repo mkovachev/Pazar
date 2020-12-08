@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Pazar.Ads.Data;
 using Pazar.Ads.Data.Models;

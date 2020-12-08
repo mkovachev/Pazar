@@ -1,5 +1,5 @@
-﻿using Pazar.Statistics.Data.Models;
-using Pazar.Core.Services.Data;
+﻿using Pazar.Core.Services.Data;
+using Pazar.Statistics.Data.Models;
 using System.Linq;
 
 namespace Pazar.Statistics.Data
@@ -17,10 +17,11 @@ namespace Pazar.Statistics.Data
         {
             if (!this.db.AdsStatistics.Any())
             {
-                this.db.AdsStatistics.Add(new AdsStatistics
-                {
-                    TotalAds = 0,
-                });
+                this.db.AdsStatistics.Add(
+                    new AdsStatistics
+                    {
+                        TotalAds = 0,
+                    });
 
                 this.db.SaveChanges();
             }

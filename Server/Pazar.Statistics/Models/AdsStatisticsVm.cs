@@ -1,5 +1,5 @@
-﻿using Pazar.Statistics.Data.Models;
-using Pazar.Core.Mappings;
+﻿using Pazar.Core.Mappings;
+using Pazar.Statistics.Data.Models;
 
 namespace Pazar.Statistics.Models
 {

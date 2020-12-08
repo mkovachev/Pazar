@@ -20,6 +20,8 @@ namespace Pazar.Notifications
         public void ConfigureServices(IServiceCollection services)
             => services
                 .AddCors()
+                //.AddDbContext<MessageDbContext>(options =>
+                //        options.UseInMemoryDatabase(databaseName: "MessageDb"))
                 .AddTokenAuthentication(
                     this.Configuration,
                     JwtConfiguration.BearerEvents)

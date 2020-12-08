@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pazar.Ads.Data.Configurations;
 using Pazar.Ads.Data.Models;
 using Pazar.Core.Data;
 using Pazar.Core.Interfaces;
@@ -68,7 +69,11 @@ namespace Pazar.Ads.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            builder.ApplyConfiguration(new AdConfiguration());
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            // builder.ApplyConfiguration(new ImageConfiguration());
+
+            // builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
             base.OnModelCreating(builder);
         }

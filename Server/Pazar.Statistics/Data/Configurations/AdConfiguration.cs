@@ -1,5 +1,5 @@
-﻿using Pazar.Statistics.Data.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Pazar.Statistics.Data.Models;
 
 namespace Pazar.Statistics.Data.Configurations
 {

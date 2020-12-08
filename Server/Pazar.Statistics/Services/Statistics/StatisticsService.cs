@@ -1,7 +1,7 @@
-﻿using Pazar.Statistics.Data;
-using Pazar.Statistics.Models;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Pazar.Statistics.Data;
+using Pazar.Statistics.Models;
 using System.Linq;
 using System.Threading.Tasks;
 

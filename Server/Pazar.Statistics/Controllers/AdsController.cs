@@ -1,18 +1,18 @@
-﻿using Pazar.Statistics.Models;
-using Pazar.Statistics.Services.Ads;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pazar.Core.Controllers;
+using Pazar.Statistics.Models;
+using Pazar.Statistics.Services.Ads;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Pazar.Statistics.Controllers
 {
-    public class AdsStatsController : ApiController
+    public class AdsController : ApiController
     {
-        private readonly IAdStatsService ads;
+        private readonly IAdService ads;
 
-        public AdsStatsController(IAdStatsService ads)
+        public AdsController(IAdService ads)
         {
             this.ads = ads;
         }

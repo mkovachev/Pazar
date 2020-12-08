@@ -7,10 +7,10 @@ namespace Pazar.Core.Services.Messages
 {
     public class MessageService : IMessageService
     {
-        private readonly MessageDbContext data;
+        private readonly MessageDbContext db;
 
-        public MessageService(DbContext data)
-            => this.data = data as MessageDbContext
+        public MessageService(DbContext db)
+            => this.db = db as MessageDbContext
                 ?? throw new InvalidOperationException($"Messages can only be used with a {nameof(MessageDbContext)}.");
 
         public async Task<bool> IsDuplicated(
@@ -20,7 +20,7 @@ namespace Pazar.Core.Services.Messages
         {
             var messageType = messageData.GetType();
 
-            return await this.data
+            return await this.db
                 .Messages
                 .FromSqlRaw($"SELECT * FROM Messages WHERE Type = '{messageType.AssemblyQualifiedName}' AND JSON_VALUE(serializedData, '$.{propertyFilter}') = {identifier}")
                 .AnyAsync();

@@ -1,8 +1,8 @@
-﻿using Pazar.Statistics.Models;
-using Pazar.Statistics.Services.Statistics;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 using Pazar.Core.Controllers;
+using Pazar.Statistics.Models;
+using Pazar.Statistics.Services.Statistics;
+using System.Threading.Tasks;
 
 namespace Pazar.Statistics.Controllers
 {

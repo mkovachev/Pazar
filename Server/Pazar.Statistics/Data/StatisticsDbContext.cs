@@ -1,6 +1,6 @@
-﻿using Pazar.Statistics.Data.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Pazar.Core.Data;
+using Pazar.Statistics.Data.Models;
 using System.Reflection;
 
 namespace Pazar.Statistics.Data

@@ -1,10 +1,10 @@
-﻿using Pazar.Statistics.Data;
-using MassTransit;
+﻿using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using Pazar.Core.Data.Models;
 using Pazar.Core.Messages.Ads;
 using Pazar.Core.Services.Messages;
+using Pazar.Statistics.Data;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Pazar.Statistics.Messages
 {
