@@ -16,10 +16,10 @@ namespace Pazar.Statistics.Services.Ads
             this.db = db;
         }
         public async Task<int> TotalViews(int id)
-            => await this.db.Ads.CountAsync(ad => ad.AdId == id);
+            => await this.db.AdViews.CountAsync(ad => ad.AdId == id);
 
         public async Task<IEnumerable<AdVm>> TotalViews(IEnumerable<int> ids)
-             => await this.db.Ads
+             => await this.db.AdViews
                              .Where(v => ids.Contains(v.AdId))
                              .GroupBy(v => v.AdId)
                              .Select(gr => new AdVm

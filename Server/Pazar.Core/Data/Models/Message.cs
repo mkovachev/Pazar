@@ -6,7 +6,7 @@ namespace Pazar.Core.Data.Models
 {
     public class Message
     {
-        private string serializedData = default!;
+        private string serializedData;
 
         public Message(object data)
             => this.Data = data;

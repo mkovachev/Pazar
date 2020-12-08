@@ -20,7 +20,7 @@ namespace Pazar.Statistics.Services.Statistics
 
         public async Task<AdsStatisticsVm> AdsOverview()
             => await this.mapper
-                .ProjectTo<AdsStatisticsVm>((IQueryable)this.db.Ads.Find())
+                .ProjectTo<AdsStatisticsVm>((IQueryable)this.db.AdViews.Find())
                 .SingleOrDefaultAsync();
     }
 }
