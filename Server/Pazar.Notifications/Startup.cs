@@ -20,8 +20,6 @@ namespace Pazar.Notifications
         public void ConfigureServices(IServiceCollection services)
             => services
                 .AddCors()
-                //.AddDbContext<MessageDbContext>(options =>
-                //        options.UseInMemoryDatabase(databaseName: "MessageDb"))
                 .AddTokenAuthentication(
                     this.Configuration,
                     JwtConfiguration.BearerEvents)
@@ -48,7 +46,7 @@ namespace Pazar.Notifications
             app
                 .UseRouting()
                 .UseCors(options => options
-                    //.WithOrigins(allowedOrigins)
+                    //.WithOrigins(allowedOrigins) //"http://localhost:4200"
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials())
