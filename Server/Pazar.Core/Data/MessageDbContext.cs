@@ -5,16 +5,16 @@ using System.Reflection;
 
 namespace Pazar.Core.Data
 {
-    public abstract class MessageDbContext : DbContext
+    public class MessageDbContext : DbContext
     {
-        protected MessageDbContext(DbContextOptions options)
+        public MessageDbContext(DbContextOptions options)
             : base(options)
         {
         }
 
         public DbSet<Message>? Messages { get; set; }
 
-        protected abstract Assembly ConfigurationsAssembly { get; }
+        protected virtual Assembly ConfigurationsAssembly { get; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pazar.Core.Data;
 using Pazar.Core.Extensions;
 using Pazar.Notifications.Hubs;
 using Pazar.Notifications.Infrastructure;
@@ -20,6 +22,8 @@ namespace Pazar.Notifications
         public void ConfigureServices(IServiceCollection services)
             => services
                 .AddCors()
+                .AddScoped<DbContext, MessageDbContext>()
+                .AddDbContext<MessageDbContext>()
                 .AddTokenAuthentication(
                     this.Configuration,
                     JwtConfiguration.BearerEvents)

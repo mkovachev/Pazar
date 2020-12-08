@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Pazar.Core.Data;
 using Pazar.Core.Mappings;
 using Pazar.Core.Messages;
 using Pazar.Core.Services.Identity;
