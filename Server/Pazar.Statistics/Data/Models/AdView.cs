@@ -1,6 +1,6 @@
 ﻿namespace Pazar.Statistics.Data.Models
 {
-    public class Ad
+    public class AdView
     {
         public int Id { get; set; }
 

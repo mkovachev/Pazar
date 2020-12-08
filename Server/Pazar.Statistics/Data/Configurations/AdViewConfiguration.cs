@@ -3,9 +3,9 @@ using Pazar.Statistics.Data.Models;
 
 namespace Pazar.Statistics.Data.Configurations
 {
-    internal class AdConfiguration
+    internal class AdViewConfiguration
     {
-        public void Configure(EntityTypeBuilder<Ad> builder)
+        public void Configure(EntityTypeBuilder<AdView> builder)
         {
             builder
                 .HasKey(v => v.Id);

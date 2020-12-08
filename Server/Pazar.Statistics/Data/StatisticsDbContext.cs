@@ -12,7 +12,7 @@ namespace Pazar.Statistics.Data
         {
         }
 
-        public DbSet<Ad> Ads { get; set; }
+        public DbSet<AdView> AdViews { get; set; }
 
         public DbSet<AdsStatistics> AdsStatistics { get; set; }
 
