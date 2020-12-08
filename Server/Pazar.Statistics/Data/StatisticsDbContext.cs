@@ -17,12 +17,5 @@ namespace Pazar.Statistics.Data
         public DbSet<AdsStatistics> AdsStatistics { get; set; }
 
         protected override Assembly ConfigurationsAssembly => Assembly.GetExecutingAssembly();
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-            base.OnModelCreating(builder);
-        }
     }
 }

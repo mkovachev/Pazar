@@ -66,16 +66,5 @@ namespace Pazar.Ads.Data
 
             return base.SaveChangesAsync(cancellationToken);
         }
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.ApplyConfiguration(new AdConfiguration());
-            builder.ApplyConfiguration(new CategoryConfiguration());
-            // builder.ApplyConfiguration(new ImageConfiguration());
-
-            // builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-            base.OnModelCreating(builder);
-        }
     }
 }
