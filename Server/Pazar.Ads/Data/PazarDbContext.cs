@@ -30,8 +30,6 @@ namespace Pazar.Ads.Data
 
         public DbSet<Category> Categories { get; set; }
 
-        //public DbSet<Image> Images { get; set; }
-
         protected override Assembly ConfigurationsAssembly => Assembly.GetExecutingAssembly();
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

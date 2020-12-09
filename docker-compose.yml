@@ -17,48 +17,6 @@ services:
         networks:
             - pazar-network
 
-    messages:
-        container_name: rabbitmq
-        image: rabbitmq:3-management
-        ports:
-            - 5672:5672
-            - 15672:15672
-        hostname: 'rabbitmq'
-        environment:
-            - RABBITMQ_DEFAULT_USER=guest
-            - RABBITMQ_DEFAULT_PASS=guest
-        volumes:
-            - rabbitmq:/var/lib/rabbitmq/mnesia
-            # - rabbitmq/logs:/var/log/rabbitmq/log
-        networks:
-            - pazar-network
-            
-            
-    statistics:
-        container_name: statistics
-        image: mkovachev/pazar-statistics-service
-        build:
-            context: ./Server
-            dockerfile: ./Pazar.Statistics/Dockerfile
-        ports:
-            - '5004:80'
-        env_file:
-            - Server/Pazar.Core/Common.env
-        environment:
-            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
-            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
-            - MessageQueueSettings__Host=rabbitmq
-            - MessageQueueSettings__UserName=guest
-            - MessageQueueSettings__Password=guest
-        restart: on-failure
-        volumes:
-            - data-protection:/root/.aspnet/DataProtection-Keys
-        networks:
-              - pazar-network
-        depends_on:
-            - data
-            - messages
-
     identity:
         container_name: identity
         image: mkovachev/pazar-identity
@@ -92,7 +50,7 @@ services:
             - Server/Pazar.Core/Common.env
         environment:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
-            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=PazarAdsCronJobsDatabase;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
+            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=Pazar.Ads.CronJobs;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - MessageQueueSettings__Host=rabbitmq
             - MessageQueueSettings__UserName=guest
             - MessageQueueSettings__Password=guest
@@ -104,30 +62,32 @@ services:
         depends_on:
             - data
             - messages
-
-    watchdog:
-        container_name: watchdog
-        image: mkovachev/pazar-watchdog
+                        
+    statistics:
+        container_name: statistics
+        image: mkovachev/pazar-statistics-service
         build:
             context: ./Server
-            dockerfile: ./Pazar.Watchdog/Dockerfile
+            dockerfile: ./Pazar.Statistics/Dockerfile
         ports:
-            - '5500:80'
+            - '5004:80'
+        env_file:
+            - Server/Pazar.Core/Common.env
         environment:
-            - HealthChecks-UI__HealthChecks__0__Name=Identity
-            - HealthChecks-UI__HealthChecks__0__Uri=http://identity/health
-            - HealthChecks-UI__HealthChecks__1__Name=Ads
-            - HealthChecks-UI__HealthChecks__1__Uri=http://ads/health
-            - HealthChecks-UI__HealthChecks__2__Name=Notifications
-            - HealthChecks-UI__HealthChecks__2__Uri=http://notifications/health
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Statistics;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
+            - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=Pazar.Statistics.CronJobs;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
+            - MessageQueueSettings__Host=rabbitmq
+            - MessageQueueSettings__UserName=guest
+            - MessageQueueSettings__Password=guest
         restart: on-failure
+        volumes:
+            - data-protection:/root/.aspnet/DataProtection-Keys
         networks:
-            - pazar-network
+              - pazar-network
         depends_on:
-            - identity
-            - ads
-            - notifications
-
+            - data
+            - messages
+            
     notifications:
         container_name: notifications
         image: mkovachev/pazar-notifications
@@ -150,6 +110,45 @@ services:
             - pazar-network
         depends_on:
             - messages
+
+    messages:
+        container_name: rabbitmq
+        image: rabbitmq:3-management
+        ports:
+            - 5672:5672
+            - 15672:15672
+        hostname: 'rabbitmq'
+        environment:
+            - RABBITMQ_DEFAULT_USER=guest
+            - RABBITMQ_DEFAULT_PASS=guest
+        volumes:
+            - rabbitmq:/var/lib/rabbitmq/mnesia
+            # - rabbitmq/logs:/var/log/rabbitmq/log
+        networks:
+            - pazar-network
+            
+    watchdog:
+        container_name: watchdog
+        image: mkovachev/pazar-watchdog
+        build:
+            context: ./Server
+            dockerfile: ./Pazar.Watchdog/Dockerfile
+        ports:
+            - '5500:80'
+        environment:
+            - HealthChecks-UI__HealthChecks__0__Name=Identity
+            - HealthChecks-UI__HealthChecks__0__Uri=http://identity/health
+            - HealthChecks-UI__HealthChecks__1__Name=Ads
+            - HealthChecks-UI__HealthChecks__1__Uri=http://ads/health
+            - HealthChecks-UI__HealthChecks__2__Name=Notifications
+            - HealthChecks-UI__HealthChecks__2__Uri=http://notifications/health
+        restart: on-failure
+        networks:
+            - pazar-network
+        depends_on:
+            - identity
+            - ads
+            - notifications 
 
     client:
         container_name: client

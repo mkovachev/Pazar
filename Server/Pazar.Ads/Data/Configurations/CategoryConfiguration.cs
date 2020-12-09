@@ -20,8 +20,8 @@ namespace Pazar.Ads.Data.Configurations
 
             builder
                 .Property(c => c.ImageUrl)
-                .HasMaxLength(ImageUrlMaxLength);
-            //.IsRequired();
+                .HasMaxLength(ImageUrlMaxLength)
+                .IsRequired();
 
             builder
                .HasMany(c => c.Ads)

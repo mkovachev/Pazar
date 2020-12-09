@@ -218,7 +218,7 @@ namespace Pazar.Core.Extensions
 
             if (usePolling)
             {
-                CreateHangfireDatabase(configuration);
+                CreateHangfireDatabase(configuration); // create CronJobs Db
 
                 services
                     .AddHangfire(config => config
@@ -257,7 +257,7 @@ namespace Pazar.Core.Extensions
         // manual update due to conflict with EF
         private static void CreateHangfireDatabase(IConfiguration configuration)
         {
-            var connectionString = configuration.GetCronJobsConnectionString(); //Todo null
+            var connectionString = configuration.GetCronJobsConnectionString();
 
             var dbName = connectionString
                 .Split(";")[1]

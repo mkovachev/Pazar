@@ -50,7 +50,7 @@ namespace Pazar.Notifications
             app
                 .UseRouting()
                 .UseCors(options => options
-                    //.WithOrigins(allowedOrigins) //"http://localhost:4200"
+                    //.WithOrigins(allowedOrigins) "http://localhost:4200"
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials())

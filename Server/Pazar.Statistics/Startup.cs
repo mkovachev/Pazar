@@ -6,7 +6,7 @@ using Pazar.Core.Extensions;
 using Pazar.Core.Services.Data;
 using Pazar.Statistics.Data;
 using Pazar.Statistics.Messages;
-using Pazar.Statistics.Services.Ads;
+using Pazar.Statistics.Services.AdsViews;
 using Pazar.Statistics.Services.Statistics;
 
 namespace Pazar.Statistics
@@ -23,7 +23,7 @@ namespace Pazar.Statistics
                 .AddWebService<StatisticsDbContext>(this.Configuration)
                 .AddTransient<IDataSeeder, StatisticsDataSeeder>()
                 .AddTransient<IStatisticsService, StatisticsService>()
-                .AddTransient<IAdService, AdService>()
+                .AddTransient<IAdsViewService, AdsViewService>()
                 .AddMessaging(
                     this.Configuration,
                     consumers: typeof(AdCreatedConsumer))

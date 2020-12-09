@@ -29,19 +29,13 @@ namespace Pazar.Ads.Data.Configurations
 
             builder
              .Property(ad => ad.Description)
-             .IsRequired()
-             .HasMaxLength(DescriptionMaxLength);
+             .HasMaxLength(DescriptionMaxLength)
+             .IsRequired();
 
             builder
              .Property(ad => ad.ImageUrl)
-             .IsRequired()
-             .HasMaxLength(ImageUrlMaxLength);
-
-            //builder
-            //    .HasMany(ad => ad.Images)
-            //    .WithOne(i => i.Ad)
-            //    .HasForeignKey(ad => ad.AdId)
-            //    .OnDelete(DeleteBehavior.Restrict);
+             .HasMaxLength(ImageUrlMaxLength)
+             .IsRequired();
 
             builder
              .Property(ad => ad.IsActive)
@@ -57,6 +51,12 @@ namespace Pazar.Ads.Data.Configurations
                 .Property(ad => ad.UserId)
                 .IsRequired();
 
+
+            //builder
+            //    .HasMany(ad => ad.Images)
+            //    .WithOne(i => i.Ad)
+            //    .HasForeignKey(ad => ad.AdId)
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
