@@ -37,6 +37,7 @@ export class MyAdsComponent implements OnInit {
   delete() {
     this.adsService.delete(this.adId).subscribe(res => {
       this.toastr.info("Your ad was deleted")
+      location.reload()
     })
   }
 
