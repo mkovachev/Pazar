@@ -70,7 +70,7 @@ services:
             context: ./Server
             dockerfile: ./Pazar.Statistics/Dockerfile
         ports:
-            - 5004:80
+            - 5005:80
         env_file:
             - Server/Pazar.Core/Common.env
         environment:
@@ -95,7 +95,7 @@ services:
             context: ./Server
             dockerfile: ./Pazar.Notifications/Dockerfile
         ports:
-            - 5005:80
+            - 5006:80
         env_file:
             - Server/Pazar.Core/Common.env
         environment:
@@ -116,6 +116,7 @@ services:
         image: rabbitmq:3-management
         ports:
             - 15672:15672
+            - 5672:5672
         hostname: 'rabbitmq'
         environment:
             - RABBITMQ_DEFAULT_USER=rabbitmquser
@@ -140,6 +141,8 @@ services:
             - HealthChecks-UI__HealthChecks__1__Uri=http://ads/health
             - HealthChecks-UI__HealthChecks__2__Name=Notifications
             - HealthChecks-UI__HealthChecks__2__Uri=http://notifications/health
+            - HealthChecks-UI__HealthChecks__2__Name=Statistics
+            - HealthChecks-UI__HealthChecks__2__Uri=http://statistics/health
         restart: on-failure
         networks:
             - pazar-network

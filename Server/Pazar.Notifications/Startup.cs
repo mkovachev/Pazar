@@ -15,7 +15,9 @@ namespace Pazar.Notifications
     public class Startup
     {
         public Startup(IConfiguration configuration)
-            => this.Configuration = configuration;
+        {
+            this.Configuration = configuration;
+        }
 
         public IConfiguration Configuration { get; }
 
@@ -45,12 +47,12 @@ namespace Pazar.Notifications
 
             var allowedOrigins = this.Configuration
                 .GetSection(nameof(NotificationSettings))
-                .GetValue<string>(nameof(NotificationSettings.AllowedOrigins));  // Todo null
+                .GetValue<string>(nameof(NotificationSettings.AllowedOrigins));
 
             app
                 .UseRouting()
                 .UseCors(options => options
-                    //.WithOrigins(allowedOrigins) "http://localhost:4200"
+                    .WithOrigins(allowedOrigins)
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials())

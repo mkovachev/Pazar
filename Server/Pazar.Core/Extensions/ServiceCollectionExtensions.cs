@@ -166,8 +166,7 @@ namespace Pazar.Core.Extensions
             {
                 var messageQueueSettings = GetMessageQueueSettings(configuration);
 
-                var messageQueueConnectionString =
-                    $"amqp://{messageQueueSettings.UserName}:{messageQueueSettings.Password}@{messageQueueSettings.Host}/";
+                var messageQueueConnectionString = $"amqp://{messageQueueSettings.UserName}:{messageQueueSettings.Password}@{messageQueueSettings.Host}";
 
                 healthChecks
                     .AddRabbitMQ(rabbitConnectionString: messageQueueConnectionString);
@@ -187,8 +186,6 @@ namespace Pazar.Core.Extensions
                 .AddTransient<IMessageService, MessageService>();
 
             var messageQueueSettings = GetMessageQueueSettings(configuration);
-
-            services.Configure<MessageQueueSettings>(configuration.GetSection("Rabbitmq"));
 
             services
                 .AddMassTransit(mt =>

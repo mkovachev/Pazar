@@ -2,6 +2,6 @@
 {
     public class NotificationSettings
     {
-        public string AllowedOrigins { get; set; }
+        public string AllowedOrigins { get; set; } = "http://localhost";
     }
 }

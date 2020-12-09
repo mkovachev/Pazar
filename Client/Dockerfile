@@ -12,7 +12,6 @@ COPY package.json /app/package.json
 RUN npm install --legacy-peer-deps
 RUN npm install -g @angular/cli
 
-# add app
 COPY . /app
 
 # build and store the artifacts in dist folder
@@ -29,7 +28,7 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy Nginx configuration
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
-# copy artifact build from the 'build environment'
+# copy artifact build from 'build environment'
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # expose port 80
