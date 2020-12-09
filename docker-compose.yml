@@ -52,8 +52,8 @@ services:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Ads;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=Pazar.Ads.CronJobs;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - MessageQueueSettings__Host=rabbitmq
-            - MessageQueueSettings__UserName=guest
-            - MessageQueueSettings__Password=guest
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmq1234
         restart: on-failure
         volumes:
             - data-protection:/root/.aspnet/DataProtection-Keys
@@ -77,8 +77,8 @@ services:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Pazar.Statistics;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - ConnectionStrings__CronJobsConnection=Server=sqlserver;Database=Pazar.Statistics.CronJobs;User Id=sa; Password=yourStrongPassword12!@;MultipleActiveResultSets=true
             - MessageQueueSettings__Host=rabbitmq
-            - MessageQueueSettings__UserName=guest
-            - MessageQueueSettings__Password=guest
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmq1234
         restart: on-failure
         volumes:
             - data-protection:/root/.aspnet/DataProtection-Keys
@@ -101,8 +101,8 @@ services:
         environment:
             - NotificationSettings__AllowedOrigins=http://localhost
             - MessageQueueSettings__Host=rabbitmq
-            - MessageQueueSettings__UserName=guest
-            - MessageQueueSettings__Password=guest
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmq1234
         restart: on-failure
         volumes:
             - data-protection:/root/.aspnet/DataProtection-Keys
@@ -119,8 +119,8 @@ services:
             - 15672:15672
         hostname: 'rabbitmq'
         environment:
-            - RABBITMQ_DEFAULT_USER=guest
-            - RABBITMQ_DEFAULT_PASS=guest
+            - RABBITMQ_DEFAULT_USER=rabbitmquser
+            - RABBITMQ_DEFAULT_PASS=rabbitmq1234
         volumes:
             - rabbitmq:/var/lib/rabbitmq/mnesia
             # - rabbitmq/logs:/var/log/rabbitmq/log
