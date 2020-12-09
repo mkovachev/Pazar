@@ -8,7 +8,7 @@ services:
         container_name: sqlserver
         image: mcr.microsoft.com/mssql/server:latest
         ports:
-            - '1433:1433'
+            - 1433:1433
         environment:
             - ACCEPT_EULA=Y
             - SA_PASSWORD=yourStrongPassword12!@
@@ -24,7 +24,7 @@ services:
             context: ./Server
             dockerfile: ./Pazar.Identity/Dockerfile
         ports:
-            - '5001:80'
+            - 5001:80
         env_file:
             - Server/Pazar.Core/Common.env
         environment:
@@ -45,7 +45,7 @@ services:
             context: ./Server
             dockerfile: ./Pazar.Ads/Dockerfile
         ports:
-            - '5002:80'
+            - 5002:80
         env_file:
             - Server/Pazar.Core/Common.env
         environment:
@@ -70,7 +70,7 @@ services:
             context: ./Server
             dockerfile: ./Pazar.Statistics/Dockerfile
         ports:
-            - '5004:80'
+            - 5004:80
         env_file:
             - Server/Pazar.Core/Common.env
         environment:
@@ -95,7 +95,7 @@ services:
             context: ./Server
             dockerfile: ./Pazar.Notifications/Dockerfile
         ports:
-            - '5005:80'
+            - 5005:80
         env_file:
             - Server/Pazar.Core/Common.env
         environment:
@@ -115,7 +115,6 @@ services:
         container_name: rabbitmq
         image: rabbitmq:3-management
         ports:
-            # - 5672:5672
             - 15672:15672
         hostname: 'rabbitmq'
         environment:
@@ -123,7 +122,6 @@ services:
             - RABBITMQ_DEFAULT_PASS=rabbitmq1234
         volumes:
             - rabbitmq:/var/lib/rabbitmq/mnesia
-            # - rabbitmq/logs:/var/log/rabbitmq/log
         networks:
             - pazar-network
             
@@ -134,7 +132,7 @@ services:
             context: ./Server
             dockerfile: ./Pazar.Watchdog/Dockerfile
         ports:
-            - '5500:80'
+            - 5500:80
         environment:
             - HealthChecks-UI__HealthChecks__0__Name=Identity
             - HealthChecks-UI__HealthChecks__0__Uri=http://identity/health
@@ -148,7 +146,8 @@ services:
         depends_on:
             - identity
             - ads
-            - notifications 
+            - notifications
+            - statistics
 
     client:
         container_name: client
@@ -159,7 +158,7 @@ services:
             args:
                 configuration: development
         ports:
-            - '81:80'
+            - 80:80
         restart: on-failure
 
         depends_on:
@@ -171,6 +170,7 @@ services:
             - identity
             - ads
             - notifications
+            - statistics
 
 networks:
     pazar-network:
