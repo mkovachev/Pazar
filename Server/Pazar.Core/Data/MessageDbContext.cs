@@ -18,7 +18,7 @@ namespace Pazar.Core.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //builder.ApplyConfiguration(new MessageConfiguration());
+            builder.ApplyConfiguration(new MessageConfiguration());
 
             builder.ApplyConfigurationsFromAssembly(this.ConfigurationsAssembly);
 

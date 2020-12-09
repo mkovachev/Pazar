@@ -14,15 +14,15 @@ namespace Pazar.Core.Data.Configurations
 
             builder
                 .Property<string>("serializedData")
-                .IsRequired()
-                .HasField("serializedData");
+                .HasField("serializedData")
+                .IsRequired();
 
             builder
                 .Property(m => m.Type)
-                .IsRequired()
                 .HasConversion(
                     t => t.AssemblyQualifiedName,
-                    t => Type.GetType(t));
+                    t => Type.GetType(t))
+                .IsRequired();
         }
     }
 }

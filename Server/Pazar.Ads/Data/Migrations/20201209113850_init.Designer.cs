@@ -10,7 +10,7 @@ using Pazar.Ads.Data;
 namespace Pazar.Ads.Data.Migrations
 {
     [DbContext(typeof(PazarDbContext))]
-    [Migration("20201209092430_init")]
+    [Migration("20201209113850_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,12 +21,15 @@ namespace Pazar.Ads.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
+            modelBuilder.HasSequence("Ad")
+                .IncrementsBy(10);
+
             modelBuilder.Entity("Pazar.Ads.Data.Models.Ad", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .UseHiLo("Ad");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -44,10 +47,14 @@ namespace Pazar.Ads.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -65,9 +72,12 @@ namespace Pazar.Ads.Data.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -85,10 +95,14 @@ namespace Pazar.Ads.Data.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
@@ -123,7 +137,7 @@ namespace Pazar.Ads.Data.Migrations
                     b.HasOne("Pazar.Ads.Data.Models.Category", "Category")
                         .WithMany("Ads")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");
