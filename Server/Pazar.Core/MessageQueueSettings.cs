@@ -2,17 +2,14 @@
 {
     public class MessageQueueSettings
     {
-        public MessageQueueSettings(string? host = "localhost", string? userName = "guest", string? password = "guest")
+        public MessageQueueSettings(string? host, string? userName, string? password)
         {
-            //this.Host = host;
-            //this.UserName = userName;
-            //this.Password = password;
         }
 
-        public string Host { get; set; } = "localhost";
+        public string Host { get; set; } = "rabbitmq";
 
-        public string UserName { get; set; } = "guest";
+        public string UserName { get; set; } = "rabbitmquser";
 
-        public string Password { get; set; } = "guest";
+        public string Password { get; set; } = "rabbitmq1234";
     }
 }
