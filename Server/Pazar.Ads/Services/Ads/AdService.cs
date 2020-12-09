@@ -77,7 +77,7 @@ namespace Pazar.Ads.Services.Ads
             var message = new AdCreatedMessage
             {
                 Id = ad.Id,
-                Category = ad.Category.Name,
+                Category = category.Name,
                 Price = ad.Price,
                 Title = ad.Title
             };
