@@ -16,18 +16,13 @@ export class HomeComponent implements OnInit {
   totalAds!: number;
 
   constructor(
-    private categoryService: CategoriesService,
-    private statisticsService: StatisticsService) {
+    private categoryService: CategoriesService) {
   }
 
   ngOnInit(): void {
     this.categoryService.all().subscribe(res => {
       this.categories = res;
     });
-
-    // this.statisticsService.adsStatistics().subscribe(res => {
-    //   console.log(this.totalAds)
-    // });
   }
 
   randomId() {
