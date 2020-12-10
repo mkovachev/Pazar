@@ -22,13 +22,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.all().subscribe(res => {
-      console.log(res)
       this.categories = res;
     });
 
-    this.statisticsService.adsStatistics().subscribe(res => {
-      console.log(this.totalAds)
-    });
+    // this.statisticsService.adsStatistics().subscribe(res => {
+    //   console.log(this.totalAds)
+    // });
   }
 
   randomId() {
