@@ -27,6 +27,7 @@ namespace Pazar.Statistics
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             => app
-                .UseWebService(env);
+                .UseWebService(env)
+                .Initialize();
     }
 }
