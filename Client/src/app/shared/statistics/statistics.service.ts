@@ -7,11 +7,11 @@ import { AdsStatistics } from './ads-statistics.model';
   providedIn: 'root'
 })
 export class StatisticsService {
-  url = environment.statisticsUrl + 'statistics';
+  url = environment.statisticsUrl + 'adsstatistics/';
 
   constructor(private http: HttpClient) { }
 
   adsStatistics(): Observable<AdsStatistics> {
-    return this.http.get<AdsStatistics>(this.url);
+    return this.http.get<AdsStatistics>(this.url + 'adsoverview');
   }
 }

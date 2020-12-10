@@ -16,6 +16,7 @@ namespace Pazar.Statistics.Controllers
         }
 
         [HttpGet]
+        [Route(nameof(AdsOverview))]
         public async Task<AdsStatisticsVm> AdsOverview()
             => await this.adsStatistics.AdsOverview();
     }

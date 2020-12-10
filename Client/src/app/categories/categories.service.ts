@@ -8,7 +8,7 @@ import { Category } from './category.model';
   providedIn: 'root'
 })
 export class CategoriesService {
-  url = `${environment.adsUrl}categories/`;
+  url = environment.adsUrl + 'categories/';
   urlWithoutSlash = this.url.slice(0, -1);
 
   constructor(private http: HttpClient) { }

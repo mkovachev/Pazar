@@ -20,7 +20,6 @@ export class AdsComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')!;
     this.categoryService.ads(this.id).subscribe(res => {
       this.ads = res
-      console.log(this.ads)
     })
   }
 
