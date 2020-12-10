@@ -25,5 +25,8 @@ export class AllComponent implements OnInit {
       this.ads = res
     })
   }
-
+  
+  randomId() {
+    return Math.floor((Math.random() * 100) + 1);
+  }
 }

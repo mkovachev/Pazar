@@ -7,7 +7,6 @@ namespace Pazar.Ads.Data.Models
         public Category(string name)
         {
             this.Name = name;
-            this.ImageUrl = "https://picsum.photos/200?random=&giud=(Guid.NewGuid())";
         }
 
         public int Id { get; set; }

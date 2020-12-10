@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Ad } from 'src/app/ads/ad.model';
 import { CategoriesService } from 'src/app/categories/categories.service';
 import { Category } from 'src/app/categories/category.model';
@@ -19,15 +18,21 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private categoryService: CategoriesService,
-    private statisticsService: StatisticsService) { }
+    private statisticsService: StatisticsService) {
+  }
 
   ngOnInit(): void {
     this.categoryService.all().subscribe(res => {
       this.categories = res;
     });
 
-    // this.statisticsService.adsStatistics().subscribe(res => {
-    //   this.statistics = res;
-    // });
+    this.statisticsService.adsStatistics().subscribe(res => {
+      this.statistics = res;
+      console.log(this.statistics)
+    });
+  }
+
+  randomId() {
+    return Math.floor((Math.random() * 100) + 1);
   }
 }

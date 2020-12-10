@@ -26,6 +26,7 @@
     "angular-material": "^1.2.1",
     "bootstrap": "^4.5.3",
     "font-awesome": "^4.7.0",
+    "guid-typescript": "^1.0.9",
     "ngx-bootstrap": "^6.2.0",
     "ngx-toastr": "*",
     "rxjs": "~6.6.0",

@@ -87,7 +87,7 @@ namespace Pazar.Ads.Services.Ads
 
             await this.db.SaveChangesAsync();
 
-            //await this.publisher.Publish(message);
+            await this.publisher.Publish(message);
 
             return true;
         }

@@ -1,8 +1,13 @@
 <div class="container">
+    <div class="row mb-5" *ngIf="statistics">
+        <div class="col-lg-6 text-center">
+            <h3>Total Ads: {{statistics.totalAds}}</h3>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-4" *ngFor="let c of categories">
             <div class="card img-responsive">
-                <img [src]="c.imageUrl" alt="image">
+                <img src="https://picsum.photos/200/300?random={{randomId()}}">
                 <div class="card-img-overlay">
                     <h4 class="card-title">{{c.name}}</h4>
                     <div class=action>

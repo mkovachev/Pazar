@@ -10,7 +10,7 @@ using Pazar.Ads.Data;
 namespace Pazar.Ads.Data.Migrations
 {
     [DbContext(typeof(PazarDbContext))]
-    [Migration("20201209114218_init")]
+    [Migration("20201210130547_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
