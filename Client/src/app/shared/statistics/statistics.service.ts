@@ -11,7 +11,7 @@ export class StatisticsService {
 
   constructor(private http: HttpClient) { }
 
-  adsStatistics(): Observable<AdsStatistics> {
-    return this.http.get<AdsStatistics>(this.url + 'adsoverview');
+  adsStatistics(): Observable<number> {
+    return this.http.get<number>(this.url + 'adsoverview');
   }
 }

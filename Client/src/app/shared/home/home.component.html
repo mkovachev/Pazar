@@ -1,9 +1,4 @@
 <div class="container">
-    <div class="row mb-5" *ngIf="statistics">
-        <div class="col-lg-6 text-center">
-            <h3>Total Ads: {{statistics.totalAds}}</h3>
-        </div>
-    </div>
     <div class="row">
         <div class="col-lg-4" *ngFor="let c of categories">
             <div class="card img-responsive">
@@ -18,3 +13,9 @@
         </div>
     </div>
 </div>
+
+<!-- <div class="row mb-5" *ngIf="this.totalAds">
+    <div class="col-lg-6 text-center">
+        <h4>Total Ads: {{this.totalAds}}</h4>
+    </div>
+</div> -->

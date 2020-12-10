@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Ad } from 'src/app/ads/ad.model';
 import { CategoriesService } from 'src/app/categories/categories.service';
 import { Category } from 'src/app/categories/category.model';
-import { AdsStatistics } from '../statistics/ads-statistics.model';
 import { StatisticsService } from '../statistics/statistics.service';
 
 @Component({
@@ -14,7 +13,7 @@ import { StatisticsService } from '../statistics/statistics.service';
 export class HomeComponent implements OnInit {
   categories!: Array<Category>;
   ads!: Array<Ad>;
-  statistics!: AdsStatistics;
+  totalAds!: number;
 
   constructor(
     private categoryService: CategoriesService,
@@ -23,12 +22,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.all().subscribe(res => {
+      console.log(res)
       this.categories = res;
     });
 
     this.statisticsService.adsStatistics().subscribe(res => {
-      this.statistics = res;
-      console.log(this.statistics)
+      console.log(this.totalAds)
     });
   }
 

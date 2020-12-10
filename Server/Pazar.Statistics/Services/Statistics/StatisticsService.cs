@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Pazar.Statistics.Data;
-using Pazar.Statistics.Models;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pazar.Statistics.Services.Statistics
@@ -18,9 +16,11 @@ namespace Pazar.Statistics.Services.Statistics
             this.mapper = mapper;
         }
 
-        public async Task<AdsStatisticsVm> AdsOverview()
-            => await this.mapper
-                .ProjectTo<AdsStatisticsVm>((IQueryable)this.db.AdViews.Find())
-                .SingleOrDefaultAsync();
+        public async Task<int> AdsOverview()
+        {
+            var ad = await this.db.AdsStatistics.FirstOrDefaultAsync();
+
+            return ad.TotalAds;
+        }
     }
 }
