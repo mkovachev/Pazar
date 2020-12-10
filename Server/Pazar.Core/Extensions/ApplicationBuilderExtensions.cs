@@ -33,10 +33,10 @@ namespace Pazar.Core.Extensions
             return app;
         }
 
-        public static IApplicationBuilder Initialize(
-            this IApplicationBuilder app)
+        public static IApplicationBuilder Initialize(this IApplicationBuilder app)
         {
             using var serviceScope = app.ApplicationServices.CreateScope();
+
             var serviceProvider = serviceScope.ServiceProvider;
 
             var db = serviceProvider.GetRequiredService<DbContext>();
