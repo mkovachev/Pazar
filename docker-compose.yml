@@ -65,7 +65,7 @@ services:
                         
     statistics:
         container_name: statistics
-        image: mkovachev/pazar-statistics-service
+        image: mkovachev/pazar-statistics
         build:
             context: ./Server
             dockerfile: ./Pazar.Statistics/Dockerfile

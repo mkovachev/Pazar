@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Ad } from 'src/app/ads/ad.model';
 import { CategoriesService } from 'src/app/categories/categories.service';
 import { Category } from 'src/app/categories/category.model';
-import { StatisticsService } from '../statistics/statistics.service';
 
 @Component({
   selector: 'app-home',
