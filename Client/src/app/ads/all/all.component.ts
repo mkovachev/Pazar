@@ -3,10 +3,10 @@ import { Ad } from '../ad.model';
 import { AdsService } from '../ads.service';
 
 @Component({
-  selector: 'app-all-ads',
-  templateUrl: './all-ads.component.html',
+  selector: 'app-all',
+  templateUrl: './all.component.html',
 })
-export class AllAdsComponent implements OnInit {
+export class AllComponent implements OnInit {
   ads!: Array<Ad>
 
   constructor(

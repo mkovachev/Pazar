@@ -19,16 +19,15 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private categoryService: CategoriesService,
-    private statisticsService: StatisticsService,
-    private router: Router) { }
+    private statisticsService: StatisticsService) { }
 
   ngOnInit(): void {
     this.categoryService.all().subscribe(res => {
       this.categories = res;
     });
 
-    this.statisticsService.adsStatistics().subscribe(res => {
-      this.statistics = res;
-    });
+    // this.statisticsService.adsStatistics().subscribe(res => {
+    //   this.statistics = res;
+    // });
   }
 }

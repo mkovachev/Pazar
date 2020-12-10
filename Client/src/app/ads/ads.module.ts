@@ -6,11 +6,11 @@ import { DetailsComponent } from './details/details.component';
 import { AdsRoutingModule } from './ads-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { MyAdsComponent } from './my-ads/my-ads.component';
-import { AllAdsComponent } from './all-ads/all-ads.component';
+import { AllComponent } from './all/all.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-    declarations: [CreateComponent, EditComponent, DetailsComponent, MyAdsComponent, AllAdsComponent],
+    declarations: [CreateComponent, EditComponent, DetailsComponent, MyAdsComponent, AllComponent],
     imports: [
         CommonModule,
         SharedModule,
