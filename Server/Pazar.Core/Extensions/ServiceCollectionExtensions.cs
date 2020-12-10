@@ -214,7 +214,7 @@ namespace Pazar.Core.Extensions
 
             if (usePolling)
             {
-                CreateHangfireDatabase(configuration); // create CronJobs Db
+                CreateHangfireDatabase(configuration); // create CronJobs db
 
                 services
                     .AddHangfire(config => config
