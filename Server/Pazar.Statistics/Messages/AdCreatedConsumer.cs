@@ -33,15 +33,15 @@ namespace Pazar.Statistics.Messages
                 return;
             }
 
-            var statistics = await this.db.AdsStatistics.SingleOrDefaultAsync();
+            var ads = await this.db.Ads.SingleOrDefaultAsync();
 
-            statistics.TotalAds++; // Todo thread safe
+            ads.Total++; // Todo thread safe
 
-            var dataMessage = new Message(message);
+            var dbMessage = new Message(message);
 
-            dataMessage.MarkAsPublished();
+            dbMessage.MarkAsPublished();
 
-            this.db.Messages.Add(dataMessage);
+            this.db.Messages.Add(dbMessage);
 
             await this.db.SaveChangesAsync();
         }

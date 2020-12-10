@@ -9,7 +9,7 @@ using Pazar.Statistics.Data;
 namespace Pazar.Statistics.Data.Migrations
 {
     [DbContext(typeof(StatisticsDbContext))]
-    [Migration("20201209114412_init")]
+    [Migration("20201210172721_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,37 +43,19 @@ namespace Pazar.Statistics.Data.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("Pazar.Statistics.Data.Models.AdsStatistics", b =>
+            modelBuilder.Entity("Pazar.Statistics.Data.Models.Ad", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("TotalAds")
+                    b.Property<int>("Total")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AdsStatistics");
-                });
-
-            modelBuilder.Entity("Pazar.Statistics.Data.Models.AdsView", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("AdId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AdViews");
+                    b.ToTable("Ads");
                 });
 #pragma warning restore 612, 618
         }

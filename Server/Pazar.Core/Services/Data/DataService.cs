@@ -1,11 +1,11 @@
 ﻿namespace Pazar.Core.Services.Data
 {
-    using System.Linq;
-    using System.Threading.Tasks;
     using Messages;
     using Microsoft.EntityFrameworkCore;
     using Pazar.Core.Data;
     using Pazar.Core.Data.Models;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public abstract class DataService<TEntity> : IDataService<TEntity>
         where TEntity : class

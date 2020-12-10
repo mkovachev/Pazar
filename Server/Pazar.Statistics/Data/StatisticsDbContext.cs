@@ -12,9 +12,7 @@ namespace Pazar.Statistics.Data
         {
         }
 
-        public DbSet<AdsView> AdViews { get; set; }
-
-        public DbSet<AdsStatistics> AdsStatistics { get; set; }
+        public DbSet<Ad> Ads { get; set; }
 
         protected override Assembly ConfigurationsAssembly => Assembly.GetExecutingAssembly();
     }

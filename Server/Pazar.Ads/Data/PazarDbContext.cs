@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pazar.Ads.Data.Configurations;
 using Pazar.Ads.Data.Models;
 using Pazar.Core.Data;
 using Pazar.Core.Interfaces;

@@ -1,10 +1,10 @@
 ﻿namespace Pazar.Statistics.Data.Models
 {
-    public class AdsStatistics
+    public class Ad
     {
         public int Id { get; set; }
 
-        public int TotalAds { get; set; }
+        public int Total { get; set; }
 
     }
 }
