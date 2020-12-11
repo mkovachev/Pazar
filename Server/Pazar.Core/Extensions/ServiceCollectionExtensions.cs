@@ -199,6 +199,8 @@ namespace Pazar.Core.Extensions
                             host.Password(messageQueueSettings.Password);
                         });
 
+                        //rmq.Host("amqp://rabbitmquser:rabbitmq1234@localhost:5672");
+
                         rmq.UseHealthCheck(context);
 
                         consumers.ForEach(consumer => rmq.ReceiveEndpoint(consumer.FullName, endpoint =>
