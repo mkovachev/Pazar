@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Pazar.Ads.Data;
 using Pazar.Ads.Data.Models;
 using Pazar.Ads.Models;
+using Pazar.Core.Data.Models;
 using Pazar.Core.Exceptions;
 using Pazar.Core.Messages.Ads;
 using Pazar.Core.Services.Identity;
@@ -74,20 +75,27 @@ namespace Pazar.Ads.Services.Ads
                 UserId = user.Id
             };
 
-            var message = new AdCreatedMessage
-            {
-                Id = ad.Id,
-                Category = category.Name,
-                Price = ad.Price,
-                Title = ad.Title
-            };
 
             category.Ads.Add(ad);
             this.db.Ads.Add(ad);
 
             await this.db.SaveChangesAsync();
 
+            var message = new AdCreatedMessage
+            {
+                Id = ad.Id,
+                Title = ad.Title,
+                Price = ad.Price,
+                Category = category.Name
+            };
+
             await this.publisher.Publish(message);
+
+            var dbMessage = new Message(message.Id);
+            dbMessage.MarkAsPublished();
+            this.db.Messages.Add(dbMessage);
+
+            await this.db.SaveChangesAsync();
 
             return true;
         }
