@@ -9,7 +9,7 @@ using Pazar.Statistics.Data;
 namespace Pazar.Statistics.Data.Migrations
 {
     [DbContext(typeof(StatisticsDbContext))]
-    [Migration("20201210172721_init")]
+    [Migration("20201211190223_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

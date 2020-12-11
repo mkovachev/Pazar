@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pazar.Core.Data;
-using Pazar.Core.Messages.Ads;
 using System;
 using System.Threading.Tasks;
 
@@ -27,7 +26,7 @@ namespace Pazar.Core.Services.Messages
                 .AnyAsync();
         }
 
-        public async Task<bool> IsDuplicated(AdCreatedMessage message)
-            => await this.db.Messages.AnyAsync(m => m.Id == message.Id);
+        //public async Task<bool> IsDuplicated(AdCreatedMessage message)
+        //    => await this.db.Messages.AnyAsync(m => m.Id == message.Id);
     }
 }

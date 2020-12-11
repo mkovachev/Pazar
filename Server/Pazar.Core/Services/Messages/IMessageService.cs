@@ -1,5 +1,4 @@
-﻿using Pazar.Core.Messages.Ads;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Pazar.Core.Services.Messages
 {
@@ -9,7 +8,5 @@ namespace Pazar.Core.Services.Messages
             object messageData,
             string propertyFilter,
             object identifier);
-
-        Task<bool> IsDuplicated(AdCreatedMessage message);
     }
 }

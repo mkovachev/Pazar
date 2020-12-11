@@ -91,7 +91,7 @@ namespace Pazar.Ads.Services.Ads
 
             await this.publisher.Publish(message);
 
-            var dbMessage = new Message(message.Id);
+            var dbMessage = new Message(message);
             dbMessage.MarkAsPublished();
             this.db.Messages.Add(dbMessage);
 
