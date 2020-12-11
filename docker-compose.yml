@@ -117,7 +117,7 @@ services:
         ports:
             - 15672:15672
             - 5672:5672
-        hostname: 'rabbitmq'
+        hostname: rabbitmq
         environment:
             - RABBITMQ_DEFAULT_USER=rabbitmquser
             - RABBITMQ_DEFAULT_PASS=rabbitmq1234
