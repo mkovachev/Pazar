@@ -19,4 +19,4 @@ Event-Driven Microservice Architecture with Jwt Authentication + MS SQL Server +
 2. Clone the repository
 3. At the root directory which include docker-compose.yml files, run below command: docker-compose up -d
 4. Wait for docker to compose all microservices. That’s it!
-##### You can launch Web UI as below urls: http://localhost:80
+##### Once the above steps are done, click the url: http://localhost:80
