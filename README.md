@@ -1,5 +1,10 @@
 # Pazar Marketplace
-### Ads microservice includes:
+<br />
+Event-Driven Microservice Architecture + MS SQL Server + Docker + Rabbitmq
+<br />
+<br />
+
+#### Ads microservice includes:
 <br />
 ASP.NET Core Web API application with CRUD on all ads
 <br />
