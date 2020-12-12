@@ -2,7 +2,7 @@
 <br />
 Event-Driven Microservice Architecture + MS SQL Server + Docker + Rabbitmq
 <br />
-### Ads microservice includes:
+## Ads microservice includes:
 <br />
 ASP.NET Core Web API application with CRUD on all ads
 <br />
@@ -10,7 +10,7 @@ Swagger Open API implementation
 <br />
 RabbitMQ trigger event queue
 <br />
-### Identity microservice:
+## Identity microservice:
 <br />
 ASP.NET Core Web API application - CRUD on all users
 <br />
