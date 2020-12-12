@@ -1,12 +1,19 @@
 # Pazar Marketplace
 Event-Driven Microservice Architecture + MS SQL Server + Docker + Rabbitmq
-#### Ads microservice includes:
-- ASP.NET Core Web API application with CRUD on all ads
-- Swagger Open API implementation 
-- RabbitMQ trigger event queue
 #### Identity microservice:
 - ASP.NET Core Web API application - CRUD on all users
-- Swagger Open API implementation
+- Swagger Open API
+#### Ads microservice:
+- ASP.NET Core Web API application with CRUD on all ads
+- Swagger Open API 
+- RabbitMQ event queue
+#### Notifications microservice:
+- ASP.NET Core Web API application - to pass the messages btw microservices
+#### Statistics microservice:
+- ASP.NET Core Web API application - shows Ads statistics
+- Swagger Open API
+#### Watchdog microservice:
+- ASP.NET Core Web API application - health monitoring of all microservices
 #### WebUI Angular app
 #### How to run the app
 1. You will need .NET 5 and Docker Desktop
@@ -14,5 +21,5 @@ Event-Driven Microservice Architecture + MS SQL Server + Docker + Rabbitmq
 3. At the root directory which include docker-compose.yml files, run below command: docker-compose up -d
 4. Wait for docker to compose all microservices. That’s it!
 <br />
-You can launch Web UI as below urls: http://localhost:80
+##### You can launch Web UI as below urls: http://localhost:80
 
