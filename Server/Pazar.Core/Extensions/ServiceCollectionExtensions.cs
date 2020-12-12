@@ -240,22 +240,6 @@ namespace Pazar.Core.Extensions
             return services;
         }
 
-        public static IServiceCollection AddCronJobsDatabase<TDbContext>(
-                this IServiceCollection services,
-                IConfiguration configuration)
-                where TDbContext : DbContext
-                => services
-                    .AddScoped<DbContext, TDbContext>()
-                    .AddDbContext<TDbContext>(options => options
-                        .UseSqlServer(
-                            configuration.GetCronJobsConnectionString(),
-                            sqlOptions => sqlOptions
-                                .EnableRetryOnFailure(
-                                    maxRetryCount: 10,
-                                    maxRetryDelay: TimeSpan.FromSeconds(30),
-                                    errorNumbersToAdd: null)));
-
-
         // manual update due to conflict with EF
         private static void CreateHangfireDatabase(IConfiguration configuration)
         {
