@@ -15,7 +15,7 @@ Event-Driven Microservice Architecture with Jwt Authentication + MS SQL Server +
 - ASP.NET Core Web API application - health monitoring of all microservices
 #### WebUI Angular app
 #### How to run the app
-1. You will need .NET 5 and Docker Desktop
+1. You will need .NET 5 and Docker Desktop installed
 2. Clone the repository
 3. Open your command shell at the root directory which include docker-compose.yml file and run the following command: docker-compose up -d
 4. Wait for docker to compose all microservices. That’s it! :blush:
