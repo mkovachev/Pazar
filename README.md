@@ -1,17 +1,16 @@
 # Pazar Marketplace
-Event-Driven Microservice Architecture + MS SQL Server + Docker + Rabbitmq
+Event-Driven Microservice Architecture with Jwt Authentication + MS SQL Server + Docker + Rabbitmq + Hangfire + CronJobs
 #### Identity microservice:
 - ASP.NET Core Web API application - CRUD on all users
-- Swagger Open API
+- Swagger UI + Auth Jwt
 #### Ads microservice:
-- ASP.NET Core Web API application with CRUD on all ads
-- Swagger Open API 
-- RabbitMQ event queue
+- ASP.NET Core Web API application - CRUD on all ads
+- Swagger UI + Auth Jwt 
 #### Notifications microservice:
-- ASP.NET Core Web API application - to pass the messages btw microservices
+- ASP.NET Core Web API application - route messages to respective microservice
 #### Statistics microservice:
 - ASP.NET Core Web API application - shows Ads statistics
-- Swagger Open API
+- Swagger UI + Auth Jwt
 #### Watchdog microservice:
 - ASP.NET Core Web API application - health monitoring of all microservices
 #### WebUI Angular app
