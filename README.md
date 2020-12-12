@@ -1,7 +1,6 @@
 # Pazar Marketplace
 <br />
-Event-Driven Microservice Architecture + MS SQL Server + Docker + Rabbitmq.
-<br />
+Event-Driven Microservice Architecture + MS SQL Server + Docker + Rabbitmq
 <br />
 ### Ads microservice includes:
 <br />
@@ -11,16 +10,13 @@ Swagger Open API implementation
 <br />
 RabbitMQ trigger event queue
 <br />
-<br />
 ### Identity microservice:
 <br />
 ASP.NET Core Web API application - CRUD on all users
 <br />
 Swagger Open API implementation
 <br />
-<br />
 ### WebUI Angular app
-<br />
 <br />
 ### Installing
 <br />
