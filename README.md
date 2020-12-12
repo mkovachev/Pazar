@@ -14,6 +14,7 @@ Event-Driven Microservice Architecture with Jwt Authentication + MS SQL Server +
 #### Watchdog microservice:
 - ASP.NET Core Web API application - health monitoring of all microservices
 #### WebUI Angular app
+- Angular 11 communication with the backend API + Jwt Auth
 #### How to run the app
 1. You will need .NET 5 and Docker Desktop installed
 2. Clone the repository
