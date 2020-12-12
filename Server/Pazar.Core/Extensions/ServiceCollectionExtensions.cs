@@ -216,7 +216,7 @@ namespace Pazar.Core.Extensions
 
             if (usePolling)
             {
-                CreateHangfireDatabase(configuration); // create CronJobs db
+                CreateHangfireDatabase(configuration); // manual create hangfire db
 
                 services
                     .AddHangfire(config => config
@@ -242,15 +242,21 @@ namespace Pazar.Core.Extensions
             return services;
         }
 
-        private static MessageQueueSettings GetMessageQueueSettings(IConfiguration configuration)
-        {
-            var settings = configuration.GetSection(nameof(MessageQueueSettings));
+        public static IServiceCollection AddCronJobsDatabase<TDbContext>(
+                this IServiceCollection services,
+                IConfiguration configuration)
+                where TDbContext : DbContext
+                => services
+                    .AddScoped<DbContext, TDbContext>()
+                    .AddDbContext<TDbContext>(options => options
+                        .UseSqlServer(
+                            configuration.GetCronJobsConnectionString(),
+                            sqlOptions => sqlOptions
+                                .EnableRetryOnFailure(
+                                    maxRetryCount: 10,
+                                    maxRetryDelay: TimeSpan.FromSeconds(30),
+                                    errorNumbersToAdd: null)));
 
-            return new MessageQueueSettings(
-                settings.GetValue<string>(nameof(MessageQueueSettings.Host)),
-                settings.GetValue<string>(nameof(MessageQueueSettings.UserName)),
-                settings.GetValue<string>(nameof(MessageQueueSettings.Password)));
-        }
 
         // manual update due to conflict with EF
         private static void CreateHangfireDatabase(IConfiguration configuration)
@@ -270,6 +276,15 @@ namespace Pazar.Core.Extensions
                 connection);
 
             command.ExecuteNonQuery();
+        }
+        private static MessageQueueSettings GetMessageQueueSettings(IConfiguration configuration)
+        {
+            var settings = configuration.GetSection(nameof(MessageQueueSettings));
+
+            return new MessageQueueSettings(
+                settings.GetValue<string>(nameof(MessageQueueSettings.Host)),
+                settings.GetValue<string>(nameof(MessageQueueSettings.UserName)),
+                settings.GetValue<string>(nameof(MessageQueueSettings.Password)));
         }
     }
 }

@@ -6,7 +6,7 @@
         {
         }
 
-        public string Host { get; set; } = "localhost";
+        public string Host { get; set; } = "rabbitmq";
 
         public string UserName { get; set; } = "rabbitmquser";
 

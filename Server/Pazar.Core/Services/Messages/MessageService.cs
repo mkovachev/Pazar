@@ -25,8 +25,5 @@ namespace Pazar.Core.Services.Messages
                 .FromSqlRaw($"SELECT * FROM Messages WHERE Type = '{messageType.AssemblyQualifiedName}' AND JSON_VALUE(serializedData, '$.{propertyFilter}') = {identifier}")
                 .AnyAsync();
         }
-
-        //public async Task<bool> IsDuplicated(AdCreatedMessage message)
-        //    => await this.db.Messages.AnyAsync(m => m.Id == message.Id);
     }
 }
