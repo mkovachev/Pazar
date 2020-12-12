@@ -21,6 +21,3 @@ Event-Driven Microservice Architecture + MS SQL Server + Docker + Rabbitmq
 3. At the root directory which include docker-compose.yml files, run below command: docker-compose up -d
 4. Wait for docker to compose all microservices. That’s it!
 ##### You can launch Web UI as below urls: http://localhost:80
-![Image of Home] (C:\Users\kovachma\Desktop)
-![Image of Home] (MyAds.PNG)
-
