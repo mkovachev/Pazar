@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Ad } from 'src/app/ads/ad.model';
 import { CategoriesService } from '../categories.service';
-import { Category } from '../category.model';
 
 @Component({
   selector: 'app-ads',
@@ -10,7 +9,6 @@ import { Category } from '../category.model';
   styleUrls: ['./ads.component.css']
 })
 export class AdsComponent implements OnInit {
-  category!: Category
   id!: string
   ads!: Array<Ad>
 
