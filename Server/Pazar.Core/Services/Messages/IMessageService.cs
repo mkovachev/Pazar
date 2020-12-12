@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Pazar.Core.Messages.Ads;
+using System.Threading.Tasks;
 
 namespace Pazar.Core.Services.Messages
 {
