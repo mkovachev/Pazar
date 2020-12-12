@@ -1,7 +1,8 @@
 version: '3.8'
 
 # remove <none>
-#docker rmi $(docker images -f "dangling=true" -q)
+# docker-compose up -d
+# docker rmi $(docker images -f "dangling=true" -q)
 
 services:
     data:
