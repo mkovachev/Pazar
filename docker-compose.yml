@@ -1,6 +1,5 @@
 version: '3.8'
 
-# remove <none>
 # docker-compose up -d
 # docker rmi $(docker images -f "dangling=true" -q)
 
