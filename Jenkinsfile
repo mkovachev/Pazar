@@ -53,7 +53,7 @@ pipeline {
           docker.withRegistry('https://index.docker.io/v1/', 'Dockerhub') {
             def identity = docker.image("mkovachev/pazar-identity")
             identity.push("1.0.${env.BUILD_ID}")
-            identity.push('latest'),
+            identity.push('latest')
             def ads = docker.image("mkovachev/pazar-ads")
             ads.push("1.0.${env.BUILD_ID}")
             ads.push('latest')
