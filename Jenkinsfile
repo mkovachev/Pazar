@@ -50,7 +50,7 @@ pipeline {
       when { branch 'main' }
       steps {
         script {
-          docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
+          docker.withRegistry('https://index.docker.io/v1/', 'Dockerhub') {
             def image = docker.image("mkovachev/pazar-identity")
             image.push("1.0.${env.BUILD_ID}")
             image.push('latest')
