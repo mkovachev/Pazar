@@ -51,12 +51,12 @@ pipeline {
       steps {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'Dockerhub') {
-            def image = docker.image("mkovachev/pazar-identity")
-            image.push("1.0.${env.BUILD_ID}")
-            image.push('latest'),
-            def image = docker.image("mkovachev/pazar-ads")
-            image.push("1.0.${env.BUILD_ID}")
-            image.push('latest')
+            def identity = docker.image("mkovachev/pazar-identity")
+            identity.push("1.0.${env.BUILD_ID}")
+            identity.push('latest'),
+            def ads = docker.image("mkovachev/pazar-ads")
+            ads.push("1.0.${env.BUILD_ID}")
+            ads.push('latest')
           }
         }
       }
