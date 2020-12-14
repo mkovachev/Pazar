@@ -17,13 +17,14 @@ pipeline {
     }
     stage('Docker Build') {
       steps {
-        powershell(script: 'docker-compose build')     
+        powershell(script: 'docker-compose build')
         powershell(script: 'docker images -a')
       }
     }
     stage('Run Test Application') {
       steps {
-        powershell(script: 'docker-compose up -d')    
+        powershell(script: 'docker-compose up -d')
+        powershell(script: 'docker rmi $(docker images -f "dangling=true" -q)')
       }
     }
     stage('Run Integration Tests') {
@@ -34,7 +35,7 @@ pipeline {
     stage('Stop Test Application') {
       steps {
         powershell(script: 'docker-compose down') 
-        // powershell(script: 'docker volumes prune -f')   		
+        // powershell(script: 'docker volumes prune -f')
       }
       post {
         success {
