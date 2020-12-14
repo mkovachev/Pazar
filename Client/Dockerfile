@@ -15,7 +15,7 @@ RUN npm install -g @angular/cli
 COPY . /app
 
 # build and store the artifacts in dist folder
-ARG configuration=development
+ARG configuration=production
 RUN ng build --output-path=dist --configuration=$configuration
 
 # base image
