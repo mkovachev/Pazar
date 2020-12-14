@@ -52,22 +52,22 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'Dockerhub') {
             def identity = docker.image("mkovachev/pazar-identity")
-            identity.push("1.0.${env.BUILD_ID}")
+            identity.push("${env.BUILD_ID}")
             identity.push('latest')
             def ads = docker.image("mkovachev/pazar-ads")
-            ads.push("1.0.${env.BUILD_ID}")
+            ads.push("${env.BUILD_ID}")
             ads.push('latest')
             def notifications = docker.image("mkovachev/pazar-notifications")
-            notifications.push("1.0.${env.BUILD_ID}")
+            notifications.push("${env.BUILD_ID}")
             notifications.push('latest')
             def statistics = docker.image("mkovachev/pazar-statistics")
-            statistics.push("1.0.${env.BUILD_ID}")
+            statistics.push("${env.BUILD_ID}")
             statistics.push('latest')
             def watchdog = docker.image("mkovachev/pazar-watchdog")
-            watchdog.push("1.0.${env.BUILD_ID}")
+            watchdog.push("${env.BUILD_ID}")
             watchdog.push('latest')
             def client = docker.image("mkovachev/pazar-client")
-            client.push("1.0.${env.BUILD_ID}")
+            client.push("${env.BUILD_ID}")
             client.push('latest')
           }
         }
