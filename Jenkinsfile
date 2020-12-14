@@ -39,10 +39,10 @@ pipeline {
       }
       post {
         success {
-          echo "Build successfull! You should deploy! :)"
+          echo "Build successfull"
         }
         failure {
-          echo "Build failed! You should receive an e-mail! :("
+          echo "Build failed!"
         }
       }
     }
@@ -52,6 +52,9 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'Dockerhub') {
             def image = docker.image("mkovachev/pazar-identity")
+            image.push("1.0.${env.BUILD_ID}")
+            image.push('latest')
+            def image = docker.image("mkovachev/pazar-ads")
             image.push("1.0.${env.BUILD_ID}")
             image.push('latest')
           }
