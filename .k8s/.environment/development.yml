@@ -24,7 +24,7 @@ data:
     identity-database-sa-password: eW91clN0cm9uZ1Bhc3N3b3JkMTIhQA==
     ads-database-sa-password: eW91clN0cm9uZ1Bhc3N3b3JkMTIhQA==
     statistics-database-sa-password: eW91clN0cm9uZ1Bhc3N3b3JkMTIhQA==
-    security-token-secret: UzBNMyBNNEcxQyBVTjFDMFJOUyBHM04zUjRUM0QgVEgxUyBTM0NSM1Q=
+    security-token-secret: VEhJUyBJUyBBIFRFU1QgU0VDUkVUIFRPIFNJR04gQU5EIFZFUklGWSBKV1QgVE9LRU5T
     admin-password: YWRtaW4xMjM0
     identity-service-connection-string: Q29ubmVjdGlvblN0cmluZ3NfX0RlZmF1bHRDb25uZWN0aW9uPVNlcnZlcj1zcWxzZXJ2ZXI7RGF0YWJhc2U9UGF6YXIuSWRlbnRpdHk7VXNlciBJZD1zYTsgUGFzc3dvcmQ9eW91clN0cm9uZ1Bhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ==
     ads-service-connection-string: Q29ubmVjdGlvblN0cmluZ3NfX0RlZmF1bHRDb25uZWN0aW9uPVNlcnZlcj1zcWxzZXJ2ZXI7RGF0YWJhc2U9UGF6YXIuQWRzO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPXlvdXJTdHJvbmdQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWU=
