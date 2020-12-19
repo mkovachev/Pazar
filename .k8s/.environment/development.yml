@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: environment-settings
+data:
+    seed-initial-data: 'True'
+    event-bus-host: event-bus
+    event-bus-user: rabbitmquser
+    notifications-allowed-origins: http://35.222.88.64
+    admin-identity-endpoint: http://identity-service:5001
+    admin-ads-endpoint: http://ads-service:5002
+    admin-statistics-endpoint: http://statistics-service:5006
+    watchdog-identity-health: http://identity-service:5001/health
+    watchdog-dealers-health: http://ads-service:5002/health
+    watchdog-statistics-health: http://statistics-service:5006/health
+    watchdog-notifications-health: http://notifications-service:5005/health
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: environment-secrets
+data:
+    identity-database-sa-password: eW91clN0cm9uZ1Bhc3N3b3JkMTIhQA==
+    ads-database-sa-password: eW91clN0cm9uZ1Bhc3N3b3JkMTIhQA==
+    statistics-database-sa-password: eW91clN0cm9uZ1Bhc3N3b3JkMTIhQA==
+    security-token-secret: UzBNMyBNNEcxQyBVTjFDMFJOUyBHM04zUjRUM0QgVEgxUyBTM0NSM1Q=
+    admin-password: YWRtaW4xMjM0
+    identity-service-connection-string: Q29ubmVjdGlvblN0cmluZ3NfX0RlZmF1bHRDb25uZWN0aW9uPVNlcnZlcj1zcWxzZXJ2ZXI7RGF0YWJhc2U9UGF6YXIuSWRlbnRpdHk7VXNlciBJZD1zYTsgUGFzc3dvcmQ9eW91clN0cm9uZ1Bhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ==
+    ads-service-connection-string: Q29ubmVjdGlvblN0cmluZ3NfX0RlZmF1bHRDb25uZWN0aW9uPVNlcnZlcj1zcWxzZXJ2ZXI7RGF0YWJhc2U9UGF6YXIuQWRzO1VzZXIgSWQ9c2E7IFBhc3N3b3JkPXlvdXJTdHJvbmdQYXNzd29yZDEyIUA7TXVsdGlwbGVBY3RpdmVSZXN1bHRTZXRzPXRydWU=
+    ads-service-cron-jobs-connection-string: Q29ubmVjdGlvblN0cmluZ3NfX0Nyb25Kb2JzQ29ubmVjdGlvbj1TZXJ2ZXI9c3Fsc2VydmVyO0RhdGFiYXNlPVBhemFyLkFkcy5Dcm9uSm9icztVc2VyIElkPXNhOyBQYXNzd29yZD15b3VyU3Ryb25nUGFzc3dvcmQxMiFAO011bHRpcGxlQWN0aXZlUmVzdWx0U2V0cz10cnVl
+    statistics-service-connection-string: Q29ubmVjdGlvblN0cmluZ3NfX0RlZmF1bHRDb25uZWN0aW9uPVNlcnZlcj1zcWxzZXJ2ZXI7RGF0YWJhc2U9UGF6YXIuU3RhdGlzdGljcztVc2VyIElkPXNhOyBQYXNzd29yZD15b3VyU3Ryb25nUGFzc3dvcmQxMiFAO011bHRpcGxlQWN0aXZlUmVzdWx0U2V0cz10cnVl
+    statistics-service-cron-jobs-connection-string: Q29ubmVjdGlvblN0cmluZ3NfX0Nyb25Kb2JzQ29ubmVjdGlvbj1TZXJ2ZXI9c3Fsc2VydmVyO0RhdGFiYXNlPVBhemFyLlN0YXRpc3RpY3MuQ3JvbkpvYnM7VXNlciBJZD1zYTsgUGFzc3dvcmQ9eW91clN0cm9uZ1Bhc3N3b3JkMTIhQDtNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ
+    event-bus-password: cmFiYml0bXExMjM0
