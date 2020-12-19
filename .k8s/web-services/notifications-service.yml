@@ -58,7 +58,7 @@ spec:
             memory: "512Mi"
             cpu: "250m"
         env:
-        - name: ApplicationSettings__Secret
+        - name: AppSettings__Secret
           valueFrom:
             secretKeyRef:
               name: environment-secrets

@@ -58,12 +58,12 @@ spec:
             memory: "512Mi"
             cpu: "250m"
         env:
-        - name: ApplicationSettings__Secret
+        - name: AppSettings__Secret
           valueFrom:
             secretKeyRef:
               name: environment-secrets
               key: security-token-secret
-        - name: ApplicationSettings__SeedInitialData
+        - name: AppSettings__SeedInitialData
           valueFrom:
             configMapKeyRef:
               name: environment-settings
